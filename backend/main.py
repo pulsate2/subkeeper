@@ -1,16 +1,19 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
-from app.database import engine, Base
+from app.database import engine, Base, run_migrations
 # from scheduler import scheduler_service
 # from notifications import NotificationService
 from app.routes import settings, subscriptions, reminders, backup
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup: Create tables and start scheduler
+    # Startup: Create tables and run migrations
     from app.scheduler import scheduler
+    # Create all tables, including any new columns
     Base.metadata.create_all(bind=engine)
+    # Run migrations to update existing tables with new columns
+    run_migrations()
     scheduler.start()
     yield
     # Shutdown: Stop scheduler

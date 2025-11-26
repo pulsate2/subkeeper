@@ -2,15 +2,23 @@
   <div class="reminder-list">
     <div class="list-header">
       <h2>待办提醒</h2>
-      <n-button @click="handleAddClick" type="primary" size="small">
-        + 添加提醒
-      </n-button>
+      <n-space>
+        <n-select
+          v-model:value="currentGroup"
+          :options="groupOptions"
+          placeholder="选择分组"
+          style="width: 150px;"
+        />
+        <n-button @click="handleAddClick" type="primary" size="small">
+          + 添加提醒
+        </n-button>
+      </n-space>
     </div>
     
     <n-spin :show="loading">
       <n-space vertical size="medium">
         <n-card
-          v-for="reminder in reminders"
+          v-for="reminder in filteredReminders"
           :key="reminder.id"
           size="small"
           hoverable
@@ -19,8 +27,13 @@
         >
           <div class="reminder-content">
             <div class="reminder-info">
-              <strong>{{ reminder.title }}</strong>
-              <n-tag v-if="reminder.is_sent" type="success" size="small" style="margin-left: 8px;">
+              <div class="reminder-title">
+                <strong>{{ reminder.title }}</strong>
+                <n-tag v-if="reminder.group_name !== 'default'" size="small" type="info" style="margin-left: 5px;">
+                  {{ reminder.group_name }}
+                </n-tag>
+              </div>
+              <n-tag v-if="reminder.is_sent" type="success" size="small">
                 已完成
               </n-tag>
             </div>
@@ -33,12 +46,15 @@
           </div>
         </n-card>
         
-        <n-empty v-if="!loading && reminders.length === 0" description="暂无提醒" />
+        <n-empty v-if="!loading && filteredReminders.length === 0" description="暂无提醒" />
       </n-space>
     </n-spin>
     
     <n-modal v-model:show="showAddModal" preset="card" :title="editingId ? '编辑提醒' : '添加提醒'" style="width: 500px;">
       <n-form>
+        <n-form-item label="分组">
+          <n-select v-model:value="form.group_name" :options="allGroupOptions" placeholder="选择或输入分组名称" filterable tag />
+        </n-form-item>
         <n-form-item label="标题">
           <n-input v-model:value="form.title" placeholder="提醒事项" />
         </n-form-item>
@@ -64,7 +80,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useMessage, useDialog } from 'naive-ui'
 import axios from 'axios'
 
@@ -72,15 +88,38 @@ const message = useMessage()
 const dialog = useDialog()
 
 const reminders = ref([])
+const allGroups = ref(['default'])
 const loading = ref(false)
 const showAddModal = ref(false)
 const editingId = ref(null)
+const currentGroup = ref('all') // 'all' means show all groups
 
 const form = ref({
   title: '',
   content: '',
   target_date: null,
-  target_time: '09:00'
+  target_time: '09:00',
+  group_name: 'default'
+})
+
+// Computed properties
+const groupOptions = computed(() => {
+  const options = [{ label: '全部', value: 'all' }]
+  allGroups.value.forEach(group => {
+    options.push({ label: group, value: group })
+  })
+  return options
+})
+
+const allGroupOptions = computed(() => {
+  return allGroups.value.map(group => ({ label: group, value: group }))
+})
+
+const filteredReminders = computed(() => {
+  if (currentGroup.value === 'all' || !currentGroup.value) {
+    return reminders.value
+  }
+  return reminders.value.filter(reminder => reminder.group_name === currentGroup.value)
 })
 
 const handleAddClick = () => {
@@ -91,8 +130,17 @@ const handleAddClick = () => {
 const loadData = async () => {
   loading.value = true
   try {
-    const res = await axios.get('/api/reminders/')
-    reminders.value = res.data
+    const [remindersRes, groupsRes] = await Promise.all([
+      axios.get('/api/reminders/'),
+      axios.get('/api/reminders/groups')
+    ])
+    reminders.value = remindersRes.data
+    allGroups.value = groupsRes.data.length > 0 ? groupsRes.data : ['default']
+    
+    // Ensure 'default' group is always available
+    if (!allGroups.value.includes('default')) {
+      allGroups.value.unshift('default')
+    }
   } catch (error) {
     message.error('加载失败')
   } finally {
@@ -106,7 +154,8 @@ const editReminder = (reminder) => {
     title: reminder.title,
     content: reminder.content || '',
     target_date: reminder.target_date,
-    target_time: reminder.target_time
+    target_time: reminder.target_time,
+    group_name: reminder.group_name || 'default'
   }
   showAddModal.value = true
 }
@@ -121,11 +170,11 @@ const saveReminder = async () => {
       message.success('提醒已添加')
     }
     
-        showAddModal.value = false
-        editingId.value = null
-        form.value = { title: '', content: '', target_date: null, target_time: '09:00' }
-        loadData()
-      } catch (error) {
+    showAddModal.value = false
+    editingId.value = null
+    form.value = { title: '', content: '', target_date: null, target_time: '09:00', group_name: 'default' }
+    loadData()
+  } catch (error) {
     message.error('保存失败')
   }
 }

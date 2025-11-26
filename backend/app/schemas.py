@@ -11,6 +11,7 @@ class SubscriptionBase(BaseModel):
     notify_mode: str = 'global'  # 'global' or 'custom'
     cust_days: Optional[str] = None
     cust_time: Optional[str] = None
+    group_name: str = 'default'
 
 class SubscriptionCreate(SubscriptionBase):
     pass
@@ -30,6 +31,7 @@ class ReminderBase(BaseModel):
     content: Optional[str] = None  # 添加内容字段
     target_date: date
     target_time: str  # HH:MM format
+    group_name: str = 'default'
 
 class ReminderCreate(ReminderBase):
     pass

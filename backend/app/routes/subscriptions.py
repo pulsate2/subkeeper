@@ -13,6 +13,13 @@ async def get_subscriptions(db: Session = Depends(get_db)):
     """Get all subscriptions"""
     return db.query(Subscription).all()
 
+
+@router.get("/groups", response_model=List[str])
+async def get_subscription_groups(db: Session = Depends(get_db)):
+    """Get all unique subscription groups"""
+    groups = db.query(Subscription.group_name).distinct().all()
+    return [group[0] for group in groups if group[0] is not None]
+
 @router.get("/{subscription_id}", response_model=SubscriptionResponse)
 async def get_subscription(subscription_id: int, db: Session = Depends(get_db)):
     """Get a specific subscription"""

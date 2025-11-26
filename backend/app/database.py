@@ -1,5 +1,5 @@
 import os
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -23,3 +23,32 @@ def get_db():
         yield db
     finally:
         db.close()
+
+def run_migrations():
+    """Run database migrations to update schema"""
+    with engine.connect() as conn:
+        # Check if group_name column exists in reminders table
+        result = conn.execute(text("""
+            SELECT name FROM pragma_table_info('reminders') WHERE name='group_name'
+        """))
+        
+        if not result.fetchone():
+            # Add group_name column to reminders table
+            conn.execute(text("ALTER TABLE reminders ADD COLUMN group_name TEXT DEFAULT 'default'"))
+            conn.commit()
+            print("Added group_name column to reminders table")
+        else:
+            print("group_name column already exists in reminders table")
+        
+        # Check if group_name column exists in subscriptions table
+        result = conn.execute(text("""
+            SELECT name FROM pragma_table_info('subscriptions') WHERE name='group_name'
+        """))
+        
+        if not result.fetchone():
+            # Add group_name column to subscriptions table
+            conn.execute(text("ALTER TABLE subscriptions ADD COLUMN group_name TEXT DEFAULT 'default'"))
+            conn.commit()
+            print("Added group_name column to subscriptions table")
+        else:
+            print("group_name column already exists in subscriptions table")

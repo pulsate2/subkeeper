@@ -2,15 +2,23 @@
   <div class="subscription-list">
     <div class="list-header">
       <h2>订阅列表</h2>
-      <n-button @click="handleAddClick" type="primary" size="small">
-        + 添加订阅
-      </n-button>
+      <n-space>
+        <n-select
+          v-model:value="currentGroup"
+          :options="groupOptions"
+          placeholder="选择分组"
+          style="width: 150px;"
+        />
+        <n-button @click="handleAddClick" type="primary" size="small">
+          + 添加订阅
+        </n-button>
+      </n-space>
     </div>
     
     <n-spin :show="loading">
       <n-space vertical size="medium">
         <n-card
-          v-for="sub in subscriptions"
+          v-for="sub in filteredSubscriptions"
           :key="sub.id"
           size="small"
           hoverable
@@ -23,6 +31,9 @@
                 <strong>{{ sub.name }}</strong>
                 <n-tag v-if="sub.notify_mode === 'global'" size="small">🌍 默认</n-tag>
                 <n-tag v-else size="small" type="warning">⚙️ 自定义</n-tag>
+                <n-tag v-if="sub.group_name !== 'default'" size="small" type="info" style="margin-left: 5px;">
+                  {{ sub.group_name }}
+                </n-tag>
               </div>
               <div class="sub-price">¥{{ sub.price }} / {{ sub.cycle_val }}{{ sub.cycle_unit === 'day' ? '天' : sub.cycle_unit === 'week' ? '周' : sub.cycle_unit === 'month' ? '月' : '年' }}</div>
             </div>
@@ -37,6 +48,9 @@
     
     <n-modal v-model:show="showAddModal" preset="card" :title="editingId ? '编辑订阅' : '添加订阅'" style="width: 600px;">
       <n-form>
+        <n-form-item label="分组">
+          <n-select v-model:value="form.group_name" :options="allGroupOptions" placeholder="选择或输入分组名称" filterable tag />
+        </n-form-item>
         <n-form-item label="服务名称">
           <n-input v-model:value="form.name" placeholder="例如: Netflix" />
         </n-form-item>
@@ -82,7 +96,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, computed } from 'vue'
 import { useMessage, useDialog } from 'naive-ui'
 import axios from 'axios'
 
@@ -90,10 +104,12 @@ const message = useMessage()
 const dialog = useDialog()
 
 const subscriptions = ref([])
+const allGroups = ref(['default'])
 const loading = ref(false)
 const showAddModal = ref(false)
 const editingId = ref(null)
 const useGlobal = ref(true)
+const currentGroup = ref('all') // 'all' means show all groups
 
 const form = ref({
   name: '',
@@ -103,7 +119,8 @@ const form = ref({
   next_date: null,
   notify_mode: 'global',
   cust_time: '09:00',
-  cust_days: '3,1,0'
+  cust_days: '3,1,0',
+  group_name: 'default'
 })
 
 const cycleOptions = [
@@ -112,6 +129,26 @@ const cycleOptions = [
   { label: '月', value: 'month' },
   { label: '年', value: 'year' }
 ]
+
+// Computed properties
+const groupOptions = computed(() => {
+  const options = [{ label: '全部', value: 'all' }]
+  allGroups.value.forEach(group => {
+    options.push({ label: group, value: group })
+  })
+  return options
+})
+
+const allGroupOptions = computed(() => {
+  return allGroups.value.map(group => ({ label: group, value: group }))
+})
+
+const filteredSubscriptions = computed(() => {
+  if (currentGroup.value === 'all' || !currentGroup.value) {
+    return subscriptions.value
+  }
+  return subscriptions.value.filter(sub => sub.group_name === currentGroup.value)
+})
 
 // Watch for changes to showAddModal to reset form when opening/closing
 watch(showAddModal, (val) => {
@@ -127,7 +164,8 @@ watch(showAddModal, (val) => {
       next_date: null,
       notify_mode: 'global',
       cust_time: '09:00',
-      cust_days: '3,1,0'
+      cust_days: '3,1,0',
+      group_name: 'default'
     }
     useGlobal.value = true
   }
@@ -145,7 +183,8 @@ const handleAddClick = () => {
     next_date: null,
     notify_mode: 'global',
     cust_time: '09:00',
-    cust_days: '3,1,0'
+    cust_days: '3,1,0',
+    group_name: 'default'
   }
   useGlobal.value = true
   showAddModal.value = true
@@ -154,8 +193,17 @@ const handleAddClick = () => {
 const loadData = async () => {
   loading.value = true
   try {
-    const res = await axios.get('/api/subscriptions/')
-    subscriptions.value = res.data
+    const [subscriptionsRes, groupsRes] = await Promise.all([
+      axios.get('/api/subscriptions/'),
+      axios.get('/api/subscriptions/groups')
+    ])
+    subscriptions.value = subscriptionsRes.data
+    allGroups.value = groupsRes.data.length > 0 ? groupsRes.data : ['default']
+    
+    // Ensure 'default' group is always available
+    if (!allGroups.value.includes('default')) {
+      allGroups.value.unshift('default')
+    }
   } catch (error) {
     message.error('加载失败')
   } finally {
@@ -184,7 +232,8 @@ const editSub = (sub) => {
     next_date: sub.next_date,
     notify_mode: sub.notify_mode,
     cust_time: sub.cust_time || '09:00',
-    cust_days: sub.cust_days || '3,1,0'
+    cust_days: sub.cust_days || '3,1,0',
+    group_name: sub.group_name || 'default'
   }
   useGlobal.value = sub.notify_mode === 'global'
   showAddModal.value = true
@@ -217,7 +266,8 @@ const saveSub = async () => {
       next_date: null,
       notify_mode: 'global',
       cust_time: '09:00',
-      cust_days: '3,1,0'
+      cust_days: '3,1,0',
+      group_name: 'default'
     }
     useGlobal.value = true
     loadData()

@@ -12,6 +12,13 @@ async def get_reminders(db: Session = Depends(get_db)):
     """Get all reminders"""
     return db.query(Reminder).all()
 
+
+@router.get("/groups", response_model=List[str])
+async def get_reminder_groups(db: Session = Depends(get_db)):
+    """Get all unique reminder groups"""
+    groups = db.query(Reminder.group_name).distinct().all()
+    return [group[0] for group in groups if group[0] is not None]
+
 @router.get("/{reminder_id}", response_model=ReminderResponse)
 async def get_reminder(reminder_id: int, db: Session = Depends(get_db)):
     """Get a specific reminder"""

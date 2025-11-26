@@ -21,6 +21,7 @@ class Subscription(Base):
     cust_days = Column(Text, nullable=True)  # JSON string for custom days
     cust_time = Column(String, nullable=True)  # HH:MM format for custom time
     last_sent = Column(DateTime, nullable=True)
+    group_name = Column(String, default='default')  # Group name for subscription
 
 class Reminder(Base):
     __tablename__ = "reminders"
@@ -31,3 +32,4 @@ class Reminder(Base):
     target_date = Column(Date, nullable=False)
     target_time = Column(String, nullable=False)  # HH:MM format
     is_sent = Column(Boolean, default=False)
+    group_name = Column(String, default='default')  # Group name for reminder
