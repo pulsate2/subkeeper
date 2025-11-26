@@ -90,14 +90,22 @@ def renewal_job():
         
         for sub in subscriptions:
             # Calculate next date based on cycle
-            if sub.cycle_unit == 'month':
+            if sub.cycle_unit == 'day':
+                sub.next_date = sub.next_date + timedelta(days=sub.cycle_val)
+            elif sub.cycle_unit == 'week':
+                sub.next_date = sub.next_date + timedelta(weeks=sub.cycle_val)
+            elif sub.cycle_unit == 'month':
                 sub.next_date = sub.next_date + relativedelta(months=sub.cycle_val)
             elif sub.cycle_unit == 'year':
                 sub.next_date = sub.next_date + relativedelta(years=sub.cycle_val)
             
             # Keep adding cycles until next_date is in the future
             while sub.next_date < today:
-                if sub.cycle_unit == 'month':
+                if sub.cycle_unit == 'day':
+                    sub.next_date = sub.next_date + timedelta(days=sub.cycle_val)
+                elif sub.cycle_unit == 'week':
+                    sub.next_date = sub.next_date + timedelta(weeks=sub.cycle_val)
+                elif sub.cycle_unit == 'month':
                     sub.next_date = sub.next_date + relativedelta(months=sub.cycle_val)
                 elif sub.cycle_unit == 'year':
                     sub.next_date = sub.next_date + relativedelta(years=sub.cycle_val)

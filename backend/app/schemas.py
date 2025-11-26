@@ -12,7 +12,7 @@ class SubscriptionBase(BaseModel):
     name: str
     price: float
     cycle_val: int
-    cycle_unit: str  # 'month' or 'year'
+    cycle_unit: str  # 'day', 'week', 'month', or 'year'
     next_date: date
     notify_mode: str = 'global'  # 'global' or 'custom'
     cust_days: Optional[str] = None

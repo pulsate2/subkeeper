@@ -15,7 +15,7 @@ class Subscription(Base):
     name = Column(String, nullable=False)
     price = Column(Float, nullable=False)
     cycle_val = Column(Integer, nullable=False)
-    cycle_unit = Column(String, nullable=False)  # 'month' or 'year'
+    cycle_unit = Column(String, nullable=False)  # 'day', 'week', 'month', or 'year'
     next_date = Column(Date, nullable=False)
     notify_mode = Column(String, default='global')  # 'global' or 'custom'
     cust_days = Column(Text, nullable=True)  # JSON string for custom days

@@ -24,7 +24,7 @@
                 <n-tag v-if="sub.notify_mode === 'global'" size="small">🌍 默认</n-tag>
                 <n-tag v-else size="small" type="warning">⚙️ 自定义</n-tag>
               </div>
-              <div class="sub-price">¥{{ sub.price }} / {{ sub.cycle_val }}{{ sub.cycle_unit === 'month' ? '月' : '年' }}</div>
+              <div class="sub-price">¥{{ sub.price }} / {{ sub.cycle_val }}{{ sub.cycle_unit === 'day' ? '天' : sub.cycle_unit === 'week' ? '周' : sub.cycle_unit === 'month' ? '月' : '年' }}</div>
             </div>
             <div class="sub-date">
               <div class="next-date">{{ sub.next_date }}</div>
@@ -82,7 +82,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useMessage, useDialog } from 'naive-ui'
 import axios from 'axios'
 
@@ -107,12 +107,47 @@ const form = ref({
 })
 
 const cycleOptions = [
+  { label: '天', value: 'day' },
+  { label: '周', value: 'week' },
   { label: '月', value: 'month' },
   { label: '年', value: 'year' }
 ]
 
+// Watch for changes to showAddModal to reset form when opening/closing
+watch(showAddModal, (val) => {
+  if (val && editingId.value) {
+    // If we're showing modal for editing, the form should already be populated
+  } else if (val && !editingId.value) {
+    // If we're showing modal for creating, reset the form
+    form.value = {
+      name: '',
+      price: 0,
+      cycle_val: 1,
+      cycle_unit: 'month',
+      next_date: null,
+      notify_mode: 'global',
+      cust_time: '09:00',
+      cust_days: '3,1,0'
+    }
+    useGlobal.value = true
+  }
+})
+
 const handleAddClick = () => {
   console.log('Add button clicked')
+  // Clear editing state for creating new subscription
+  editingId.value = null
+  form.value = {
+    name: '',
+    price: 0,
+    cycle_val: 1,
+    cycle_unit: 'month',
+    next_date: null,
+    notify_mode: 'global',
+    cust_time: '09:00',
+    cust_days: '3,1,0'
+  }
+  useGlobal.value = true
   showAddModal.value = true
 }
 
@@ -159,8 +194,9 @@ const saveSub = async () => {
   try {
     const data = {
       ...form.value,
-      cust_days: form.value.notify_mode === 'custom' ? form.value.cust_days : null,
-      cust_time: form.value.notify_mode === 'custom' ? form.value.cust_time : null
+      cust_days: useGlobal.value ? null : form.value.cust_days,
+      cust_time: useGlobal.value ? null : form.value.cust_time,
+      notify_mode: useGlobal.value ? 'global' : 'custom'
     }
     
     if (editingId.value) {

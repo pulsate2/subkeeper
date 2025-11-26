@@ -95,6 +95,8 @@ const formData = ref({
 })
 
 const cycleOptions = [
+  { label: '天', value: 'day' },
+  { label: '周', value: 'week' },
   { label: '月', value: 'month' },
   { label: '年', value: 'year' }
 ]
