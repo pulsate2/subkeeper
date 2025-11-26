@@ -24,6 +24,9 @@
                 已完成
               </n-tag>
             </div>
+            <div v-if="reminder.content" class="reminder-content-text">
+              {{ reminder.content }}
+            </div>
             <div class="reminder-time">
               {{ reminder.target_date }} {{ reminder.target_time }}
             </div>
@@ -38,6 +41,9 @@
       <n-form>
         <n-form-item label="标题">
           <n-input v-model:value="form.title" placeholder="提醒事项" />
+        </n-form-item>
+        <n-form-item label="内容">
+          <n-input v-model:value="form.content" type="textarea" placeholder="提醒内容" />
         </n-form-item>
         <n-form-item label="日期">
           <n-date-picker v-model:formatted-value="form.target_date" type="date" format="yyyy-MM-dd" style="width: 100%;" />
@@ -72,6 +78,7 @@ const editingId = ref(null)
 
 const form = ref({
   title: '',
+  content: '',
   target_date: null,
   target_time: '09:00'
 })
@@ -97,6 +104,7 @@ const editReminder = (reminder) => {
   editingId.value = reminder.id
   form.value = {
     title: reminder.title,
+    content: reminder.content || '',
     target_date: reminder.target_date,
     target_time: reminder.target_time
   }
@@ -113,11 +121,11 @@ const saveReminder = async () => {
       message.success('提醒已添加')
     }
     
-    showAddModal.value = false
-    editingId.value = null
-    form.value = { title: '', target_date: null, target_time: '09:00' }
-    loadData()
-  } catch (error) {
+        showAddModal.value = false
+        editingId.value = null
+        form.value = { title: '', content: '', target_date: null, target_time: '09:00' }
+        loadData()
+      } catch (error) {
     message.error('保存失败')
   }
 }
@@ -175,13 +183,20 @@ onMounted(() => {
 
 .reminder-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .reminder-info {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.reminder-content-text {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
 }
 
 .reminder-time {
