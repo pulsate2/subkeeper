@@ -3,8 +3,8 @@
     <div class="header">
       <h1>📋 SubKeeper</h1>
       <n-space>
-        <n-button @click="testAPI" size="small" tertiary>测试 API</n-button>
-        <n-button @click="showSettings = true" size="small" type="primary">⚙️ 设置</n-button>
+        <n-button @click="testAPI" size="medium" tertiary :style="{ 'min-width': '100px' }">测试 API</n-button>
+        <n-button @click="showSettings = true" size="medium" type="primary" :style="{ 'min-width': '100px' }">⚙️ 设置</n-button>
       </n-space>
     </div>
     
@@ -90,6 +90,10 @@ const testAPI = async () => {
   font-weight: 600;
 }
 
+.header .n-space {
+  gap: 12px;
+}
+
 .btn {
   padding: 8px 16px;
   background: #63e2b7;
@@ -117,10 +121,18 @@ const testAPI = async () => {
 @media (max-width: 768px) {
   .header {
     padding: 15px 16px;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
   }
   
   .header h1 {
     font-size: 20px;
+    text-align: center;
+  }
+  
+  .header .n-space {
+    justify-content: center;
   }
   
   .main-content {
