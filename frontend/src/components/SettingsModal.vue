@@ -3,29 +3,102 @@
     <n-tabs type="line">
       <n-tab-pane name="notification" tab="通知配置">
         <n-form>
+          <!-- SMTP 邮箱配置 -->
           <n-form-item label="SMTP 邮箱配置">
-            <n-input 
-              v-model:value="formData.smtp_conf" 
-              type="textarea" 
-              :rows="6"
-              placeholder='{"host":"smtp.example.com","port":587,"username":"user","password":"pass","from":"from@example.com","to":"to@example.com","use_tls":true}' 
-            />
+            <n-collapse>
+              <n-collapse-item title="SMTP 邮箱设置" name="smtp">
+                <n-form-item label="SMTP 服务器">
+                  <n-input 
+                    v-model:value="smtpConfig.host" 
+                    placeholder="smtp.example.com" 
+                  />
+                </n-form-item>
+                <n-form-item label="SMTP 端口">
+                  <n-input-number 
+                    v-model:value="smtpConfig.port" 
+                    :min="1" 
+                    :max="65535"
+                    placeholder="587" 
+                    style="width: 100%"
+                  />
+                </n-form-item>
+                <n-form-item label="用户名">
+                  <n-input 
+                    v-model:value="smtpConfig.username" 
+                    placeholder="user@example.com" 
+                  />
+                </n-form-item>
+                <n-form-item label="密码">
+                  <n-input 
+                    v-model:value="smtpConfig.password" 
+                    type="password"
+                    placeholder="密码" 
+                  />
+                </n-form-item>
+                <n-form-item label="发送邮箱">
+                  <n-input 
+                    v-model:value="smtpConfig.from" 
+                    placeholder="from@example.com" 
+                  />
+                </n-form-item>
+                <n-form-item label="接收邮箱">
+                  <n-input 
+                    v-model:value="smtpConfig.to" 
+                    placeholder="to@example.com" 
+                  />
+                </n-form-item>
+                <n-form-item label="启用 TLS">
+                  <n-switch v-model:value="smtpConfig.use_tls" />
+                </n-form-item>
+              </n-collapse-item>
+            </n-collapse>
           </n-form-item>
+
+          <!-- 企业微信配置 -->
           <n-form-item label="企业微信配置">
-            <n-input 
-              v-model:value="formData.wechat_conf" 
-              type="textarea" 
-              :rows="5"
-              placeholder='{"corpid":"xxxxx","secret":"xxxxx","agentid":1000001,"touser":"@all"}' 
-            />
+            <n-collapse>
+              <n-collapse-item title="企业微信设置" name="wechat">
+                <n-form-item label="企业 ID (corpid)">
+                  <n-input 
+                    v-model:value="wechatConfig.corpid" 
+                    placeholder="企业ID" 
+                  />
+                </n-form-item>
+                <n-form-item label="应用 Secret">
+                  <n-input 
+                    v-model:value="wechatConfig.secret" 
+                    placeholder="应用Secret" 
+                  />
+                </n-form-item>
+                <n-form-item label="应用 AgentId">
+                  <n-input-number 
+                    v-model:value="wechatConfig.agentid" 
+                    placeholder="AgentId" 
+                    style="width: 100%"
+                  />
+                </n-form-item>
+                <n-form-item label="接收人">
+                  <n-input 
+                    v-model:value="wechatConfig.touser" 
+                    placeholder="@all 或指定用户" 
+                  />
+                </n-form-item>
+              </n-collapse-item>
+            </n-collapse>
           </n-form-item>
+
+          <!-- 企业微信 Webhook 配置 -->
           <n-form-item label="企业微信 Webhook 配置">
-            <n-input 
-              v-model:value="formData.webhook_conf" 
-              type="textarea" 
-              :rows="3"
-              placeholder='{"webhook_key":"your-webhook-key"}' 
-            />
+            <n-collapse>
+              <n-collapse-item title="企业微信 Webhook 设置" name="webhook">
+                <n-form-item label="Webhook Key">
+                  <n-input 
+                    v-model:value="webhookConfig.webhook_key" 
+                    placeholder="Webhook Key" 
+                  />
+                </n-form-item>
+              </n-collapse-item>
+            </n-collapse>
           </n-form-item>
         </n-form>
       </n-tab-pane>
@@ -76,10 +149,28 @@ const emit = defineEmits(['update:show'])
 const message = useMessage()
 const show = ref(props.show)
 
+const smtpConfig = ref({
+  host: '',
+  port: 587,
+  username: '',
+  password: '',
+  from: '',
+  to: '',
+  use_tls: true
+})
+
+const wechatConfig = ref({
+  corpid: '',
+  secret: '',
+  agentid: null,
+  touser: '@all'
+})
+
+const webhookConfig = ref({
+  webhook_key: ''
+})
+
 const formData = ref({
-  smtp_conf: '',
-  wechat_conf: '',
-  webhook_conf: '',
   global_time: '09:00',
   global_days: '3,1,0'
 })
@@ -121,10 +212,32 @@ const loadSettings = async () => {
     const res = await axios.get('/api/settings/')
     const settings = res.data
     
+    // Load SMTP config
+    if (settings.smtp_conf) {
+      smtpConfig.value = {
+        ...smtpConfig.value,
+        ...settings.smtp_conf
+      }
+    }
+    
+    // Load WeChat config
+    if (settings.wechat_conf) {
+      wechatConfig.value = {
+        ...wechatConfig.value,
+        ...settings.wechat_conf
+      }
+    }
+    
+    // Load Webhook config
+    if (settings.webhook_conf) {
+      webhookConfig.value = {
+        ...webhookConfig.value,
+        ...settings.webhook_conf
+      }
+    }
+    
+    // Load global settings
     formData.value = {
-      smtp_conf: settings.smtp_conf ? JSON.stringify(settings.smtp_conf, null, 2) : '',
-      wechat_conf: settings.wechat_conf ? JSON.stringify(settings.wechat_conf, null, 2) : '',
-      webhook_conf: settings.webhook_conf ? JSON.stringify(settings.webhook_conf, null, 2) : '',
       global_time: settings.global_time || '09:00',
       global_days: settings.global_days ? settings.global_days.join(',') : '3,1,0'
     }
@@ -136,9 +249,9 @@ const loadSettings = async () => {
 const saveSettings = async () => {
   try {
     const data = {
-      smtp_conf: formData.value.smtp_conf ? JSON.parse(formData.value.smtp_conf) : null,
-      wechat_conf: formData.value.wechat_conf ? JSON.parse(formData.value.wechat_conf) : null,
-      webhook_conf: formData.value.webhook_conf ? JSON.parse(formData.value.webhook_conf) : null,
+      smtp_conf: smtpConfig.value.host ? smtpConfig.value : null,
+      wechat_conf: wechatConfig.value.corpid ? wechatConfig.value : null,
+      webhook_conf: webhookConfig.value.webhook_key ? webhookConfig.value : null,
       global_time: formData.value.global_time,
       global_days: formData.value.global_days.split(',').map(d => parseInt(d.trim()))
     }
