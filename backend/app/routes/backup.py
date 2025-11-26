@@ -6,11 +6,12 @@ import json
 from ..database import get_db
 from ..models import Settings, Subscription, Reminder
 from ..schemas import BackupData
+from ..auth import verify_token
 
 router = APIRouter()
 
 @router.get("/export")
-async def export_data(db: Session = Depends(get_db)):
+async def export_data(db: Session = Depends(get_db), current_user: str = Depends(verify_token)):
     """Export all data as JSON"""
     try:
         # Get all settings
@@ -69,7 +70,7 @@ async def export_data(db: Session = Depends(get_db)):
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/import")
-async def import_data(file: UploadFile = File(...), db: Session = Depends(get_db)):
+async def import_data(file: UploadFile = File(...), db: Session = Depends(get_db), current_user: str = Depends(verify_token)):
     """Import data from JSON backup"""
     try:
         # Read and parse JSON

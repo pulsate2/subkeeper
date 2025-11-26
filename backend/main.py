@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 from app.database import engine, Base, run_migrations
 # from scheduler import scheduler_service
 # from notifications import NotificationService
-from app.routes import settings, subscriptions, reminders, backup
+from app.routes import settings, subscriptions, reminders, backup, auth
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -29,6 +29,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 app.include_router(settings.router, prefix="/api/settings", tags=["settings"])
 app.include_router(subscriptions.router, prefix="/api/subscriptions", tags=["subscriptions"])
 app.include_router(reminders.router, prefix="/api/reminders", tags=["reminders"])

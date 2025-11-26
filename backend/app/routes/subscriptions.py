@@ -5,23 +5,24 @@ from typing import List
 from ..database import get_db
 from ..models import Subscription
 from ..schemas import SubscriptionCreate, SubscriptionUpdate, SubscriptionResponse
+from ..auth import verify_token
 
 router = APIRouter()
 
 @router.get("/", response_model=List[SubscriptionResponse])
-async def get_subscriptions(db: Session = Depends(get_db)):
+async def get_subscriptions(db: Session = Depends(get_db), current_user: str = Depends(verify_token)):
     """Get all subscriptions"""
     return db.query(Subscription).all()
 
 
 @router.get("/groups", response_model=List[str])
-async def get_subscription_groups(db: Session = Depends(get_db)):
+async def get_subscription_groups(db: Session = Depends(get_db), current_user: str = Depends(verify_token)):
     """Get all unique subscription groups"""
     groups = db.query(Subscription.group_name).distinct().all()
     return [group[0] for group in groups if group[0] is not None]
 
 @router.get("/{subscription_id}", response_model=SubscriptionResponse)
-async def get_subscription(subscription_id: int, db: Session = Depends(get_db)):
+async def get_subscription(subscription_id: int, db: Session = Depends(get_db), current_user: str = Depends(verify_token)):
     """Get a specific subscription"""
     sub = db.query(Subscription).filter(Subscription.id == subscription_id).first()
     if not sub:
@@ -64,7 +65,7 @@ def process_cust_days(cust_days):
         return json.dumps([])  # Return empty array if not valid type
 
 @router.post("/", response_model=SubscriptionResponse)
-async def create_subscription(subscription: SubscriptionCreate, db: Session = Depends(get_db)):
+async def create_subscription(subscription: SubscriptionCreate, db: Session = Depends(get_db), current_user: str = Depends(verify_token)):
     """Create a new subscription"""
     # Process cust_days to ensure proper JSON format
     subscription_dict = subscription.dict()
@@ -77,7 +78,7 @@ async def create_subscription(subscription: SubscriptionCreate, db: Session = De
     return db_sub
 
 @router.put("/{subscription_id}", response_model=SubscriptionResponse)
-async def update_subscription(subscription_id: int, subscription: SubscriptionUpdate, db: Session = Depends(get_db)):
+async def update_subscription(subscription_id: int, subscription: SubscriptionUpdate, db: Session = Depends(get_db), current_user: str = Depends(verify_token)):
     """Update a subscription"""
     db_sub = db.query(Subscription).filter(Subscription.id == subscription_id).first()
     if not db_sub:
@@ -97,7 +98,7 @@ async def update_subscription(subscription_id: int, subscription: SubscriptionUp
     return db_sub
 
 @router.delete("/{subscription_id}")
-async def delete_subscription(subscription_id: int, db: Session = Depends(get_db)):
+async def delete_subscription(subscription_id: int, db: Session = Depends(get_db), current_user: str = Depends(verify_token)):
     """Delete a subscription"""
     db_sub = db.query(Subscription).filter(Subscription.id == subscription_id).first()
     if not db_sub:

@@ -1,73 +1,139 @@
 <template>
   <div class="app-container">
-    <div class="header">
-      <h1>📋 SubKeeper</h1>
-      <n-space>
-        <n-button @click="testAPI" size="medium" tertiary :style="{ 'min-width': '100px' }">测试 API</n-button>
-        <n-button @click="showSettings = true" size="medium" type="primary" :style="{ 'min-width': '100px' }">⚙️ 设置</n-button>
-      </n-space>
-    </div>
-    
-    <div class="main-content">
-      <n-grid 
-        :cols="isMobile ? 1 : 2" 
-        :x-gap="16" 
-        :y-gap="16"
-        :responsive="'screen'"
+    <n-layout has-sider>
+      <n-layout-sider
+        bordered
+        collapse-mode="width"
+        :collapsed-width="64"
+        :width="240"
+        :collapsed="collapsed"
+        show-trigger
+        @collapse="collapsed = true"
+        @expand="collapsed = false"
       >
-        <n-gi>
-          <SubscriptionList />
-        </n-gi>
-        <n-gi>
-          <ReminderList />
-        </n-gi>
-      </n-grid>
-    </div>
-    
+        <n-menu
+          :collapsed="collapsed"
+          :collapsed-width="64"
+          :collapsed-icon-size="22"
+          :options="menuOptions"
+          :value="activeKey"
+          @update:value="handleMenuSelect"
+        />
+      </n-layout-sider>
+      
+      <n-layout>
+        <n-layout-header bordered class="header">
+          <div class="header-content">
+            <h1>SubKeeper</h1>
+            <n-space>
+              <n-button @click="showSettings = true">
+                <template #icon>
+                  <n-icon><Settings /></n-icon>
+                </template>
+                设置
+              </n-button>
+              <n-button @click="handleLogout">
+                <template #icon>
+                  <n-icon><Logout /></n-icon>
+                </template>
+                退出
+              </n-button>
+            </n-space>
+          </div>
+        </n-layout-header>
+        
+        <n-layout-content class="main-content">
+          <div v-if="activeKey === 'subscriptions'">
+            <SubscriptionList />
+          </div>
+          <div v-else-if="activeKey === 'reminders'">
+            <ReminderList />
+          </div>
+          <div v-else class="welcome">
+            <h2>欢迎使用 SubKeeper</h2>
+            <p>订阅和提醒管理系统</p>
+            <div class="status">
+              <p>✅ 系统运行正常</p>
+              <p>📱 支持邮件和微信通知</p>
+              <p>🔔 智能提醒功能</p>
+            </div>
+          </div>
+        </n-layout-content>
+      </n-layout>
+    </n-layout>
+
+    <!-- Settings Modal -->
     <SettingsModal v-model:show="showSettings" />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, h } from 'vue'
+import { useRouter } from 'vue-router'
 import { useMessage } from 'naive-ui'
-import axios from 'axios'
+import { 
+  Settings,
+  Logout,
+  CreditCard,
+  Bell,
+  Home
+} from '@vicons/tabler'
+import { useAuthStore } from './stores/auth'
 import SubscriptionList from './components/SubscriptionList.vue'
 import ReminderList from './components/ReminderList.vue'
 import SettingsModal from './components/SettingsModal.vue'
 
-const showSettings = ref(false)
+const router = useRouter()
 const message = useMessage()
+const authStore = useAuthStore()
 
-// Reactive mobile detection
-const isMobile = ref(window.innerWidth < 768)
+const collapsed = ref(false)
+const activeKey = ref('home')
+const showSettings = ref(false)
 
-const updateMobileStatus = () => {
-  isMobile.value = window.innerWidth < 768
-}
-
-// Add event listener for window resize
-if (typeof window !== 'undefined') {
-  window.addEventListener('resize', updateMobileStatus)
-}
-
-const testAPI = async () => {
-  try {
-    const response = await axios.get('/api/health')
-    message.success('✅ 后端连接成功: ' + JSON.stringify(response.data))
-  } catch (error) {
-    message.error('❌ 后端连接失败: ' + error.message)
+const menuOptions = [
+  {
+    label: '首页',
+    key: 'home',
+    icon: () => h(Home)
+  },
+  {
+    label: '订阅管理',
+    key: 'subscriptions',
+    icon: () => h(CreditCard)
+  },
+  {
+    label: '提醒管理',
+    key: 'reminders',
+    icon: () => h(Bell)
   }
+]
+
+const handleMenuSelect = (key) => {
+  activeKey.value = key
 }
+
+const handleLogout = () => {
+  authStore.logout()
+  message.success('已退出登录')
+  router.push('/login')
+}
+
+onMounted(async () => {
+  // Verify token on app load
+  if (authStore.isAuthenticated) {
+    const isValid = await authStore.verifyToken()
+    if (!isValid) {
+      message.warning('登录已过期，请重新登录')
+      router.push('/login')
+    }
+  } else {
+    router.push('/login')
+  }
+})
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .app-container {
   width: 100%;
   min-height: 100vh;
@@ -77,71 +143,28 @@ const testAPI = async () => {
 }
 
 .header {
-  border-bottom: 1px solid #2c2c2c;
-  padding: 20px 24px;
+  padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #1f1f23;
 }
 
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 .header h1 {
   font-size: 24px;
   font-weight: 600;
-}
-
-.header .n-space {
-  gap: 12px;
-}
-
-.btn {
-  padding: 8px 16px;
-  background: #63e2b7;
-  border: none;
-  border-radius: 6px;
-  color: #000;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-
-.btn:hover {
-  background: #4ecca3;
-  transform: translateY(-1px);
+  margin: 0;
 }
 
 .main-content {
-  padding: 40px 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Mobile responsive styles */
-@media (max-width: 768px) {
-  .header {
-    padding: 15px 16px;
-    flex-direction: column;
-    gap: 12px;
-    align-items: stretch;
-  }
-  
-  .header h1 {
-    font-size: 20px;
-    text-align: center;
-  }
-  
-  .header .n-space {
-    justify-content: center;
-  }
-  
-  .main-content {
-    padding: 20px 16px;
-  }
-  
-  .n-grid {
-    gap: 12px !important;
-  }
+  padding: 24px;
 }
 
 .welcome {

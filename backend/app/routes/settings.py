@@ -4,11 +4,12 @@ import json
 from typing import Dict
 from ..database import get_db
 from ..models import Settings
+from ..auth import verify_token
 
 router = APIRouter()
 
 @router.get("/")
-async def get_settings(db: Session = Depends(get_db)) -> Dict:
+async def get_settings(db: Session = Depends(get_db), current_user: str = Depends(verify_token)) -> Dict:
     """Get all settings"""
     settings_dict = {}
     
@@ -35,7 +36,7 @@ async def get_settings(db: Session = Depends(get_db)) -> Dict:
     return settings_dict
 
 @router.put("/")
-async def update_settings(settings: Dict, db: Session = Depends(get_db)):
+async def update_settings(settings: Dict, db: Session = Depends(get_db), current_user: str = Depends(verify_token)):
     """Update settings"""
     try:
         # Update SMTP config
