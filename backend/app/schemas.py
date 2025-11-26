@@ -2,12 +2,6 @@ from pydantic import BaseModel
 from typing import Optional, List
 from datetime import date, datetime
 
-class SettingsBase(BaseModel):
-    smtp_conf: Optional[dict] = None
-    wechat_conf: Optional[dict] = None
-    global_days: List[int] = [3, 1, 0]
-    global_time: str = "09:00"
-
 class SubscriptionBase(BaseModel):
     name: str
     price: float

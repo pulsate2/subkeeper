@@ -6,6 +6,7 @@ import json
 from .database import SessionLocal
 from .models import Settings, Subscription, Reminder
 from .notifier import Notifier
+import traceback
 
 scheduler = BackgroundScheduler()
 
@@ -35,7 +36,53 @@ def notification_job():
                 notify_days = global_days
                 notify_time = global_time
             else:
-                notify_days = json.loads(sub.cust_days) if sub.cust_days else []
+                # Handle potential JSON parsing errors
+                notify_days = []
+                if sub.cust_days:
+                    try:
+                        notify_days = json.loads(sub.cust_days)
+                        # Validate that the parsed data is a list
+                        if not isinstance(notify_days, list):
+                            notify_days = []
+                            print(f"Warning: cust_days for subscription {sub.name} is not a list, using empty list instead")
+                    except json.JSONDecodeError as e:
+                        # Try to handle some common malformed JSON cases
+                        try:
+                            # Sometimes the data might be stored as a string representation of the list
+                            # For example, if "cust_days" was accidentally stored as "[1, 2, 3]" instead of proper JSON
+                            cleaned_data = sub.cust_days.strip()
+                            if cleaned_data.startswith("'") and cleaned_data.endswith("'"):
+                                # Handle single-quoted strings that should be double-quoted for JSON
+                                cleaned_data = cleaned_data.replace("'", '"')
+                            
+                            notify_days = json.loads(cleaned_data)
+                            if not isinstance(notify_days, list):
+                                notify_days = []
+                                print(f"Warning: cust_days for subscription {sub.name} is not a list, using empty list instead")
+                        except json.JSONDecodeError:
+                            # Check if it's a comma-separated string like "3,1,0" and convert to list
+                            try:
+                                # Handle comma-separated values (e.g., "3,1,0" -> [3, 1, 0])
+                                if ',' in sub.cust_days:
+                                    days_str = sub.cust_days.split(',')
+                                    notify_days = []
+                                    for day_str in days_str:
+                                        day_str = day_str.strip()
+                                        if day_str.lstrip('-').isdigit():  # Allow negative numbers
+                                            notify_days.append(int(day_str))
+                                    print(f"Warning: Converted comma-separated cust_days to list for subscription {sub.name}: {notify_days}")
+                                else:
+                                    # Try to parse as a single number in case it's not comma-separated
+                                    day_str = sub.cust_days.strip()
+                                    if day_str.lstrip('-').isdigit():
+                                        notify_days = [int(day_str)]
+                                        print(f"Warning: Converted single value cust_days to list for subscription {sub.name}: {notify_days}")
+                                    else:
+                                        print(f"Warning: Invalid JSON in cust_days for subscription {sub.name}: {e}, using empty list instead")
+                                        notify_days = []
+                            except (ValueError, AttributeError):
+                                print(f"Warning: Invalid JSON in cust_days for subscription {sub.name}: {e}, using empty list instead")
+                                notify_days = []
                 notify_time = sub.cust_time or "09:00"
             
             # Calculate days until next payment
@@ -77,7 +124,8 @@ def notification_job():
                 db.commit()
                 
     except Exception as e:
-        print(f"Notification job error: {e}")
+        print(f"Notification job error:")
+        traceback.print_exc()
     finally:
         db.close()
 

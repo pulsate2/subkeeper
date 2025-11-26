@@ -110,6 +110,31 @@ const rules = {
 watch(() => props.show, (val) => {
   show.value = val
   if (val && props.subscription) {
+    // Handle cust_days - it might come as an array from the backend, so convert to comma-separated string for the input
+    let custDaysValue = '3,1,0';
+    if (props.subscription.cust_days) {
+      if (Array.isArray(props.subscription.cust_days)) {
+        // If it's an array, join with commas
+        custDaysValue = props.subscription.cust_days.join(',');
+      } else if (typeof props.subscription.cust_days === 'string') {
+        // If it's already a string (comma-separated or JSON string), handle appropriately
+        try {
+          // Try to parse as JSON to see if it's a JSON array string
+          const parsed = JSON.parse(props.subscription.cust_days);
+          if (Array.isArray(parsed)) {
+            custDaysValue = parsed.join(',');
+          } else {
+            custDaysValue = props.subscription.cust_days;
+          }
+        } catch {
+          // If not valid JSON, treat as comma-separated string
+          custDaysValue = props.subscription.cust_days;
+        }
+      } else {
+        custDaysValue = props.subscription.cust_days;
+      }
+    }
+
     formData.value = {
       name: props.subscription.name,
       price: props.subscription.price,
@@ -118,7 +143,7 @@ watch(() => props.show, (val) => {
       next_date: props.subscription.next_date,
       notify_mode: props.subscription.notify_mode,
       cust_time: props.subscription.cust_time || '09:00',
-      cust_days: props.subscription.cust_days || '3,1,0'
+      cust_days: custDaysValue
     }
     useGlobal.value = props.subscription.notify_mode === 'global'
   } else if (val && !props.subscription) {
@@ -142,11 +167,31 @@ watch(show, (val) => {
 
 const saveSub = async () => {
   try {
+    // Prepare cust_days as JSON array
+    let custDaysValue = null;
+    if (!useGlobal.value && formData.value.cust_days) {
+      if (typeof formData.value.cust_days === 'string' && formData.value.cust_days.includes(',')) {
+        // Convert comma-separated string to array of integers
+        const daysArray = formData.value.cust_days.split(',').map(day => {
+          const num = parseInt(day.trim(), 10);
+          return isNaN(num) ? 0 : num;
+        }).filter(num => !isNaN(num));
+        custDaysValue = JSON.stringify(daysArray);
+      } else if (Array.isArray(formData.value.cust_days)) {
+        // If already an array, just stringify it
+        custDaysValue = JSON.stringify(formData.value.cust_days);
+      } else {
+        // Handle single value or other format
+        const num = parseInt(formData.value.cust_days, 10);
+        custDaysValue = JSON.stringify(isNaN(num) ? [] : [num]);
+      }
+    }
+
     const data = {
       ...formData.value,
       notify_mode: useGlobal.value ? 'global' : 'custom',
       cust_time: useGlobal.value ? null : formData.value.cust_time,
-      cust_days: useGlobal.value ? null : formData.value.cust_days
+      cust_days: useGlobal.value ? null : custDaysValue
     }
 
     if (props.subscription) {
