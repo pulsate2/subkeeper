@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  subkeeper:
+    build: .
+    container_name: subkeeper
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - TZ=Asia/Shanghai
+      - DB_PATH=/app/data/subkeeper.db
