@@ -276,4 +276,23 @@ onMounted(() => {
   font-size: 12px;
   color: #18a058;
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .sub-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .sub-date {
+    text-align: left;
+  }
+}
 </style>

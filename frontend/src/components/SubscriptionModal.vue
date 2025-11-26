@@ -1,5 +1,5 @@
 <template>
-  <n-modal v-model:show="show" preset="card" :title="subscription ? '编辑订阅' : '添加订阅'" style="width: 600px;">
+  <n-modal v-model:show="show" preset="card" :title="subscription ? '编辑订阅' : '添加订阅'" :style="modalStyle">
     <n-form ref="formRef" :model="formData" :rules="rules">
       <n-form-item label="服务名称" path="name">
         <n-input v-model:value="formData.name" placeholder="例如: Netflix" />
@@ -45,7 +45,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { useMessage, useDialog } from 'naive-ui'
 import axios from 'axios'
 
@@ -61,6 +61,27 @@ const dialog = useDialog()
 
 const show = ref(props.show)
 const useGlobal = ref(true)
+
+// Reactive screen size detection
+const isMobile = ref(window.innerWidth < 768)
+
+const updateScreenSize = () => {
+  isMobile.value = window.innerWidth < 768
+}
+
+// Add event listener for window resize
+if (typeof window !== 'undefined') {
+  window.addEventListener('resize', updateScreenSize)
+}
+
+// Responsive modal style based on screen size
+const modalStyle = computed(() => {
+  return {
+    width: isMobile.value ? '90%' : '600px',
+    maxWidth: '90%',
+    margin: isMobile.value ? '16px auto' : 'auto'
+  }
+})
 
 const formData = ref({
   name: '',

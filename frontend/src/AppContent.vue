@@ -9,7 +9,12 @@
     </div>
     
     <div class="main-content">
-      <n-grid :cols="2" :x-gap="16">
+      <n-grid 
+        :cols="isMobile ? 1 : 2" 
+        :x-gap="16" 
+        :y-gap="16"
+        :responsive="'screen'"
+      >
         <n-gi>
           <SubscriptionList />
         </n-gi>
@@ -33,6 +38,18 @@ import SettingsModal from './components/SettingsModal.vue'
 
 const showSettings = ref(false)
 const message = useMessage()
+
+// Reactive mobile detection
+const isMobile = ref(window.innerWidth < 768)
+
+const updateMobileStatus = () => {
+  isMobile.value = window.innerWidth < 768
+}
+
+// Add event listener for window resize
+if (typeof window !== 'undefined') {
+  window.addEventListener('resize', updateMobileStatus)
+}
 
 const testAPI = async () => {
   try {
@@ -94,6 +111,25 @@ const testAPI = async () => {
   padding: 40px 24px;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 16px;
+  }
+  
+  .header h1 {
+    font-size: 20px;
+  }
+  
+  .main-content {
+    padding: 20px 16px;
+  }
+  
+  .n-grid {
+    gap: 12px !important;
+  }
 }
 
 .welcome {

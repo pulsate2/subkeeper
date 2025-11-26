@@ -1,5 +1,5 @@
 <template>
-  <n-modal v-model:show="show" preset="card" title="系统设置" style="width: 600px;">
+  <n-modal v-model:show="show" preset="card" title="系统设置" :style="modalStyle">
     <n-tabs type="line">
       <n-tab-pane name="notification" tab="通知配置">
         <n-form>
@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { useMessage } from 'naive-ui'
 import axios from 'axios'
 
@@ -93,6 +93,27 @@ watch(() => props.show, async (val) => {
 
 watch(show, (val) => {
   emit('update:show', val)
+})
+
+// Reactive screen size detection
+const isMobile = ref(typeof window !== 'undefined' && window.innerWidth < 768)
+
+const updateScreenSize = () => {
+  isMobile.value = window.innerWidth < 768
+}
+
+// Add event listener for window resize
+if (typeof window !== 'undefined') {
+  window.addEventListener('resize', updateScreenSize)
+}
+
+// Responsive modal style based on screen size
+const modalStyle = computed(() => {
+  return {
+    width: isMobile.value ? '90%' : '600px',
+    maxWidth: '90%',
+    margin: isMobile.value ? '16px auto' : 'auto'
+  }
 })
 
 const loadSettings = async () => {

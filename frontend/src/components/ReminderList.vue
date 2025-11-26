@@ -188,4 +188,23 @@ onMounted(() => {
   font-size: 14px;
   color: #999;
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .reminder-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .reminder-time {
+    font-size: 12px;
+  }
+}
 </style>
