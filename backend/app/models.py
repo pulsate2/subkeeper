@@ -22,6 +22,7 @@ class Subscription(Base):
     cust_time = Column(String, nullable=True)  # HH:MM format for custom time
     last_sent = Column(DateTime, nullable=True)
     group_name = Column(String, default='default')  # Group name for subscription
+    is_disabled = Column(Boolean, default=False)  # Disable functionality
 
 class Reminder(Base):
     __tablename__ = "reminders"
@@ -33,3 +34,4 @@ class Reminder(Base):
     target_time = Column(String, nullable=False)  # HH:MM format
     is_sent = Column(Boolean, default=False)
     group_name = Column(String, default='default')  # Group name for reminder
+    is_disabled = Column(Boolean, default=False)  # Disable functionality

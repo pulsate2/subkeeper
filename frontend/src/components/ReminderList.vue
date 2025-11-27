@@ -24,18 +24,20 @@
           hoverable
           @click="editReminder(reminder)"
           class="reminder-card"
+          :class="{ 'disabled-card': reminder.is_disabled }"
         >
           <div class="reminder-content">
             <div class="reminder-info">
               <div class="reminder-title">
                 <strong>{{ reminder.title }}</strong>
+                <n-tag v-if="reminder.is_disabled" size="small" type="error">已禁用</n-tag>
+                <n-tag v-else-if="reminder.is_sent" type="success" size="small">
+                  已完成
+                </n-tag>
                 <n-tag v-if="reminder.group_name !== 'default'" size="small" type="info" style="margin-left: 5px;">
                   {{ reminder.group_name }}
                 </n-tag>
               </div>
-              <n-tag v-if="reminder.is_sent" type="success" size="small">
-                已完成
-              </n-tag>
             </div>
             <div v-if="reminder.content" class="reminder-content-text">
               {{ reminder.content }}
@@ -66,6 +68,12 @@
         </n-form-item>
         <n-form-item label="时间">
           <n-time-picker v-model:formatted-value="form.target_time" format="HH:mm" />
+        </n-form-item>
+        <n-form-item label="状态">
+          <n-switch v-model:value="form.is_disabled">
+            <template #checked>禁用</template>
+            <template #unchecked>启用</template>
+          </n-switch>
         </n-form-item>
       </n-form>
       <template #footer>
@@ -99,7 +107,8 @@ const form = ref({
   content: '',
   target_date: null,
   target_time: '09:00',
-  group_name: 'default'
+  group_name: 'default',
+  is_disabled: false
 })
 
 // Computed properties
@@ -124,6 +133,8 @@ const filteredReminders = computed(() => {
 
 const handleAddClick = () => {
   console.log('Add reminder button clicked')
+  editingId.value = null
+  resetForm()
   showAddModal.value = true
 }
 
@@ -155,9 +166,21 @@ const editReminder = (reminder) => {
     content: reminder.content || '',
     target_date: reminder.target_date,
     target_time: reminder.target_time,
-    group_name: reminder.group_name || 'default'
+    group_name: reminder.group_name || 'default',
+    is_disabled: reminder.is_disabled || false
   }
   showAddModal.value = true
+}
+
+const resetForm = () => {
+  form.value = { 
+    title: '', 
+    content: '', 
+    target_date: null, 
+    target_time: '09:00', 
+    group_name: 'default', 
+    is_disabled: false 
+  }
 }
 
 const saveReminder = async () => {
@@ -172,7 +195,7 @@ const saveReminder = async () => {
     
     showAddModal.value = false
     editingId.value = null
-    form.value = { title: '', content: '', target_date: null, target_time: '09:00', group_name: 'default' }
+    resetForm()
     loadData()
   } catch (error) {
     message.error('保存失败')
@@ -250,6 +273,17 @@ onMounted(() => {
 
 .reminder-time {
   font-size: 14px;
+  color: #999;
+}
+
+.disabled-card {
+  opacity: 0.6;
+  background-color: #f5f5f5;
+}
+
+.disabled-card .reminder-title,
+.disabled-card .reminder-content-text,
+.disabled-card .reminder-time {
   color: #999;
 }
 

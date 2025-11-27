@@ -24,12 +24,14 @@
           hoverable
           @click="editSub(sub)"
           class="sub-card"
+          :class="{ 'disabled-card': sub.is_disabled }"
         >
           <div class="sub-content">
             <div class="sub-info">
               <div class="sub-name">
                 <strong>{{ sub.name }}</strong>
-                <n-tag v-if="sub.notify_mode === 'global'" size="small">🌍 默认</n-tag>
+                <n-tag v-if="sub.is_disabled" size="small" type="error">已禁用</n-tag>
+                <n-tag v-else-if="sub.notify_mode === 'global'" size="small">🌍 默认</n-tag>
                 <n-tag v-else size="small" type="warning">⚙️ 自定义</n-tag>
                 <n-tag v-if="sub.group_name !== 'default'" size="small" type="info" style="margin-left: 5px;">
                   {{ sub.group_name }}
@@ -83,6 +85,12 @@
         <div v-else>
           <n-alert type="info" title="将使用系统默认通知设置" />
         </div>
+        <n-form-item label="状态">
+          <n-switch v-model:value="form.is_disabled">
+            <template #checked>禁用</template>
+            <template #unchecked>启用</template>
+          </n-switch>
+        </n-form-item>
       </n-form>
       <template #footer>
         <n-space justify="end">
@@ -120,7 +128,8 @@ const form = ref({
   notify_mode: 'global',
   cust_time: '09:00',
   cust_days: '3,1,0',
-  group_name: 'default'
+  group_name: 'default',
+  is_disabled: false
 })
 
 const cycleOptions = [
@@ -156,25 +165,12 @@ watch(showAddModal, (val) => {
     // If we're showing modal for editing, the form should already be populated
   } else if (val && !editingId.value) {
     // If we're showing modal for creating, reset the form
-    form.value = {
-      name: '',
-      price: 0,
-      cycle_val: 1,
-      cycle_unit: 'month',
-      next_date: null,
-      notify_mode: 'global',
-      cust_time: '09:00',
-      cust_days: '3,1,0',
-      group_name: 'default'
-    }
+    resetForm()
     useGlobal.value = true
   }
 })
 
-const handleAddClick = () => {
-  console.log('Add button clicked')
-  // Clear editing state for creating new subscription
-  editingId.value = null
+const resetForm = () => {
   form.value = {
     name: '',
     price: 0,
@@ -184,8 +180,16 @@ const handleAddClick = () => {
     notify_mode: 'global',
     cust_time: '09:00',
     cust_days: '3,1,0',
-    group_name: 'default'
+    group_name: 'default',
+    is_disabled: false
   }
+}
+
+const handleAddClick = () => {
+  console.log('Add button clicked')
+  // Clear editing state for creating new subscription
+  editingId.value = null
+  resetForm()
   useGlobal.value = true
   showAddModal.value = true
 }
@@ -233,7 +237,8 @@ const editSub = (sub) => {
     notify_mode: sub.notify_mode,
     cust_time: sub.cust_time || '09:00',
     cust_days: sub.cust_days || '3,1,0',
-    group_name: sub.group_name || 'default'
+    group_name: sub.group_name || 'default',
+    is_disabled: sub.is_disabled || false
   }
   useGlobal.value = sub.notify_mode === 'global'
   showAddModal.value = true
@@ -258,17 +263,7 @@ const saveSub = async () => {
     
     showAddModal.value = false
     editingId.value = null
-    form.value = {
-      name: '',
-      price: 0,
-      cycle_val: 1,
-      cycle_unit: 'month',
-      next_date: null,
-      notify_mode: 'global',
-      cust_time: '09:00',
-      cust_days: '3,1,0',
-      group_name: 'default'
-    }
+    resetForm()
     useGlobal.value = true
     loadData()
   } catch (error) {
@@ -361,6 +356,18 @@ onMounted(() => {
 .days-left {
   font-size: 12px;
   color: #18a058;
+}
+
+.disabled-card {
+  opacity: 0.6;
+  background-color: #f5f5f5;
+}
+
+.disabled-card .sub-name,
+.disabled-card .sub-price,
+.disabled-card .next-date,
+.disabled-card .days-left {
+  color: #999;
 }
 
 /* Mobile responsive styles */

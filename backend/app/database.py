@@ -52,3 +52,29 @@ def run_migrations():
             print("Added group_name column to subscriptions table")
         else:
             print("group_name column already exists in subscriptions table")
+        
+        # Check if is_disabled column exists in subscriptions table
+        result = conn.execute(text("""
+            SELECT name FROM pragma_table_info('subscriptions') WHERE name='is_disabled'
+        """))
+        
+        if not result.fetchone():
+            # Add is_disabled column to subscriptions table
+            conn.execute(text("ALTER TABLE subscriptions ADD COLUMN is_disabled BOOLEAN DEFAULT FALSE"))
+            conn.commit()
+            print("Added is_disabled column to subscriptions table")
+        else:
+            print("is_disabled column already exists in subscriptions table")
+        
+        # Check if is_disabled column exists in reminders table
+        result = conn.execute(text("""
+            SELECT name FROM pragma_table_info('reminders') WHERE name='is_disabled'
+        """))
+        
+        if not result.fetchone():
+            # Add is_disabled column to reminders table
+            conn.execute(text("ALTER TABLE reminders ADD COLUMN is_disabled BOOLEAN DEFAULT FALSE"))
+            conn.commit()
+            print("Added is_disabled column to reminders table")
+        else:
+            print("is_disabled column already exists in reminders table")

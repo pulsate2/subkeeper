@@ -12,6 +12,7 @@ class SubscriptionBase(BaseModel):
     cust_days: Optional[str] = None
     cust_time: Optional[str] = None
     group_name: str = 'default'
+    is_disabled: bool = False
 
 class SubscriptionCreate(SubscriptionBase):
     pass
@@ -32,6 +33,7 @@ class ReminderBase(BaseModel):
     target_date: date
     target_time: str  # HH:MM format
     group_name: str = 'default'
+    is_disabled: bool = False
 
 class ReminderCreate(ReminderBase):
     pass

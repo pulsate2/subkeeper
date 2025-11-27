@@ -28,7 +28,7 @@ def notification_job():
         notifier = Notifier(db)
         
         # Process subscriptions
-        subscriptions = db.query(Subscription).all()
+        subscriptions = db.query(Subscription).filter(Subscription.is_disabled == False).all()
         
         for sub in subscriptions:
             # Determine notification settings
@@ -104,7 +104,7 @@ def notification_job():
                 db.commit()
         
         # Process reminders
-        reminders = db.query(Reminder).filter(Reminder.is_sent == False).all()
+        reminders = db.query(Reminder).filter(Reminder.is_sent == False, Reminder.is_disabled == False).all()
         for reminder in reminders:
             should_notify = (
                 reminder.target_date == today and
@@ -134,7 +134,7 @@ def renewal_job():
     db = SessionLocal()
     try:
         today = date.today()
-        subscriptions = db.query(Subscription).filter(Subscription.next_date < today).all()
+        subscriptions = db.query(Subscription).filter(Subscription.next_date < today, Subscription.is_disabled == False).all()
         
         for sub in subscriptions:
             # Calculate next date based on cycle

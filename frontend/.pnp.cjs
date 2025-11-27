@@ -48,7 +48,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@babel/helper-string-parser", [\
       ["npm:7.27.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@babel-helper-string-parser-npm-7.27.1-d1471e0598-10c0.zip/node_modules/@babel/helper-string-parser/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@babel-helper-string-parser-npm-7.27.1-d1471e0598-10c0.zip/node_modules/@babel/helper-string-parser/",\
         "packageDependencies": [\
           ["@babel/helper-string-parser", "npm:7.27.1"]\
         ],\
@@ -57,7 +57,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@babel/helper-validator-identifier", [\
       ["npm:7.28.5", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@babel-helper-validator-identifier-npm-7.28.5-1953d49d2b-10c0.zip/node_modules/@babel/helper-validator-identifier/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@babel-helper-validator-identifier-npm-7.28.5-1953d49d2b-10c0.zip/node_modules/@babel/helper-validator-identifier/",\
         "packageDependencies": [\
           ["@babel/helper-validator-identifier", "npm:7.28.5"]\
         ],\
@@ -66,7 +66,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@babel/parser", [\
       ["npm:7.28.5", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@babel-parser-npm-7.28.5-f2345a6b62-10c0.zip/node_modules/@babel/parser/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@babel-parser-npm-7.28.5-f2345a6b62-10c0.zip/node_modules/@babel/parser/",\
         "packageDependencies": [\
           ["@babel/parser", "npm:7.28.5"],\
           ["@babel/types", "npm:7.28.5"]\
@@ -76,7 +76,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@babel/types", [\
       ["npm:7.28.5", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@babel-types-npm-7.28.5-582d7cca8a-10c0.zip/node_modules/@babel/types/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@babel-types-npm-7.28.5-582d7cca8a-10c0.zip/node_modules/@babel/types/",\
         "packageDependencies": [\
           ["@babel/helper-string-parser", "npm:7.27.1"],\
           ["@babel/helper-validator-identifier", "npm:7.28.5"],\
@@ -87,14 +87,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@css-render/plugin-bem", [\
       ["npm:0.15.14", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@css-render-plugin-bem-npm-0.15.14-eda94b7149-10c0.zip/node_modules/@css-render/plugin-bem/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@css-render-plugin-bem-npm-0.15.14-eda94b7149-10c0.zip/node_modules/@css-render/plugin-bem/",\
         "packageDependencies": [\
           ["@css-render/plugin-bem", "npm:0.15.14"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:72baf388f5337d07f1fa54325626f509cc407e5eea64a4fbaf32ef77c71e01af76ef3100af956e01e176cd379efbd75faa1bc4dd8c8090d1194702375a352e87#npm:0.15.14", {\
-        "packageLocation": "./.yarn/__virtual__/@css-render-plugin-bem-virtual-7168f24d01/4/aionui/.yarn/berry/cache/@css-render-plugin-bem-npm-0.15.14-eda94b7149-10c0.zip/node_modules/@css-render/plugin-bem/",\
+        "packageLocation": "./.yarn/__virtual__/@css-render-plugin-bem-virtual-7168f24d01/4/code-server/.yarn/berry/cache/@css-render-plugin-bem-npm-0.15.14-eda94b7149-10c0.zip/node_modules/@css-render/plugin-bem/",\
         "packageDependencies": [\
           ["@css-render/plugin-bem", "virtual:72baf388f5337d07f1fa54325626f509cc407e5eea64a4fbaf32ef77c71e01af76ef3100af956e01e176cd379efbd75faa1bc4dd8c8090d1194702375a352e87#npm:0.15.14"],\
           ["@types/css-render", null],\
@@ -109,14 +109,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@css-render/vue3-ssr", [\
       ["npm:0.15.14", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@css-render-vue3-ssr-npm-0.15.14-9572e44d7b-10c0.zip/node_modules/@css-render/vue3-ssr/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@css-render-vue3-ssr-npm-0.15.14-9572e44d7b-10c0.zip/node_modules/@css-render/vue3-ssr/",\
         "packageDependencies": [\
           ["@css-render/vue3-ssr", "npm:0.15.14"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:72baf388f5337d07f1fa54325626f509cc407e5eea64a4fbaf32ef77c71e01af76ef3100af956e01e176cd379efbd75faa1bc4dd8c8090d1194702375a352e87#npm:0.15.14", {\
-        "packageLocation": "./.yarn/__virtual__/@css-render-vue3-ssr-virtual-7544171e5b/4/aionui/.yarn/berry/cache/@css-render-vue3-ssr-npm-0.15.14-9572e44d7b-10c0.zip/node_modules/@css-render/vue3-ssr/",\
+        "packageLocation": "./.yarn/__virtual__/@css-render-vue3-ssr-virtual-7544171e5b/4/code-server/.yarn/berry/cache/@css-render-vue3-ssr-npm-0.15.14-9572e44d7b-10c0.zip/node_modules/@css-render/vue3-ssr/",\
         "packageDependencies": [\
           ["@css-render/vue3-ssr", "virtual:72baf388f5337d07f1fa54325626f509cc407e5eea64a4fbaf32ef77c71e01af76ef3100af956e01e176cd379efbd75faa1bc4dd8c8090d1194702375a352e87#npm:0.15.14"],\
           ["@types/vue", null],\
@@ -131,7 +131,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@emotion/hash", [\
       ["npm:0.8.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@emotion-hash-npm-0.8.0-0104f4bbf3-10c0.zip/node_modules/@emotion/hash/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@emotion-hash-npm-0.8.0-0104f4bbf3-10c0.zip/node_modules/@emotion/hash/",\
         "packageDependencies": [\
           ["@emotion/hash", "npm:0.8.0"]\
         ],\
@@ -374,7 +374,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@isaacs/balanced-match", [\
       ["npm:4.0.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@isaacs-balanced-match-npm-4.0.1-8965afafe6-10c0.zip/node_modules/@isaacs/balanced-match/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@isaacs-balanced-match-npm-4.0.1-8965afafe6-10c0.zip/node_modules/@isaacs/balanced-match/",\
         "packageDependencies": [\
           ["@isaacs/balanced-match", "npm:4.0.1"]\
         ],\
@@ -383,7 +383,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@isaacs/brace-expansion", [\
       ["npm:5.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@isaacs-brace-expansion-npm-5.0.0-754d3cb3f5-10c0.zip/node_modules/@isaacs/brace-expansion/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@isaacs-brace-expansion-npm-5.0.0-754d3cb3f5-10c0.zip/node_modules/@isaacs/brace-expansion/",\
         "packageDependencies": [\
           ["@isaacs/balanced-match", "npm:4.0.1"],\
           ["@isaacs/brace-expansion", "npm:5.0.0"]\
@@ -393,7 +393,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@isaacs/fs-minipass", [\
       ["npm:4.0.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@isaacs-fs-minipass-npm-4.0.1-677026e841-10c0.zip/node_modules/@isaacs/fs-minipass/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@isaacs-fs-minipass-npm-4.0.1-677026e841-10c0.zip/node_modules/@isaacs/fs-minipass/",\
         "packageDependencies": [\
           ["@isaacs/fs-minipass", "npm:4.0.1"],\
           ["minipass", "npm:7.1.2"]\
@@ -403,7 +403,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@jridgewell/sourcemap-codec", [\
       ["npm:1.5.5", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@jridgewell-sourcemap-codec-npm-1.5.5-5189d9fc79-10c0.zip/node_modules/@jridgewell/sourcemap-codec/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@jridgewell-sourcemap-codec-npm-1.5.5-5189d9fc79-10c0.zip/node_modules/@jridgewell/sourcemap-codec/",\
         "packageDependencies": [\
           ["@jridgewell/sourcemap-codec", "npm:1.5.5"]\
         ],\
@@ -412,7 +412,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@juggle/resize-observer", [\
       ["npm:3.4.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@juggle-resize-observer-npm-3.4.0-659544c6b5-10c0.zip/node_modules/@juggle/resize-observer/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@juggle-resize-observer-npm-3.4.0-659544c6b5-10c0.zip/node_modules/@juggle/resize-observer/",\
         "packageDependencies": [\
           ["@juggle/resize-observer", "npm:3.4.0"]\
         ],\
@@ -421,7 +421,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@npmcli/agent", [\
       ["npm:4.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@npmcli-agent-npm-4.0.0-502e5ae4f0-10c0.zip/node_modules/@npmcli/agent/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@npmcli-agent-npm-4.0.0-502e5ae4f0-10c0.zip/node_modules/@npmcli/agent/",\
         "packageDependencies": [\
           ["@npmcli/agent", "npm:4.0.0"],\
           ["agent-base", "npm:7.1.4"],\
@@ -435,7 +435,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@npmcli/fs", [\
       ["npm:5.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@npmcli-fs-npm-5.0.0-9d737ae2f3-10c0.zip/node_modules/@npmcli/fs/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@npmcli-fs-npm-5.0.0-9d737ae2f3-10c0.zip/node_modules/@npmcli/fs/",\
         "packageDependencies": [\
           ["@npmcli/fs", "npm:5.0.0"],\
           ["semver", "npm:7.7.3"]\
@@ -445,7 +445,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@rolldown/pluginutils", [\
       ["npm:1.0.0-beta.50", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@rolldown-pluginutils-npm-1.0.0-beta.50-9d45942b9d-10c0.zip/node_modules/@rolldown/pluginutils/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@rolldown-pluginutils-npm-1.0.0-beta.50-9d45942b9d-10c0.zip/node_modules/@rolldown/pluginutils/",\
         "packageDependencies": [\
           ["@rolldown/pluginutils", "npm:1.0.0-beta.50"]\
         ],\
@@ -652,7 +652,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@types/estree", [\
       ["npm:1.0.8", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@types-estree-npm-1.0.8-2195bac6d6-10c0.zip/node_modules/@types/estree/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@types-estree-npm-1.0.8-2195bac6d6-10c0.zip/node_modules/@types/estree/",\
         "packageDependencies": [\
           ["@types/estree", "npm:1.0.8"]\
         ],\
@@ -661,7 +661,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@types/katex", [\
       ["npm:0.16.7", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@types-katex-npm-0.16.7-c19be7ec5f-10c0.zip/node_modules/@types/katex/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@types-katex-npm-0.16.7-c19be7ec5f-10c0.zip/node_modules/@types/katex/",\
         "packageDependencies": [\
           ["@types/katex", "npm:0.16.7"]\
         ],\
@@ -670,7 +670,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@types/lodash", [\
       ["npm:4.17.21", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@types-lodash-npm-4.17.21-589f7f06f3-10c0.zip/node_modules/@types/lodash/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@types-lodash-npm-4.17.21-589f7f06f3-10c0.zip/node_modules/@types/lodash/",\
         "packageDependencies": [\
           ["@types/lodash", "npm:4.17.21"]\
         ],\
@@ -679,7 +679,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@types/lodash-es", [\
       ["npm:4.17.12", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@types-lodash-es-npm-4.17.12-87dce3f795-10c0.zip/node_modules/@types/lodash-es/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@types-lodash-es-npm-4.17.12-87dce3f795-10c0.zip/node_modules/@types/lodash-es/",\
         "packageDependencies": [\
           ["@types/lodash", "npm:4.17.21"],\
           ["@types/lodash-es", "npm:4.17.12"]\
@@ -689,7 +689,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vicons/tabler", [\
       ["npm:0.13.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vicons-tabler-npm-0.13.0-e2a13f17d0-10c0.zip/node_modules/@vicons/tabler/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vicons-tabler-npm-0.13.0-e2a13f17d0-10c0.zip/node_modules/@vicons/tabler/",\
         "packageDependencies": [\
           ["@vicons/tabler", "npm:0.13.0"]\
         ],\
@@ -698,14 +698,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vitejs/plugin-vue", [\
       ["npm:6.0.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vitejs-plugin-vue-npm-6.0.2-3920bc4874-10c0.zip/node_modules/@vitejs/plugin-vue/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vitejs-plugin-vue-npm-6.0.2-3920bc4874-10c0.zip/node_modules/@vitejs/plugin-vue/",\
         "packageDependencies": [\
           ["@vitejs/plugin-vue", "npm:6.0.2"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:d9650954c7f1725ea712d2e40695de9ea5d1c0fa9b89379134c62909d440d91b03d6c37e2823804a3404472b90a5bec73c82193190dd3c4db4c9e9edd75db91e#npm:6.0.2", {\
-        "packageLocation": "./.yarn/__virtual__/@vitejs-plugin-vue-virtual-eb897a2fda/4/aionui/.yarn/berry/cache/@vitejs-plugin-vue-npm-6.0.2-3920bc4874-10c0.zip/node_modules/@vitejs/plugin-vue/",\
+        "packageLocation": "./.yarn/__virtual__/@vitejs-plugin-vue-virtual-eb897a2fda/4/code-server/.yarn/berry/cache/@vitejs-plugin-vue-npm-6.0.2-3920bc4874-10c0.zip/node_modules/@vitejs/plugin-vue/",\
         "packageDependencies": [\
           ["@rolldown/pluginutils", "npm:1.0.0-beta.50"],\
           ["@types/vite", null],\
@@ -725,7 +725,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vue/compiler-core", [\
       ["npm:3.5.25", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vue-compiler-core-npm-3.5.25-c7c0d1119f-10c0.zip/node_modules/@vue/compiler-core/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vue-compiler-core-npm-3.5.25-c7c0d1119f-10c0.zip/node_modules/@vue/compiler-core/",\
         "packageDependencies": [\
           ["@babel/parser", "npm:7.28.5"],\
           ["@vue/compiler-core", "npm:3.5.25"],\
@@ -739,7 +739,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vue/compiler-dom", [\
       ["npm:3.5.25", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vue-compiler-dom-npm-3.5.25-c253800421-10c0.zip/node_modules/@vue/compiler-dom/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vue-compiler-dom-npm-3.5.25-c253800421-10c0.zip/node_modules/@vue/compiler-dom/",\
         "packageDependencies": [\
           ["@vue/compiler-core", "npm:3.5.25"],\
           ["@vue/compiler-dom", "npm:3.5.25"],\
@@ -750,7 +750,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vue/compiler-sfc", [\
       ["npm:3.5.25", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vue-compiler-sfc-npm-3.5.25-09c37ed915-10c0.zip/node_modules/@vue/compiler-sfc/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vue-compiler-sfc-npm-3.5.25-09c37ed915-10c0.zip/node_modules/@vue/compiler-sfc/",\
         "packageDependencies": [\
           ["@babel/parser", "npm:7.28.5"],\
           ["@vue/compiler-core", "npm:3.5.25"],\
@@ -768,7 +768,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vue/compiler-ssr", [\
       ["npm:3.5.25", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vue-compiler-ssr-npm-3.5.25-c126b7fd0f-10c0.zip/node_modules/@vue/compiler-ssr/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vue-compiler-ssr-npm-3.5.25-c126b7fd0f-10c0.zip/node_modules/@vue/compiler-ssr/",\
         "packageDependencies": [\
           ["@vue/compiler-dom", "npm:3.5.25"],\
           ["@vue/compiler-ssr", "npm:3.5.25"],\
@@ -779,14 +779,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vue/devtools-api", [\
       ["npm:6.6.4", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vue-devtools-api-npm-6.6.4-495c1fc100-10c0.zip/node_modules/@vue/devtools-api/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vue-devtools-api-npm-6.6.4-495c1fc100-10c0.zip/node_modules/@vue/devtools-api/",\
         "packageDependencies": [\
           ["@vue/devtools-api", "npm:6.6.4"]\
         ],\
         "linkType": "HARD"\
       }],\
       ["npm:7.7.9", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vue-devtools-api-npm-7.7.9-1202152103-10c0.zip/node_modules/@vue/devtools-api/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vue-devtools-api-npm-7.7.9-1202152103-10c0.zip/node_modules/@vue/devtools-api/",\
         "packageDependencies": [\
           ["@vue/devtools-api", "npm:7.7.9"],\
           ["@vue/devtools-kit", "npm:7.7.9"]\
@@ -796,7 +796,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vue/devtools-kit", [\
       ["npm:7.7.9", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vue-devtools-kit-npm-7.7.9-ce3a8ec472-10c0.zip/node_modules/@vue/devtools-kit/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vue-devtools-kit-npm-7.7.9-ce3a8ec472-10c0.zip/node_modules/@vue/devtools-kit/",\
         "packageDependencies": [\
           ["@vue/devtools-kit", "npm:7.7.9"],\
           ["@vue/devtools-shared", "npm:7.7.9"],\
@@ -812,7 +812,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vue/devtools-shared", [\
       ["npm:7.7.9", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vue-devtools-shared-npm-7.7.9-33081e0daa-10c0.zip/node_modules/@vue/devtools-shared/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vue-devtools-shared-npm-7.7.9-33081e0daa-10c0.zip/node_modules/@vue/devtools-shared/",\
         "packageDependencies": [\
           ["@vue/devtools-shared", "npm:7.7.9"],\
           ["rfdc", "npm:1.4.1"]\
@@ -822,7 +822,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vue/reactivity", [\
       ["npm:3.5.25", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vue-reactivity-npm-3.5.25-83929c7b84-10c0.zip/node_modules/@vue/reactivity/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vue-reactivity-npm-3.5.25-83929c7b84-10c0.zip/node_modules/@vue/reactivity/",\
         "packageDependencies": [\
           ["@vue/reactivity", "npm:3.5.25"],\
           ["@vue/shared", "npm:3.5.25"]\
@@ -832,7 +832,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vue/runtime-core", [\
       ["npm:3.5.25", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vue-runtime-core-npm-3.5.25-124ebf902c-10c0.zip/node_modules/@vue/runtime-core/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vue-runtime-core-npm-3.5.25-124ebf902c-10c0.zip/node_modules/@vue/runtime-core/",\
         "packageDependencies": [\
           ["@vue/reactivity", "npm:3.5.25"],\
           ["@vue/runtime-core", "npm:3.5.25"],\
@@ -843,7 +843,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vue/runtime-dom", [\
       ["npm:3.5.25", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vue-runtime-dom-npm-3.5.25-c633b26e42-10c0.zip/node_modules/@vue/runtime-dom/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vue-runtime-dom-npm-3.5.25-c633b26e42-10c0.zip/node_modules/@vue/runtime-dom/",\
         "packageDependencies": [\
           ["@vue/reactivity", "npm:3.5.25"],\
           ["@vue/runtime-core", "npm:3.5.25"],\
@@ -856,14 +856,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vue/server-renderer", [\
       ["npm:3.5.25", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vue-server-renderer-npm-3.5.25-5b998d51a0-10c0.zip/node_modules/@vue/server-renderer/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vue-server-renderer-npm-3.5.25-5b998d51a0-10c0.zip/node_modules/@vue/server-renderer/",\
         "packageDependencies": [\
           ["@vue/server-renderer", "npm:3.5.25"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:5eea4215aa4fbf01842b1ffc3d0e1c6e134410e32300f5db5beba8bd5ee736fb69e5925079e64e20512d3231d3c5f76c9c4e929a52ccb08ecee6fdf65f38bb4c#npm:3.5.25", {\
-        "packageLocation": "./.yarn/__virtual__/@vue-server-renderer-virtual-f1bfae9320/4/aionui/.yarn/berry/cache/@vue-server-renderer-npm-3.5.25-5b998d51a0-10c0.zip/node_modules/@vue/server-renderer/",\
+        "packageLocation": "./.yarn/__virtual__/@vue-server-renderer-virtual-f1bfae9320/4/code-server/.yarn/berry/cache/@vue-server-renderer-npm-3.5.25-5b998d51a0-10c0.zip/node_modules/@vue/server-renderer/",\
         "packageDependencies": [\
           ["@types/vue", null],\
           ["@vue/compiler-ssr", "npm:3.5.25"],\
@@ -880,7 +880,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["@vue/shared", [\
       ["npm:3.5.25", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/@vue-shared-npm-3.5.25-223a8b4f31-10c0.zip/node_modules/@vue/shared/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/@vue-shared-npm-3.5.25-223a8b4f31-10c0.zip/node_modules/@vue/shared/",\
         "packageDependencies": [\
           ["@vue/shared", "npm:3.5.25"]\
         ],\
@@ -889,7 +889,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["abbrev", [\
       ["npm:4.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/abbrev-npm-4.0.0-7d848a1ef0-10c0.zip/node_modules/abbrev/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/abbrev-npm-4.0.0-7d848a1ef0-10c0.zip/node_modules/abbrev/",\
         "packageDependencies": [\
           ["abbrev", "npm:4.0.0"]\
         ],\
@@ -898,7 +898,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["agent-base", [\
       ["npm:7.1.4", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/agent-base-npm-7.1.4-cb8b4604d5-10c0.zip/node_modules/agent-base/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/agent-base-npm-7.1.4-cb8b4604d5-10c0.zip/node_modules/agent-base/",\
         "packageDependencies": [\
           ["agent-base", "npm:7.1.4"]\
         ],\
@@ -907,7 +907,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["async-function", [\
       ["npm:1.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/async-function-npm-1.0.0-a81667ebcd-10c0.zip/node_modules/async-function/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/async-function-npm-1.0.0-a81667ebcd-10c0.zip/node_modules/async-function/",\
         "packageDependencies": [\
           ["async-function", "npm:1.0.0"]\
         ],\
@@ -916,7 +916,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["async-generator-function", [\
       ["npm:1.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/async-generator-function-npm-1.0.0-14cf981d13-10c0.zip/node_modules/async-generator-function/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/async-generator-function-npm-1.0.0-14cf981d13-10c0.zip/node_modules/async-generator-function/",\
         "packageDependencies": [\
           ["async-generator-function", "npm:1.0.0"]\
         ],\
@@ -925,7 +925,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["async-validator", [\
       ["npm:4.2.5", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/async-validator-npm-4.2.5-4d61110c66-10c0.zip/node_modules/async-validator/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/async-validator-npm-4.2.5-4d61110c66-10c0.zip/node_modules/async-validator/",\
         "packageDependencies": [\
           ["async-validator", "npm:4.2.5"]\
         ],\
@@ -934,7 +934,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["asynckit", [\
       ["npm:0.4.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/asynckit-npm-0.4.0-c718858525-10c0.zip/node_modules/asynckit/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/asynckit-npm-0.4.0-c718858525-10c0.zip/node_modules/asynckit/",\
         "packageDependencies": [\
           ["asynckit", "npm:0.4.0"]\
         ],\
@@ -943,14 +943,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["autoprefixer", [\
       ["npm:10.4.22", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/autoprefixer-npm-10.4.22-7e7e3bc20e-10c0.zip/node_modules/autoprefixer/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/autoprefixer-npm-10.4.22-7e7e3bc20e-10c0.zip/node_modules/autoprefixer/",\
         "packageDependencies": [\
           ["autoprefixer", "npm:10.4.22"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:d9650954c7f1725ea712d2e40695de9ea5d1c0fa9b89379134c62909d440d91b03d6c37e2823804a3404472b90a5bec73c82193190dd3c4db4c9e9edd75db91e#npm:10.4.22", {\
-        "packageLocation": "./.yarn/__virtual__/autoprefixer-virtual-be00d64c34/4/aionui/.yarn/berry/cache/autoprefixer-npm-10.4.22-7e7e3bc20e-10c0.zip/node_modules/autoprefixer/",\
+        "packageLocation": "./.yarn/__virtual__/autoprefixer-virtual-be00d64c34/4/code-server/.yarn/berry/cache/autoprefixer-npm-10.4.22-7e7e3bc20e-10c0.zip/node_modules/autoprefixer/",\
         "packageDependencies": [\
           ["@types/postcss", null],\
           ["autoprefixer", "virtual:d9650954c7f1725ea712d2e40695de9ea5d1c0fa9b89379134c62909d440d91b03d6c37e2823804a3404472b90a5bec73c82193190dd3c4db4c9e9edd75db91e#npm:10.4.22"],\
@@ -971,7 +971,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["axios", [\
       ["npm:1.13.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/axios-npm-1.13.2-90e3ae8f5d-10c0.zip/node_modules/axios/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/axios-npm-1.13.2-90e3ae8f5d-10c0.zip/node_modules/axios/",\
         "packageDependencies": [\
           ["axios", "npm:1.13.2"],\
           ["follow-redirects", "virtual:90e3ae8f5d1081a2ebe4b7d99c8598618635aa223fffb3774885e7f413ad9bd6e2700dac780ec12f15baa5a1a39c5137b65b9a0b781e508a9f050aac6152f2f5#npm:1.15.11"],\
@@ -983,7 +983,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["baseline-browser-mapping", [\
       ["npm:2.8.31", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/baseline-browser-mapping-npm-2.8.31-82b7831b34-10c0.zip/node_modules/baseline-browser-mapping/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/baseline-browser-mapping-npm-2.8.31-82b7831b34-10c0.zip/node_modules/baseline-browser-mapping/",\
         "packageDependencies": [\
           ["baseline-browser-mapping", "npm:2.8.31"]\
         ],\
@@ -992,7 +992,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["birpc", [\
       ["npm:2.8.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/birpc-npm-2.8.0-f015b949b0-10c0.zip/node_modules/birpc/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/birpc-npm-2.8.0-f015b949b0-10c0.zip/node_modules/birpc/",\
         "packageDependencies": [\
           ["birpc", "npm:2.8.0"]\
         ],\
@@ -1001,7 +1001,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["browserslist", [\
       ["npm:4.28.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/browserslist-npm-4.28.0-c16ea3c47c-10c0.zip/node_modules/browserslist/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/browserslist-npm-4.28.0-c16ea3c47c-10c0.zip/node_modules/browserslist/",\
         "packageDependencies": [\
           ["baseline-browser-mapping", "npm:2.8.31"],\
           ["browserslist", "npm:4.28.0"],\
@@ -1015,7 +1015,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["cacache", [\
       ["npm:20.0.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/cacache-npm-20.0.3-5f244d5bdd-10c0.zip/node_modules/cacache/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/cacache-npm-20.0.3-5f244d5bdd-10c0.zip/node_modules/cacache/",\
         "packageDependencies": [\
           ["@npmcli/fs", "npm:5.0.0"],\
           ["cacache", "npm:20.0.3"],\
@@ -1035,7 +1035,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["call-bind-apply-helpers", [\
       ["npm:1.0.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/call-bind-apply-helpers-npm-1.0.2-3eedbea3bb-10c0.zip/node_modules/call-bind-apply-helpers/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/call-bind-apply-helpers-npm-1.0.2-3eedbea3bb-10c0.zip/node_modules/call-bind-apply-helpers/",\
         "packageDependencies": [\
           ["call-bind-apply-helpers", "npm:1.0.2"],\
           ["es-errors", "npm:1.3.0"],\
@@ -1046,7 +1046,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["caniuse-lite", [\
       ["npm:1.0.30001757", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/caniuse-lite-npm-1.0.30001757-943d8c5b71-10c0.zip/node_modules/caniuse-lite/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/caniuse-lite-npm-1.0.30001757-943d8c5b71-10c0.zip/node_modules/caniuse-lite/",\
         "packageDependencies": [\
           ["caniuse-lite", "npm:1.0.30001757"]\
         ],\
@@ -1055,7 +1055,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["chownr", [\
       ["npm:3.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/chownr-npm-3.0.0-5275e85d25-10c0.zip/node_modules/chownr/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/chownr-npm-3.0.0-5275e85d25-10c0.zip/node_modules/chownr/",\
         "packageDependencies": [\
           ["chownr", "npm:3.0.0"]\
         ],\
@@ -1064,7 +1064,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["combined-stream", [\
       ["npm:1.0.8", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/combined-stream-npm-1.0.8-dc14d4a63a-10c0.zip/node_modules/combined-stream/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/combined-stream-npm-1.0.8-dc14d4a63a-10c0.zip/node_modules/combined-stream/",\
         "packageDependencies": [\
           ["combined-stream", "npm:1.0.8"],\
           ["delayed-stream", "npm:1.0.0"]\
@@ -1074,7 +1074,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["copy-anything", [\
       ["npm:4.0.5", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/copy-anything-npm-4.0.5-658da92246-10c0.zip/node_modules/copy-anything/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/copy-anything-npm-4.0.5-658da92246-10c0.zip/node_modules/copy-anything/",\
         "packageDependencies": [\
           ["copy-anything", "npm:4.0.5"],\
           ["is-what", "npm:5.5.0"]\
@@ -1084,7 +1084,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["css-render", [\
       ["npm:0.15.14", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/css-render-npm-0.15.14-3191c5b832-10c0.zip/node_modules/css-render/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/css-render-npm-0.15.14-3191c5b832-10c0.zip/node_modules/css-render/",\
         "packageDependencies": [\
           ["@emotion/hash", "npm:0.8.0"],\
           ["css-render", "npm:0.15.14"],\
@@ -1095,14 +1095,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["csstype", [\
       ["npm:3.0.11", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/csstype-npm-3.0.11-b49897178d-10c0.zip/node_modules/csstype/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/csstype-npm-3.0.11-b49897178d-10c0.zip/node_modules/csstype/",\
         "packageDependencies": [\
           ["csstype", "npm:3.0.11"]\
         ],\
         "linkType": "HARD"\
       }],\
       ["npm:3.2.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/csstype-npm-3.2.3-741053244e-10c0.zip/node_modules/csstype/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/csstype-npm-3.2.3-741053244e-10c0.zip/node_modules/csstype/",\
         "packageDependencies": [\
           ["csstype", "npm:3.2.3"]\
         ],\
@@ -1111,7 +1111,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["date-fns", [\
       ["npm:4.1.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/date-fns-npm-4.1.0-764604ee0f-10c0.zip/node_modules/date-fns/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/date-fns-npm-4.1.0-764604ee0f-10c0.zip/node_modules/date-fns/",\
         "packageDependencies": [\
           ["date-fns", "npm:4.1.0"]\
         ],\
@@ -1120,14 +1120,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["date-fns-tz", [\
       ["npm:3.2.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/date-fns-tz-npm-3.2.0-fe150c9e17-10c0.zip/node_modules/date-fns-tz/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/date-fns-tz-npm-3.2.0-fe150c9e17-10c0.zip/node_modules/date-fns-tz/",\
         "packageDependencies": [\
           ["date-fns-tz", "npm:3.2.0"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:72baf388f5337d07f1fa54325626f509cc407e5eea64a4fbaf32ef77c71e01af76ef3100af956e01e176cd379efbd75faa1bc4dd8c8090d1194702375a352e87#npm:3.2.0", {\
-        "packageLocation": "./.yarn/__virtual__/date-fns-tz-virtual-b8dfed234f/4/aionui/.yarn/berry/cache/date-fns-tz-npm-3.2.0-fe150c9e17-10c0.zip/node_modules/date-fns-tz/",\
+        "packageLocation": "./.yarn/__virtual__/date-fns-tz-virtual-b8dfed234f/4/code-server/.yarn/berry/cache/date-fns-tz-npm-3.2.0-fe150c9e17-10c0.zip/node_modules/date-fns-tz/",\
         "packageDependencies": [\
           ["@types/date-fns", null],\
           ["date-fns", "npm:4.1.0"],\
@@ -1142,14 +1142,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["debug", [\
       ["npm:4.4.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/debug-npm-4.4.3-0105c6123a-10c0.zip/node_modules/debug/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/debug-npm-4.4.3-0105c6123a-10c0.zip/node_modules/debug/",\
         "packageDependencies": [\
           ["debug", "npm:4.4.3"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:643ed7cc338bcf145a82d8b05b3bef6bcf150ca545df386225596f10ce53cc90b88b3ca83e348ade1ccea5f3f8e76c92d2f0e2ba544da60d40aff9921c56872d#npm:4.4.3", {\
-        "packageLocation": "./.yarn/__virtual__/debug-virtual-5da9fc757d/4/aionui/.yarn/berry/cache/debug-npm-4.4.3-0105c6123a-10c0.zip/node_modules/debug/",\
+        "packageLocation": "./.yarn/__virtual__/debug-virtual-5da9fc757d/4/code-server/.yarn/berry/cache/debug-npm-4.4.3-0105c6123a-10c0.zip/node_modules/debug/",\
         "packageDependencies": [\
           ["@types/supports-color", null],\
           ["debug", "virtual:643ed7cc338bcf145a82d8b05b3bef6bcf150ca545df386225596f10ce53cc90b88b3ca83e348ade1ccea5f3f8e76c92d2f0e2ba544da60d40aff9921c56872d#npm:4.4.3"],\
@@ -1165,7 +1165,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["delayed-stream", [\
       ["npm:1.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/delayed-stream-npm-1.0.0-c5a4c4cc02-10c0.zip/node_modules/delayed-stream/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/delayed-stream-npm-1.0.0-c5a4c4cc02-10c0.zip/node_modules/delayed-stream/",\
         "packageDependencies": [\
           ["delayed-stream", "npm:1.0.0"]\
         ],\
@@ -1174,7 +1174,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["dunder-proto", [\
       ["npm:1.0.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/dunder-proto-npm-1.0.1-90eb6829db-10c0.zip/node_modules/dunder-proto/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/dunder-proto-npm-1.0.1-90eb6829db-10c0.zip/node_modules/dunder-proto/",\
         "packageDependencies": [\
           ["call-bind-apply-helpers", "npm:1.0.2"],\
           ["dunder-proto", "npm:1.0.1"],\
@@ -1186,7 +1186,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["electron-to-chromium", [\
       ["npm:1.5.262", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/electron-to-chromium-npm-1.5.262-76f15cd64e-10c0.zip/node_modules/electron-to-chromium/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/electron-to-chromium-npm-1.5.262-76f15cd64e-10c0.zip/node_modules/electron-to-chromium/",\
         "packageDependencies": [\
           ["electron-to-chromium", "npm:1.5.262"]\
         ],\
@@ -1195,7 +1195,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["encoding", [\
       ["npm:0.1.13", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/encoding-npm-0.1.13-82a1837d30-10c0.zip/node_modules/encoding/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/encoding-npm-0.1.13-82a1837d30-10c0.zip/node_modules/encoding/",\
         "packageDependencies": [\
           ["encoding", "npm:0.1.13"],\
           ["iconv-lite", "npm:0.6.3"]\
@@ -1205,7 +1205,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["entities", [\
       ["npm:4.5.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/entities-npm-4.5.0-7cdb83b832-10c0.zip/node_modules/entities/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/entities-npm-4.5.0-7cdb83b832-10c0.zip/node_modules/entities/",\
         "packageDependencies": [\
           ["entities", "npm:4.5.0"]\
         ],\
@@ -1214,7 +1214,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["env-paths", [\
       ["npm:2.2.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/env-paths-npm-2.2.1-7c7577428c-10c0.zip/node_modules/env-paths/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/env-paths-npm-2.2.1-7c7577428c-10c0.zip/node_modules/env-paths/",\
         "packageDependencies": [\
           ["env-paths", "npm:2.2.1"]\
         ],\
@@ -1223,7 +1223,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["err-code", [\
       ["npm:2.0.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/err-code-npm-2.0.3-082e0ff9a7-10c0.zip/node_modules/err-code/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/err-code-npm-2.0.3-082e0ff9a7-10c0.zip/node_modules/err-code/",\
         "packageDependencies": [\
           ["err-code", "npm:2.0.3"]\
         ],\
@@ -1232,7 +1232,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["es-define-property", [\
       ["npm:1.0.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/es-define-property-npm-1.0.1-3fc6324f1c-10c0.zip/node_modules/es-define-property/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/es-define-property-npm-1.0.1-3fc6324f1c-10c0.zip/node_modules/es-define-property/",\
         "packageDependencies": [\
           ["es-define-property", "npm:1.0.1"]\
         ],\
@@ -1241,7 +1241,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["es-errors", [\
       ["npm:1.3.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/es-errors-npm-1.3.0-fda0c9b8a8-10c0.zip/node_modules/es-errors/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/es-errors-npm-1.3.0-fda0c9b8a8-10c0.zip/node_modules/es-errors/",\
         "packageDependencies": [\
           ["es-errors", "npm:1.3.0"]\
         ],\
@@ -1250,7 +1250,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["es-object-atoms", [\
       ["npm:1.1.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/es-object-atoms-npm-1.1.1-362d8043c2-10c0.zip/node_modules/es-object-atoms/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/es-object-atoms-npm-1.1.1-362d8043c2-10c0.zip/node_modules/es-object-atoms/",\
         "packageDependencies": [\
           ["es-errors", "npm:1.3.0"],\
           ["es-object-atoms", "npm:1.1.1"]\
@@ -1260,7 +1260,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["es-set-tostringtag", [\
       ["npm:2.1.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/es-set-tostringtag-npm-2.1.0-4e55705d3f-10c0.zip/node_modules/es-set-tostringtag/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/es-set-tostringtag-npm-2.1.0-4e55705d3f-10c0.zip/node_modules/es-set-tostringtag/",\
         "packageDependencies": [\
           ["es-errors", "npm:1.3.0"],\
           ["es-set-tostringtag", "npm:2.1.0"],\
@@ -1308,7 +1308,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["escalade", [\
       ["npm:3.2.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/escalade-npm-3.2.0-19b50dd48f-10c0.zip/node_modules/escalade/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/escalade-npm-3.2.0-19b50dd48f-10c0.zip/node_modules/escalade/",\
         "packageDependencies": [\
           ["escalade", "npm:3.2.0"]\
         ],\
@@ -1317,7 +1317,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["estree-walker", [\
       ["npm:2.0.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/estree-walker-npm-2.0.2-dfab42f65c-10c0.zip/node_modules/estree-walker/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/estree-walker-npm-2.0.2-dfab42f65c-10c0.zip/node_modules/estree-walker/",\
         "packageDependencies": [\
           ["estree-walker", "npm:2.0.2"]\
         ],\
@@ -1326,7 +1326,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["evtd", [\
       ["npm:0.2.4", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/evtd-npm-0.2.4-c15e36763d-10c0.zip/node_modules/evtd/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/evtd-npm-0.2.4-c15e36763d-10c0.zip/node_modules/evtd/",\
         "packageDependencies": [\
           ["evtd", "npm:0.2.4"]\
         ],\
@@ -1335,7 +1335,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["exponential-backoff", [\
       ["npm:3.1.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/exponential-backoff-npm-3.1.3-28be78d98e-10c0.zip/node_modules/exponential-backoff/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/exponential-backoff-npm-3.1.3-28be78d98e-10c0.zip/node_modules/exponential-backoff/",\
         "packageDependencies": [\
           ["exponential-backoff", "npm:3.1.3"]\
         ],\
@@ -1344,14 +1344,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["fdir", [\
       ["npm:6.5.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/fdir-npm-6.5.0-8814a0dec7-10c0.zip/node_modules/fdir/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/fdir-npm-6.5.0-8814a0dec7-10c0.zip/node_modules/fdir/",\
         "packageDependencies": [\
           ["fdir", "npm:6.5.0"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:0e783aadbd2b4b8e6f6056033c0b290501892d23bc7c5dad5477e00e48ad8bd3e4434c3962a52dd75a58e06dbb7218094a494bac954ef2f7f6fdb65d9717e5f4#npm:6.5.0", {\
-        "packageLocation": "./.yarn/__virtual__/fdir-virtual-abd4ab2082/4/aionui/.yarn/berry/cache/fdir-npm-6.5.0-8814a0dec7-10c0.zip/node_modules/fdir/",\
+        "packageLocation": "./.yarn/__virtual__/fdir-virtual-abd4ab2082/4/code-server/.yarn/berry/cache/fdir-npm-6.5.0-8814a0dec7-10c0.zip/node_modules/fdir/",\
         "packageDependencies": [\
           ["@types/picomatch", null],\
           ["fdir", "virtual:0e783aadbd2b4b8e6f6056033c0b290501892d23bc7c5dad5477e00e48ad8bd3e4434c3962a52dd75a58e06dbb7218094a494bac954ef2f7f6fdb65d9717e5f4#npm:6.5.0"],\
@@ -1366,14 +1366,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["follow-redirects", [\
       ["npm:1.15.11", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/follow-redirects-npm-1.15.11-ae7b2db266-10c0.zip/node_modules/follow-redirects/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/follow-redirects-npm-1.15.11-ae7b2db266-10c0.zip/node_modules/follow-redirects/",\
         "packageDependencies": [\
           ["follow-redirects", "npm:1.15.11"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:90e3ae8f5d1081a2ebe4b7d99c8598618635aa223fffb3774885e7f413ad9bd6e2700dac780ec12f15baa5a1a39c5137b65b9a0b781e508a9f050aac6152f2f5#npm:1.15.11", {\
-        "packageLocation": "./.yarn/__virtual__/follow-redirects-virtual-de41ee3d23/4/aionui/.yarn/berry/cache/follow-redirects-npm-1.15.11-ae7b2db266-10c0.zip/node_modules/follow-redirects/",\
+        "packageLocation": "./.yarn/__virtual__/follow-redirects-virtual-de41ee3d23/4/code-server/.yarn/berry/cache/follow-redirects-npm-1.15.11-ae7b2db266-10c0.zip/node_modules/follow-redirects/",\
         "packageDependencies": [\
           ["@types/debug", null],\
           ["debug", null],\
@@ -1388,7 +1388,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["form-data", [\
       ["npm:4.0.5", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/form-data-npm-4.0.5-c35fce815a-10c0.zip/node_modules/form-data/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/form-data-npm-4.0.5-c35fce815a-10c0.zip/node_modules/form-data/",\
         "packageDependencies": [\
           ["asynckit", "npm:0.4.0"],\
           ["combined-stream", "npm:1.0.8"],\
@@ -1402,7 +1402,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["fraction.js", [\
       ["npm:5.3.4", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/fraction.js-npm-5.3.4-52b06f74c0-10c0.zip/node_modules/fraction.js/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/fraction.js-npm-5.3.4-52b06f74c0-10c0.zip/node_modules/fraction.js/",\
         "packageDependencies": [\
           ["fraction.js", "npm:5.3.4"]\
         ],\
@@ -1433,7 +1433,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["fs-minipass", [\
       ["npm:3.0.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/fs-minipass-npm-3.0.3-d148d6ac19-10c0.zip/node_modules/fs-minipass/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/fs-minipass-npm-3.0.3-d148d6ac19-10c0.zip/node_modules/fs-minipass/",\
         "packageDependencies": [\
           ["fs-minipass", "npm:3.0.3"],\
           ["minipass", "npm:7.1.2"]\
@@ -1453,7 +1453,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["function-bind", [\
       ["npm:1.1.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/function-bind-npm-1.1.2-7a55be9b03-10c0.zip/node_modules/function-bind/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/function-bind-npm-1.1.2-7a55be9b03-10c0.zip/node_modules/function-bind/",\
         "packageDependencies": [\
           ["function-bind", "npm:1.1.2"]\
         ],\
@@ -1462,7 +1462,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["generator-function", [\
       ["npm:2.0.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/generator-function-npm-2.0.1-aed34a724a-10c0.zip/node_modules/generator-function/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/generator-function-npm-2.0.1-aed34a724a-10c0.zip/node_modules/generator-function/",\
         "packageDependencies": [\
           ["generator-function", "npm:2.0.1"]\
         ],\
@@ -1471,7 +1471,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["get-intrinsic", [\
       ["npm:1.3.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/get-intrinsic-npm-1.3.1-2f734f40ec-10c0.zip/node_modules/get-intrinsic/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/get-intrinsic-npm-1.3.1-2f734f40ec-10c0.zip/node_modules/get-intrinsic/",\
         "packageDependencies": [\
           ["async-function", "npm:1.0.0"],\
           ["async-generator-function", "npm:1.0.0"],\
@@ -1493,7 +1493,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["get-proto", [\
       ["npm:1.0.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/get-proto-npm-1.0.1-4d30bac614-10c0.zip/node_modules/get-proto/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/get-proto-npm-1.0.1-4d30bac614-10c0.zip/node_modules/get-proto/",\
         "packageDependencies": [\
           ["dunder-proto", "npm:1.0.1"],\
           ["es-object-atoms", "npm:1.1.1"],\
@@ -1504,7 +1504,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["glob", [\
       ["npm:13.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/glob-npm-13.0.0-8e50143ca8-10c0.zip/node_modules/glob/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/glob-npm-13.0.0-8e50143ca8-10c0.zip/node_modules/glob/",\
         "packageDependencies": [\
           ["glob", "npm:13.0.0"],\
           ["minimatch", "npm:10.1.1"],\
@@ -1516,7 +1516,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["gopd", [\
       ["npm:1.2.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/gopd-npm-1.2.0-df89ffa78e-10c0.zip/node_modules/gopd/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/gopd-npm-1.2.0-df89ffa78e-10c0.zip/node_modules/gopd/",\
         "packageDependencies": [\
           ["gopd", "npm:1.2.0"]\
         ],\
@@ -1525,7 +1525,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["graceful-fs", [\
       ["npm:4.2.11", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/graceful-fs-npm-4.2.11-24bb648a68-10c0.zip/node_modules/graceful-fs/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/graceful-fs-npm-4.2.11-24bb648a68-10c0.zip/node_modules/graceful-fs/",\
         "packageDependencies": [\
           ["graceful-fs", "npm:4.2.11"]\
         ],\
@@ -1534,7 +1534,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["has-symbols", [\
       ["npm:1.1.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/has-symbols-npm-1.1.0-9aa7dc2ac1-10c0.zip/node_modules/has-symbols/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/has-symbols-npm-1.1.0-9aa7dc2ac1-10c0.zip/node_modules/has-symbols/",\
         "packageDependencies": [\
           ["has-symbols", "npm:1.1.0"]\
         ],\
@@ -1543,7 +1543,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["has-tostringtag", [\
       ["npm:1.0.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/has-tostringtag-npm-1.0.2-74a4800369-10c0.zip/node_modules/has-tostringtag/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/has-tostringtag-npm-1.0.2-74a4800369-10c0.zip/node_modules/has-tostringtag/",\
         "packageDependencies": [\
           ["has-symbols", "npm:1.1.0"],\
           ["has-tostringtag", "npm:1.0.2"]\
@@ -1553,7 +1553,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["hasown", [\
       ["npm:2.0.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/hasown-npm-2.0.2-80fe6c9901-10c0.zip/node_modules/hasown/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/hasown-npm-2.0.2-80fe6c9901-10c0.zip/node_modules/hasown/",\
         "packageDependencies": [\
           ["function-bind", "npm:1.1.2"],\
           ["hasown", "npm:2.0.2"]\
@@ -1563,7 +1563,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["highlight.js", [\
       ["npm:11.11.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/highlight.js-npm-11.11.1-1afef66f5e-10c0.zip/node_modules/highlight.js/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/highlight.js-npm-11.11.1-1afef66f5e-10c0.zip/node_modules/highlight.js/",\
         "packageDependencies": [\
           ["highlight.js", "npm:11.11.1"]\
         ],\
@@ -1572,7 +1572,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["hookable", [\
       ["npm:5.5.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/hookable-npm-5.5.3-82b0342097-10c0.zip/node_modules/hookable/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/hookable-npm-5.5.3-82b0342097-10c0.zip/node_modules/hookable/",\
         "packageDependencies": [\
           ["hookable", "npm:5.5.3"]\
         ],\
@@ -1581,7 +1581,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["http-cache-semantics", [\
       ["npm:4.2.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/http-cache-semantics-npm-4.2.0-fadacfb3ad-10c0.zip/node_modules/http-cache-semantics/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/http-cache-semantics-npm-4.2.0-fadacfb3ad-10c0.zip/node_modules/http-cache-semantics/",\
         "packageDependencies": [\
           ["http-cache-semantics", "npm:4.2.0"]\
         ],\
@@ -1590,7 +1590,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["http-proxy-agent", [\
       ["npm:7.0.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/http-proxy-agent-npm-7.0.2-643ed7cc33-10c0.zip/node_modules/http-proxy-agent/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/http-proxy-agent-npm-7.0.2-643ed7cc33-10c0.zip/node_modules/http-proxy-agent/",\
         "packageDependencies": [\
           ["agent-base", "npm:7.1.4"],\
           ["debug", "virtual:643ed7cc338bcf145a82d8b05b3bef6bcf150ca545df386225596f10ce53cc90b88b3ca83e348ade1ccea5f3f8e76c92d2f0e2ba544da60d40aff9921c56872d#npm:4.4.3"],\
@@ -1601,7 +1601,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["https-proxy-agent", [\
       ["npm:7.0.6", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/https-proxy-agent-npm-7.0.6-27a95c2690-10c0.zip/node_modules/https-proxy-agent/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/https-proxy-agent-npm-7.0.6-27a95c2690-10c0.zip/node_modules/https-proxy-agent/",\
         "packageDependencies": [\
           ["agent-base", "npm:7.1.4"],\
           ["debug", "virtual:643ed7cc338bcf145a82d8b05b3bef6bcf150ca545df386225596f10ce53cc90b88b3ca83e348ade1ccea5f3f8e76c92d2f0e2ba544da60d40aff9921c56872d#npm:4.4.3"],\
@@ -1612,7 +1612,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["iconv-lite", [\
       ["npm:0.6.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/iconv-lite-npm-0.6.3-24b8aae27e-10c0.zip/node_modules/iconv-lite/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/iconv-lite-npm-0.6.3-24b8aae27e-10c0.zip/node_modules/iconv-lite/",\
         "packageDependencies": [\
           ["iconv-lite", "npm:0.6.3"],\
           ["safer-buffer", "npm:2.1.2"]\
@@ -1622,7 +1622,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["imurmurhash", [\
       ["npm:0.1.4", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/imurmurhash-npm-0.1.4-610c5068a0-10c0.zip/node_modules/imurmurhash/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/imurmurhash-npm-0.1.4-610c5068a0-10c0.zip/node_modules/imurmurhash/",\
         "packageDependencies": [\
           ["imurmurhash", "npm:0.1.4"]\
         ],\
@@ -1631,7 +1631,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["ip-address", [\
       ["npm:10.1.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/ip-address-npm-10.1.0-d5d5693401-10c0.zip/node_modules/ip-address/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/ip-address-npm-10.1.0-d5d5693401-10c0.zip/node_modules/ip-address/",\
         "packageDependencies": [\
           ["ip-address", "npm:10.1.0"]\
         ],\
@@ -1640,7 +1640,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["is-what", [\
       ["npm:5.5.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/is-what-npm-5.5.0-d0c4588dc8-10c0.zip/node_modules/is-what/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/is-what-npm-5.5.0-d0c4588dc8-10c0.zip/node_modules/is-what/",\
         "packageDependencies": [\
           ["is-what", "npm:5.5.0"]\
         ],\
@@ -1649,7 +1649,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["isexe", [\
       ["npm:3.1.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/isexe-npm-3.1.1-9c0061eead-10c0.zip/node_modules/isexe/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/isexe-npm-3.1.1-9c0061eead-10c0.zip/node_modules/isexe/",\
         "packageDependencies": [\
           ["isexe", "npm:3.1.1"]\
         ],\
@@ -1658,7 +1658,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["lodash", [\
       ["npm:4.17.21", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/lodash-npm-4.17.21-6382451519-10c0.zip/node_modules/lodash/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/lodash-npm-4.17.21-6382451519-10c0.zip/node_modules/lodash/",\
         "packageDependencies": [\
           ["lodash", "npm:4.17.21"]\
         ],\
@@ -1667,7 +1667,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["lodash-es", [\
       ["npm:4.17.21", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/lodash-es-npm-4.17.21-b45832dfce-10c0.zip/node_modules/lodash-es/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/lodash-es-npm-4.17.21-b45832dfce-10c0.zip/node_modules/lodash-es/",\
         "packageDependencies": [\
           ["lodash-es", "npm:4.17.21"]\
         ],\
@@ -1676,7 +1676,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["lru-cache", [\
       ["npm:11.2.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/lru-cache-npm-11.2.2-685f5506dc-10c0.zip/node_modules/lru-cache/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/lru-cache-npm-11.2.2-685f5506dc-10c0.zip/node_modules/lru-cache/",\
         "packageDependencies": [\
           ["lru-cache", "npm:11.2.2"]\
         ],\
@@ -1685,7 +1685,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["magic-string", [\
       ["npm:0.30.21", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/magic-string-npm-0.30.21-9a226cb21e-10c0.zip/node_modules/magic-string/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/magic-string-npm-0.30.21-9a226cb21e-10c0.zip/node_modules/magic-string/",\
         "packageDependencies": [\
           ["@jridgewell/sourcemap-codec", "npm:1.5.5"],\
           ["magic-string", "npm:0.30.21"]\
@@ -1695,7 +1695,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["make-fetch-happen", [\
       ["npm:15.0.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/make-fetch-happen-npm-15.0.3-10a832fcad-10c0.zip/node_modules/make-fetch-happen/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/make-fetch-happen-npm-15.0.3-10a832fcad-10c0.zip/node_modules/make-fetch-happen/",\
         "packageDependencies": [\
           ["@npmcli/agent", "npm:4.0.0"],\
           ["cacache", "npm:20.0.3"],\
@@ -1715,7 +1715,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["math-intrinsics", [\
       ["npm:1.1.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/math-intrinsics-npm-1.1.0-9204d80e7d-10c0.zip/node_modules/math-intrinsics/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/math-intrinsics-npm-1.1.0-9204d80e7d-10c0.zip/node_modules/math-intrinsics/",\
         "packageDependencies": [\
           ["math-intrinsics", "npm:1.1.0"]\
         ],\
@@ -1724,7 +1724,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["mime-db", [\
       ["npm:1.52.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/mime-db-npm-1.52.0-b5371d6fd2-10c0.zip/node_modules/mime-db/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/mime-db-npm-1.52.0-b5371d6fd2-10c0.zip/node_modules/mime-db/",\
         "packageDependencies": [\
           ["mime-db", "npm:1.52.0"]\
         ],\
@@ -1733,7 +1733,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["mime-types", [\
       ["npm:2.1.35", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/mime-types-npm-2.1.35-dd9ea9f3e2-10c0.zip/node_modules/mime-types/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/mime-types-npm-2.1.35-dd9ea9f3e2-10c0.zip/node_modules/mime-types/",\
         "packageDependencies": [\
           ["mime-db", "npm:1.52.0"],\
           ["mime-types", "npm:2.1.35"]\
@@ -1743,7 +1743,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["minimatch", [\
       ["npm:10.1.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/minimatch-npm-10.1.1-453db4ee1a-10c0.zip/node_modules/minimatch/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/minimatch-npm-10.1.1-453db4ee1a-10c0.zip/node_modules/minimatch/",\
         "packageDependencies": [\
           ["@isaacs/brace-expansion", "npm:5.0.0"],\
           ["minimatch", "npm:10.1.1"]\
@@ -1753,7 +1753,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["minipass", [\
       ["npm:3.3.6", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/minipass-npm-3.3.6-b8d93a945b-10c0.zip/node_modules/minipass/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/minipass-npm-3.3.6-b8d93a945b-10c0.zip/node_modules/minipass/",\
         "packageDependencies": [\
           ["minipass", "npm:3.3.6"],\
           ["yallist", "npm:4.0.0"]\
@@ -1761,7 +1761,7 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }],\
       ["npm:7.1.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/minipass-npm-7.1.2-3a5327d36d-10c0.zip/node_modules/minipass/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/minipass-npm-7.1.2-3a5327d36d-10c0.zip/node_modules/minipass/",\
         "packageDependencies": [\
           ["minipass", "npm:7.1.2"]\
         ],\
@@ -1770,7 +1770,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["minipass-collect", [\
       ["npm:2.0.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/minipass-collect-npm-2.0.1-73d3907e40-10c0.zip/node_modules/minipass-collect/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/minipass-collect-npm-2.0.1-73d3907e40-10c0.zip/node_modules/minipass-collect/",\
         "packageDependencies": [\
           ["minipass", "npm:7.1.2"],\
           ["minipass-collect", "npm:2.0.1"]\
@@ -1780,7 +1780,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["minipass-fetch", [\
       ["npm:5.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/minipass-fetch-npm-5.0.0-e53c2bae4c-10c0.zip/node_modules/minipass-fetch/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/minipass-fetch-npm-5.0.0-e53c2bae4c-10c0.zip/node_modules/minipass-fetch/",\
         "packageDependencies": [\
           ["encoding", "npm:0.1.13"],\
           ["minipass", "npm:7.1.2"],\
@@ -1793,7 +1793,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["minipass-flush", [\
       ["npm:1.0.5", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/minipass-flush-npm-1.0.5-efe79d9826-10c0.zip/node_modules/minipass-flush/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/minipass-flush-npm-1.0.5-efe79d9826-10c0.zip/node_modules/minipass-flush/",\
         "packageDependencies": [\
           ["minipass", "npm:3.3.6"],\
           ["minipass-flush", "npm:1.0.5"]\
@@ -1803,7 +1803,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["minipass-pipeline", [\
       ["npm:1.2.4", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/minipass-pipeline-npm-1.2.4-5924cb077f-10c0.zip/node_modules/minipass-pipeline/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/minipass-pipeline-npm-1.2.4-5924cb077f-10c0.zip/node_modules/minipass-pipeline/",\
         "packageDependencies": [\
           ["minipass", "npm:3.3.6"],\
           ["minipass-pipeline", "npm:1.2.4"]\
@@ -1813,7 +1813,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["minipass-sized", [\
       ["npm:1.0.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/minipass-sized-npm-1.0.3-306d86f432-10c0.zip/node_modules/minipass-sized/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/minipass-sized-npm-1.0.3-306d86f432-10c0.zip/node_modules/minipass-sized/",\
         "packageDependencies": [\
           ["minipass", "npm:3.3.6"],\
           ["minipass-sized", "npm:1.0.3"]\
@@ -1823,7 +1823,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["minizlib", [\
       ["npm:3.1.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/minizlib-npm-3.1.0-6680befdba-10c0.zip/node_modules/minizlib/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/minizlib-npm-3.1.0-6680befdba-10c0.zip/node_modules/minizlib/",\
         "packageDependencies": [\
           ["minipass", "npm:7.1.2"],\
           ["minizlib", "npm:3.1.0"]\
@@ -1833,7 +1833,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["mitt", [\
       ["npm:3.0.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/mitt-npm-3.0.1-ce290ffa77-10c0.zip/node_modules/mitt/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/mitt-npm-3.0.1-ce290ffa77-10c0.zip/node_modules/mitt/",\
         "packageDependencies": [\
           ["mitt", "npm:3.0.1"]\
         ],\
@@ -1842,7 +1842,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["ms", [\
       ["npm:2.1.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/ms-npm-2.1.3-81ff3cfac1-10c0.zip/node_modules/ms/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/ms-npm-2.1.3-81ff3cfac1-10c0.zip/node_modules/ms/",\
         "packageDependencies": [\
           ["ms", "npm:2.1.3"]\
         ],\
@@ -1851,14 +1851,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["naive-ui", [\
       ["npm:2.43.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/naive-ui-npm-2.43.2-f9bff2a7b9-10c0.zip/node_modules/naive-ui/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/naive-ui-npm-2.43.2-f9bff2a7b9-10c0.zip/node_modules/naive-ui/",\
         "packageDependencies": [\
           ["naive-ui", "npm:2.43.2"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:d9650954c7f1725ea712d2e40695de9ea5d1c0fa9b89379134c62909d440d91b03d6c37e2823804a3404472b90a5bec73c82193190dd3c4db4c9e9edd75db91e#npm:2.43.2", {\
-        "packageLocation": "./.yarn/__virtual__/naive-ui-virtual-72baf388f5/4/aionui/.yarn/berry/cache/naive-ui-npm-2.43.2-f9bff2a7b9-10c0.zip/node_modules/naive-ui/",\
+        "packageLocation": "./.yarn/__virtual__/naive-ui-virtual-72baf388f5/4/code-server/.yarn/berry/cache/naive-ui-npm-2.43.2-f9bff2a7b9-10c0.zip/node_modules/naive-ui/",\
         "packageDependencies": [\
           ["@css-render/plugin-bem", "virtual:72baf388f5337d07f1fa54325626f509cc407e5eea64a4fbaf32ef77c71e01af76ef3100af956e01e176cd379efbd75faa1bc4dd8c8090d1194702375a352e87#npm:0.15.14"],\
           ["@css-render/vue3-ssr", "virtual:72baf388f5337d07f1fa54325626f509cc407e5eea64a4fbaf32ef77c71e01af76ef3100af956e01e176cd379efbd75faa1bc4dd8c8090d1194702375a352e87#npm:0.15.14"],\
@@ -1892,7 +1892,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["nanoid", [\
       ["npm:3.3.11", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/nanoid-npm-3.3.11-f98c1f9ef6-10c0.zip/node_modules/nanoid/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/nanoid-npm-3.3.11-f98c1f9ef6-10c0.zip/node_modules/nanoid/",\
         "packageDependencies": [\
           ["nanoid", "npm:3.3.11"]\
         ],\
@@ -1901,7 +1901,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["negotiator", [\
       ["npm:1.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/negotiator-npm-1.0.0-47d727e27e-10c0.zip/node_modules/negotiator/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/negotiator-npm-1.0.0-47d727e27e-10c0.zip/node_modules/negotiator/",\
         "packageDependencies": [\
           ["negotiator", "npm:1.0.0"]\
         ],\
@@ -1929,7 +1929,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["node-releases", [\
       ["npm:2.0.27", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/node-releases-npm-2.0.27-b2d1b8de4a-10c0.zip/node_modules/node-releases/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/node-releases-npm-2.0.27-b2d1b8de4a-10c0.zip/node_modules/node-releases/",\
         "packageDependencies": [\
           ["node-releases", "npm:2.0.27"]\
         ],\
@@ -1938,7 +1938,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["nopt", [\
       ["npm:9.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/nopt-npm-9.0.0-81316ec15c-10c0.zip/node_modules/nopt/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/nopt-npm-9.0.0-81316ec15c-10c0.zip/node_modules/nopt/",\
         "packageDependencies": [\
           ["abbrev", "npm:4.0.0"],\
           ["nopt", "npm:9.0.0"]\
@@ -1948,7 +1948,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["normalize-range", [\
       ["npm:0.1.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/normalize-range-npm-0.1.2-bec5e259e2-10c0.zip/node_modules/normalize-range/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/normalize-range-npm-0.1.2-bec5e259e2-10c0.zip/node_modules/normalize-range/",\
         "packageDependencies": [\
           ["normalize-range", "npm:0.1.2"]\
         ],\
@@ -1957,7 +1957,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["p-map", [\
       ["npm:7.0.4", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/p-map-npm-7.0.4-39386109d0-10c0.zip/node_modules/p-map/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/p-map-npm-7.0.4-39386109d0-10c0.zip/node_modules/p-map/",\
         "packageDependencies": [\
           ["p-map", "npm:7.0.4"]\
         ],\
@@ -1966,7 +1966,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["path-scurry", [\
       ["npm:2.0.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/path-scurry-npm-2.0.1-7744619e5d-10c0.zip/node_modules/path-scurry/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/path-scurry-npm-2.0.1-7744619e5d-10c0.zip/node_modules/path-scurry/",\
         "packageDependencies": [\
           ["lru-cache", "npm:11.2.2"],\
           ["minipass", "npm:7.1.2"],\
@@ -1977,7 +1977,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["perfect-debounce", [\
       ["npm:1.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/perfect-debounce-npm-1.0.0-0968810009-10c0.zip/node_modules/perfect-debounce/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/perfect-debounce-npm-1.0.0-0968810009-10c0.zip/node_modules/perfect-debounce/",\
         "packageDependencies": [\
           ["perfect-debounce", "npm:1.0.0"]\
         ],\
@@ -1986,7 +1986,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["picocolors", [\
       ["npm:1.1.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/picocolors-npm-1.1.1-4fede47cf1-10c0.zip/node_modules/picocolors/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/picocolors-npm-1.1.1-4fede47cf1-10c0.zip/node_modules/picocolors/",\
         "packageDependencies": [\
           ["picocolors", "npm:1.1.1"]\
         ],\
@@ -1995,7 +1995,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["picomatch", [\
       ["npm:4.0.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/picomatch-npm-4.0.3-0a647b87cc-10c0.zip/node_modules/picomatch/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/picomatch-npm-4.0.3-0a647b87cc-10c0.zip/node_modules/picomatch/",\
         "packageDependencies": [\
           ["picomatch", "npm:4.0.3"]\
         ],\
@@ -2004,14 +2004,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["pinia", [\
       ["npm:3.0.4", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/pinia-npm-3.0.4-8d3fb478c4-10c0.zip/node_modules/pinia/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/pinia-npm-3.0.4-8d3fb478c4-10c0.zip/node_modules/pinia/",\
         "packageDependencies": [\
           ["pinia", "npm:3.0.4"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:d9650954c7f1725ea712d2e40695de9ea5d1c0fa9b89379134c62909d440d91b03d6c37e2823804a3404472b90a5bec73c82193190dd3c4db4c9e9edd75db91e#npm:3.0.4", {\
-        "packageLocation": "./.yarn/__virtual__/pinia-virtual-5e370bd23e/4/aionui/.yarn/berry/cache/pinia-npm-3.0.4-8d3fb478c4-10c0.zip/node_modules/pinia/",\
+        "packageLocation": "./.yarn/__virtual__/pinia-virtual-5e370bd23e/4/code-server/.yarn/berry/cache/pinia-npm-3.0.4-8d3fb478c4-10c0.zip/node_modules/pinia/",\
         "packageDependencies": [\
           ["@types/typescript", null],\
           ["@types/vue", null],\
@@ -2031,7 +2031,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["postcss", [\
       ["npm:8.5.6", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/postcss-npm-8.5.6-e7f126c6f3-10c0.zip/node_modules/postcss/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/postcss-npm-8.5.6-e7f126c6f3-10c0.zip/node_modules/postcss/",\
         "packageDependencies": [\
           ["nanoid", "npm:3.3.11"],\
           ["picocolors", "npm:1.1.1"],\
@@ -2043,7 +2043,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["postcss-value-parser", [\
       ["npm:4.2.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/postcss-value-parser-npm-4.2.0-3cef602a6a-10c0.zip/node_modules/postcss-value-parser/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/postcss-value-parser-npm-4.2.0-3cef602a6a-10c0.zip/node_modules/postcss-value-parser/",\
         "packageDependencies": [\
           ["postcss-value-parser", "npm:4.2.0"]\
         ],\
@@ -2052,7 +2052,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["proc-log", [\
       ["npm:6.1.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/proc-log-npm-6.1.0-84e609b3f4-10c0.zip/node_modules/proc-log/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/proc-log-npm-6.1.0-84e609b3f4-10c0.zip/node_modules/proc-log/",\
         "packageDependencies": [\
           ["proc-log", "npm:6.1.0"]\
         ],\
@@ -2061,7 +2061,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["promise-retry", [\
       ["npm:2.0.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/promise-retry-npm-2.0.1-871f0b01b7-10c0.zip/node_modules/promise-retry/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/promise-retry-npm-2.0.1-871f0b01b7-10c0.zip/node_modules/promise-retry/",\
         "packageDependencies": [\
           ["err-code", "npm:2.0.3"],\
           ["promise-retry", "npm:2.0.1"],\
@@ -2072,7 +2072,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["proxy-from-env", [\
       ["npm:1.1.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/proxy-from-env-npm-1.1.0-c13d07f26b-10c0.zip/node_modules/proxy-from-env/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/proxy-from-env-npm-1.1.0-c13d07f26b-10c0.zip/node_modules/proxy-from-env/",\
         "packageDependencies": [\
           ["proxy-from-env", "npm:1.1.0"]\
         ],\
@@ -2081,7 +2081,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["retry", [\
       ["npm:0.12.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/retry-npm-0.12.0-72ac7fb4cc-10c0.zip/node_modules/retry/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/retry-npm-0.12.0-72ac7fb4cc-10c0.zip/node_modules/retry/",\
         "packageDependencies": [\
           ["retry", "npm:0.12.0"]\
         ],\
@@ -2090,7 +2090,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["rfdc", [\
       ["npm:1.4.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/rfdc-npm-1.4.1-1a1c63d052-10c0.zip/node_modules/rfdc/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/rfdc-npm-1.4.1-1a1c63d052-10c0.zip/node_modules/rfdc/",\
         "packageDependencies": [\
           ["rfdc", "npm:1.4.1"]\
         ],\
@@ -2099,7 +2099,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["rollup", [\
       ["npm:4.53.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/rollup-npm-4.53.3-f2e7bfc03d-10c0.zip/node_modules/rollup/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/rollup-npm-4.53.3-f2e7bfc03d-10c0.zip/node_modules/rollup/",\
         "packageDependencies": [\
           ["@rollup/rollup-android-arm-eabi", "npm:4.53.3"],\
           ["@rollup/rollup-android-arm64", "npm:4.53.3"],\
@@ -2132,7 +2132,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["safer-buffer", [\
       ["npm:2.1.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/safer-buffer-npm-2.1.2-8d5c0b705e-10c0.zip/node_modules/safer-buffer/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/safer-buffer-npm-2.1.2-8d5c0b705e-10c0.zip/node_modules/safer-buffer/",\
         "packageDependencies": [\
           ["safer-buffer", "npm:2.1.2"]\
         ],\
@@ -2141,7 +2141,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["seemly", [\
       ["npm:0.3.10", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/seemly-npm-0.3.10-5b4b4afe42-10c0.zip/node_modules/seemly/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/seemly-npm-0.3.10-5b4b4afe42-10c0.zip/node_modules/seemly/",\
         "packageDependencies": [\
           ["seemly", "npm:0.3.10"]\
         ],\
@@ -2150,7 +2150,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["semver", [\
       ["npm:7.7.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/semver-npm-7.7.3-9cf7b3b46c-10c0.zip/node_modules/semver/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/semver-npm-7.7.3-9cf7b3b46c-10c0.zip/node_modules/semver/",\
         "packageDependencies": [\
           ["semver", "npm:7.7.3"]\
         ],\
@@ -2159,7 +2159,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["smart-buffer", [\
       ["npm:4.2.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/smart-buffer-npm-4.2.0-5ac3f668bb-10c0.zip/node_modules/smart-buffer/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/smart-buffer-npm-4.2.0-5ac3f668bb-10c0.zip/node_modules/smart-buffer/",\
         "packageDependencies": [\
           ["smart-buffer", "npm:4.2.0"]\
         ],\
@@ -2168,7 +2168,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["socks", [\
       ["npm:2.8.7", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/socks-npm-2.8.7-d1d20aae19-10c0.zip/node_modules/socks/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/socks-npm-2.8.7-d1d20aae19-10c0.zip/node_modules/socks/",\
         "packageDependencies": [\
           ["ip-address", "npm:10.1.0"],\
           ["smart-buffer", "npm:4.2.0"],\
@@ -2179,7 +2179,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["socks-proxy-agent", [\
       ["npm:8.0.5", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/socks-proxy-agent-npm-8.0.5-24d77a90dc-10c0.zip/node_modules/socks-proxy-agent/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/socks-proxy-agent-npm-8.0.5-24d77a90dc-10c0.zip/node_modules/socks-proxy-agent/",\
         "packageDependencies": [\
           ["agent-base", "npm:7.1.4"],\
           ["debug", "virtual:643ed7cc338bcf145a82d8b05b3bef6bcf150ca545df386225596f10ce53cc90b88b3ca83e348ade1ccea5f3f8e76c92d2f0e2ba544da60d40aff9921c56872d#npm:4.4.3"],\
@@ -2191,7 +2191,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["source-map-js", [\
       ["npm:1.2.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/source-map-js-npm-1.2.1-b9a47d7e1a-10c0.zip/node_modules/source-map-js/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/source-map-js-npm-1.2.1-b9a47d7e1a-10c0.zip/node_modules/source-map-js/",\
         "packageDependencies": [\
           ["source-map-js", "npm:1.2.1"]\
         ],\
@@ -2200,7 +2200,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["speakingurl", [\
       ["npm:14.0.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/speakingurl-npm-14.0.1-0eaad8267a-10c0.zip/node_modules/speakingurl/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/speakingurl-npm-14.0.1-0eaad8267a-10c0.zip/node_modules/speakingurl/",\
         "packageDependencies": [\
           ["speakingurl", "npm:14.0.1"]\
         ],\
@@ -2209,7 +2209,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["ssri", [\
       ["npm:13.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/ssri-npm-13.0.0-f5fa93375d-10c0.zip/node_modules/ssri/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/ssri-npm-13.0.0-f5fa93375d-10c0.zip/node_modules/ssri/",\
         "packageDependencies": [\
           ["minipass", "npm:7.1.2"],\
           ["ssri", "npm:13.0.0"]\
@@ -2219,7 +2219,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["superjson", [\
       ["npm:2.2.5", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/superjson-npm-2.2.5-1c3f75739b-10c0.zip/node_modules/superjson/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/superjson-npm-2.2.5-1c3f75739b-10c0.zip/node_modules/superjson/",\
         "packageDependencies": [\
           ["copy-anything", "npm:4.0.5"],\
           ["superjson", "npm:2.2.5"]\
@@ -2229,7 +2229,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["tailwindcss", [\
       ["npm:4.1.17", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/tailwindcss-npm-4.1.17-f53d7133ed-10c0.zip/node_modules/tailwindcss/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/tailwindcss-npm-4.1.17-f53d7133ed-10c0.zip/node_modules/tailwindcss/",\
         "packageDependencies": [\
           ["tailwindcss", "npm:4.1.17"]\
         ],\
@@ -2238,7 +2238,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["tar", [\
       ["npm:7.5.2", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/tar-npm-7.5.2-6d8cfb7a13-10c0.zip/node_modules/tar/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/tar-npm-7.5.2-6d8cfb7a13-10c0.zip/node_modules/tar/",\
         "packageDependencies": [\
           ["@isaacs/fs-minipass", "npm:4.0.1"],\
           ["chownr", "npm:3.0.0"],\
@@ -2252,7 +2252,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["tinyglobby", [\
       ["npm:0.2.15", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/tinyglobby-npm-0.2.15-0e783aadbd-10c0.zip/node_modules/tinyglobby/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/tinyglobby-npm-0.2.15-0e783aadbd-10c0.zip/node_modules/tinyglobby/",\
         "packageDependencies": [\
           ["fdir", "virtual:0e783aadbd2b4b8e6f6056033c0b290501892d23bc7c5dad5477e00e48ad8bd3e4434c3962a52dd75a58e06dbb7218094a494bac954ef2f7f6fdb65d9717e5f4#npm:6.5.0"],\
           ["picomatch", "npm:4.0.3"],\
@@ -2263,7 +2263,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["treemate", [\
       ["npm:0.3.11", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/treemate-npm-0.3.11-7be66c23fc-10c0.zip/node_modules/treemate/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/treemate-npm-0.3.11-7be66c23fc-10c0.zip/node_modules/treemate/",\
         "packageDependencies": [\
           ["treemate", "npm:0.3.11"]\
         ],\
@@ -2272,7 +2272,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["unique-filename", [\
       ["npm:5.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/unique-filename-npm-5.0.0-605f54f18e-10c0.zip/node_modules/unique-filename/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/unique-filename-npm-5.0.0-605f54f18e-10c0.zip/node_modules/unique-filename/",\
         "packageDependencies": [\
           ["unique-filename", "npm:5.0.0"],\
           ["unique-slug", "npm:6.0.0"]\
@@ -2282,7 +2282,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["unique-slug", [\
       ["npm:6.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/unique-slug-npm-6.0.0-f26b186e99-10c0.zip/node_modules/unique-slug/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/unique-slug-npm-6.0.0-f26b186e99-10c0.zip/node_modules/unique-slug/",\
         "packageDependencies": [\
           ["imurmurhash", "npm:0.1.4"],\
           ["unique-slug", "npm:6.0.0"]\
@@ -2292,14 +2292,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["update-browserslist-db", [\
       ["npm:1.1.4", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/update-browserslist-db-npm-1.1.4-55ef7b4ab9-10c0.zip/node_modules/update-browserslist-db/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/update-browserslist-db-npm-1.1.4-55ef7b4ab9-10c0.zip/node_modules/update-browserslist-db/",\
         "packageDependencies": [\
           ["update-browserslist-db", "npm:1.1.4"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:c16ea3c47c3f481d4b294c3f8cbee47f97330604def79ce3b6a7a4167ccd05fd4ae1864e80f935b7d27e04da9cb97d2dc56b9955f55cd9aeac05cc005f33ecff#npm:1.1.4", {\
-        "packageLocation": "./.yarn/__virtual__/update-browserslist-db-virtual-e58daf978f/4/aionui/.yarn/berry/cache/update-browserslist-db-npm-1.1.4-55ef7b4ab9-10c0.zip/node_modules/update-browserslist-db/",\
+        "packageLocation": "./.yarn/__virtual__/update-browserslist-db-virtual-e58daf978f/4/code-server/.yarn/berry/cache/update-browserslist-db-npm-1.1.4-55ef7b4ab9-10c0.zip/node_modules/update-browserslist-db/",\
         "packageDependencies": [\
           ["@types/browserslist", null],\
           ["browserslist", "npm:4.28.0"],\
@@ -2316,14 +2316,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["vdirs", [\
       ["npm:0.1.8", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/vdirs-npm-0.1.8-59a32a98d6-10c0.zip/node_modules/vdirs/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/vdirs-npm-0.1.8-59a32a98d6-10c0.zip/node_modules/vdirs/",\
         "packageDependencies": [\
           ["vdirs", "npm:0.1.8"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:72baf388f5337d07f1fa54325626f509cc407e5eea64a4fbaf32ef77c71e01af76ef3100af956e01e176cd379efbd75faa1bc4dd8c8090d1194702375a352e87#npm:0.1.8", {\
-        "packageLocation": "./.yarn/__virtual__/vdirs-virtual-498122307b/4/aionui/.yarn/berry/cache/vdirs-npm-0.1.8-59a32a98d6-10c0.zip/node_modules/vdirs/",\
+        "packageLocation": "./.yarn/__virtual__/vdirs-virtual-498122307b/4/code-server/.yarn/berry/cache/vdirs-npm-0.1.8-59a32a98d6-10c0.zip/node_modules/vdirs/",\
         "packageDependencies": [\
           ["@types/vue", null],\
           ["evtd", "npm:0.2.4"],\
@@ -2339,7 +2339,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["vicons", [\
       ["npm:0.0.1", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/vicons-npm-0.0.1-6a233d5e30-10c0.zip/node_modules/vicons/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/vicons-npm-0.0.1-6a233d5e30-10c0.zip/node_modules/vicons/",\
         "packageDependencies": [\
           ["vicons", "npm:0.0.1"],\
           ["vue", "virtual:6a233d5e3057d4f62461851314f7fec0e61a54e68080eb2432af75b61da8b829da0a6408429da199dd5032a0a1ad9b8387f45ab0b3e726d4af39504804f2e167#npm:3.5.25"]\
@@ -2349,14 +2349,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["vite", [\
       ["npm:7.2.4", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/vite-npm-7.2.4-a445c2fb36-10c0.zip/node_modules/vite/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/vite-npm-7.2.4-a445c2fb36-10c0.zip/node_modules/vite/",\
         "packageDependencies": [\
           ["vite", "npm:7.2.4"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:d9650954c7f1725ea712d2e40695de9ea5d1c0fa9b89379134c62909d440d91b03d6c37e2823804a3404472b90a5bec73c82193190dd3c4db4c9e9edd75db91e#npm:7.2.4", {\
-        "packageLocation": "./.yarn/__virtual__/vite-virtual-b0ac94cf7c/4/aionui/.yarn/berry/cache/vite-npm-7.2.4-a445c2fb36-10c0.zip/node_modules/vite/",\
+        "packageLocation": "./.yarn/__virtual__/vite-virtual-b0ac94cf7c/4/code-server/.yarn/berry/cache/vite-npm-7.2.4-a445c2fb36-10c0.zip/node_modules/vite/",\
         "packageDependencies": [\
           ["@types/jiti", null],\
           ["@types/less", null],\
@@ -2416,14 +2416,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["vooks", [\
       ["npm:0.2.12", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/vooks-npm-0.2.12-0d1a2d856b-10c0.zip/node_modules/vooks/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/vooks-npm-0.2.12-0d1a2d856b-10c0.zip/node_modules/vooks/",\
         "packageDependencies": [\
           ["vooks", "npm:0.2.12"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:72baf388f5337d07f1fa54325626f509cc407e5eea64a4fbaf32ef77c71e01af76ef3100af956e01e176cd379efbd75faa1bc4dd8c8090d1194702375a352e87#npm:0.2.12", {\
-        "packageLocation": "./.yarn/__virtual__/vooks-virtual-ff86302e43/4/aionui/.yarn/berry/cache/vooks-npm-0.2.12-0d1a2d856b-10c0.zip/node_modules/vooks/",\
+        "packageLocation": "./.yarn/__virtual__/vooks-virtual-ff86302e43/4/code-server/.yarn/berry/cache/vooks-npm-0.2.12-0d1a2d856b-10c0.zip/node_modules/vooks/",\
         "packageDependencies": [\
           ["@types/vue", null],\
           ["evtd", "npm:0.2.4"],\
@@ -2439,14 +2439,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["vue", [\
       ["npm:3.5.25", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/vue-npm-3.5.25-7777d95aeb-10c0.zip/node_modules/vue/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/vue-npm-3.5.25-7777d95aeb-10c0.zip/node_modules/vue/",\
         "packageDependencies": [\
           ["vue", "npm:3.5.25"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:6a233d5e3057d4f62461851314f7fec0e61a54e68080eb2432af75b61da8b829da0a6408429da199dd5032a0a1ad9b8387f45ab0b3e726d4af39504804f2e167#npm:3.5.25", {\
-        "packageLocation": "./.yarn/__virtual__/vue-virtual-5eea4215aa/4/aionui/.yarn/berry/cache/vue-npm-3.5.25-7777d95aeb-10c0.zip/node_modules/vue/",\
+        "packageLocation": "./.yarn/__virtual__/vue-virtual-5eea4215aa/4/code-server/.yarn/berry/cache/vue-npm-3.5.25-7777d95aeb-10c0.zip/node_modules/vue/",\
         "packageDependencies": [\
           ["@types/typescript", null],\
           ["@vue/compiler-dom", "npm:3.5.25"],\
@@ -2466,14 +2466,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["vue-router", [\
       ["npm:4.6.3", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/vue-router-npm-4.6.3-db248b9fd8-10c0.zip/node_modules/vue-router/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/vue-router-npm-4.6.3-db248b9fd8-10c0.zip/node_modules/vue-router/",\
         "packageDependencies": [\
           ["vue-router", "npm:4.6.3"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:d9650954c7f1725ea712d2e40695de9ea5d1c0fa9b89379134c62909d440d91b03d6c37e2823804a3404472b90a5bec73c82193190dd3c4db4c9e9edd75db91e#npm:4.6.3", {\
-        "packageLocation": "./.yarn/__virtual__/vue-router-virtual-57ec520ddf/4/aionui/.yarn/berry/cache/vue-router-npm-4.6.3-db248b9fd8-10c0.zip/node_modules/vue-router/",\
+        "packageLocation": "./.yarn/__virtual__/vue-router-virtual-57ec520ddf/4/code-server/.yarn/berry/cache/vue-router-npm-4.6.3-db248b9fd8-10c0.zip/node_modules/vue-router/",\
         "packageDependencies": [\
           ["@types/vue", null],\
           ["@vue/devtools-api", "npm:6.6.4"],\
@@ -2489,14 +2489,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["vueuc", [\
       ["npm:0.4.65", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/vueuc-npm-0.4.65-e52c65ae6a-10c0.zip/node_modules/vueuc/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/vueuc-npm-0.4.65-e52c65ae6a-10c0.zip/node_modules/vueuc/",\
         "packageDependencies": [\
           ["vueuc", "npm:0.4.65"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:72baf388f5337d07f1fa54325626f509cc407e5eea64a4fbaf32ef77c71e01af76ef3100af956e01e176cd379efbd75faa1bc4dd8c8090d1194702375a352e87#npm:0.4.65", {\
-        "packageLocation": "./.yarn/__virtual__/vueuc-virtual-b8d99a1ce7/4/aionui/.yarn/berry/cache/vueuc-npm-0.4.65-e52c65ae6a-10c0.zip/node_modules/vueuc/",\
+        "packageLocation": "./.yarn/__virtual__/vueuc-virtual-b8d99a1ce7/4/code-server/.yarn/berry/cache/vueuc-npm-0.4.65-e52c65ae6a-10c0.zip/node_modules/vueuc/",\
         "packageDependencies": [\
           ["@css-render/vue3-ssr", "virtual:72baf388f5337d07f1fa54325626f509cc407e5eea64a4fbaf32ef77c71e01af76ef3100af956e01e176cd379efbd75faa1bc4dd8c8090d1194702375a352e87#npm:0.15.14"],\
           ["@juggle/resize-observer", "npm:3.4.0"],\
@@ -2518,7 +2518,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["which", [\
       ["npm:6.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/which-npm-6.0.0-48f25f0ec8-10c0.zip/node_modules/which/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/which-npm-6.0.0-48f25f0ec8-10c0.zip/node_modules/which/",\
         "packageDependencies": [\
           ["isexe", "npm:3.1.1"],\
           ["which", "npm:6.0.0"]\
@@ -2528,14 +2528,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["yallist", [\
       ["npm:4.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/yallist-npm-4.0.0-b493d9e907-10c0.zip/node_modules/yallist/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/yallist-npm-4.0.0-b493d9e907-10c0.zip/node_modules/yallist/",\
         "packageDependencies": [\
           ["yallist", "npm:4.0.0"]\
         ],\
         "linkType": "HARD"\
       }],\
       ["npm:5.0.0", {\
-        "packageLocation": "../../../aionui/.yarn/berry/cache/yallist-npm-5.0.0-8732dd9f1c-10c0.zip/node_modules/yallist/",\
+        "packageLocation": "../../../code-server/.yarn/berry/cache/yallist-npm-5.0.0-8732dd9f1c-10c0.zip/node_modules/yallist/",\
         "packageDependencies": [\
           ["yallist", "npm:5.0.0"]\
         ],\
