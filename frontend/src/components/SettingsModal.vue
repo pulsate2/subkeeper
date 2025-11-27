@@ -100,6 +100,32 @@
               </n-collapse-item>
             </n-collapse>
           </n-form-item>
+
+          <!-- Resend 配置 -->
+          <n-form-item label="Resend 邮件配置">
+            <n-collapse>
+              <n-collapse-item title="Resend 设置" name="resend">
+                <n-form-item label="API Key">
+                  <n-input 
+                    v-model:value="resendConfig.api_key" 
+                    placeholder="re_xxxxxxxxxxxx" 
+                  />
+                </n-form-item>
+                <n-form-item label="发送邮箱">
+                  <n-input 
+                    v-model:value="resendConfig.from" 
+                    placeholder="onboarding@resend.dev" 
+                  />
+                </n-form-item>
+                <n-form-item label="接收邮箱">
+                  <n-input 
+                    v-model:value="resendConfig.to" 
+                    placeholder="user@example.com" 
+                  />
+                </n-form-item>
+              </n-collapse-item>
+            </n-collapse>
+          </n-form-item>
         </n-form>
       </n-tab-pane>
       <n-tab-pane name="defaults" tab="默认策略">
@@ -175,6 +201,12 @@ const webhookConfig = ref({
   webhook_key: ''
 })
 
+const resendConfig = ref({
+  api_key: '',
+  from: '',
+  to: ''
+})
+
 const formData = ref({
   global_time: '09:00',
   global_time_value: new Date().setHours(9, 0, 0, 0),
@@ -242,6 +274,14 @@ const loadSettings = async () => {
       }
     }
     
+    // Load Resend config
+    if (settings.resend_conf) {
+      resendConfig.value = {
+        ...resendConfig.value,
+        ...settings.resend_conf
+      }
+    }
+    
     // Load global settings
     const globalTime = settings.global_time || '09:00';
     formData.value = {
@@ -268,6 +308,7 @@ const saveSettings = async () => {
       smtp_conf: smtpConfig.value.host ? smtpConfig.value : null,
       wechat_conf: wechatConfig.value.corpid ? wechatConfig.value : null,
       webhook_conf: webhookConfig.value.webhook_key ? webhookConfig.value : null,
+      resend_conf: resendConfig.value.api_key ? resendConfig.value : null,
       global_time: formData.value.global_time,
       global_days: formData.value.global_days.split(',').map(d => parseInt(d.trim()))
     }

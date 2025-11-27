@@ -25,6 +25,10 @@ async def get_settings(db: Session = Depends(get_db), current_user: str = Depend
     webhook = db.query(Settings).filter(Settings.key == "webhook_conf").first()
     settings_dict["webhook_conf"] = json.loads(webhook.value) if webhook and webhook.value else {"webhook_key": ""}
     
+    # Get Resend config
+    resend = db.query(Settings).filter(Settings.key == "resend_conf").first()
+    settings_dict["resend_conf"] = json.loads(resend.value) if resend else None
+    
     # Get global days
     global_days = db.query(Settings).filter(Settings.key == "global_days").first()
     settings_dict["global_days"] = json.loads(global_days.value) if global_days else [3, 1, 0]
@@ -62,6 +66,14 @@ async def update_settings(settings: Dict, db: Session = Depends(get_db), current
                 webhook.value = json.dumps(settings["webhook_conf"])
             else:
                 db.add(Settings(key="webhook_conf", value=json.dumps(settings["webhook_conf"])))
+        
+        # Update Resend config
+        if "resend_conf" in settings:
+            resend = db.query(Settings).filter(Settings.key == "resend_conf").first()
+            if resend:
+                resend.value = json.dumps(settings["resend_conf"])
+            else:
+                db.add(Settings(key="resend_conf", value=json.dumps(settings["resend_conf"])))
         
         # Update global days
         if "global_days" in settings:

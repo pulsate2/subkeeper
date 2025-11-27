@@ -29,6 +29,7 @@
           <n-checkbox v-model:checked="formData.notify_email">邮件通知</n-checkbox>
           <n-checkbox v-model:checked="formData.notify_wechat">企业微信通知</n-checkbox>
           <n-checkbox v-model:checked="formData.notify_webhook">Webhook通知</n-checkbox>
+          <n-checkbox v-model:checked="formData.notify_resend">Resend邮件通知</n-checkbox>
         </n-space>
       </n-form-item>
     </n-form>
@@ -89,7 +90,8 @@ const formData = ref({
   target_time_value: new Date().setHours(9, 0, 0, 0),
   notify_email: true,
   notify_wechat: true,
-  notify_webhook: true
+  notify_webhook: true,
+  notify_resend: true
 })
 
 const rules = {
@@ -110,7 +112,8 @@ watch(() => props.show, (val) => {
       target_time_value: props.reminder.target_time ? new Date(`2000-01-01 ${props.reminder.target_time}`) : new Date().setHours(9, 0, 0, 0),
       notify_email: props.reminder.notify_email !== undefined ? props.reminder.notify_email : true,
       notify_wechat: props.reminder.notify_wechat !== undefined ? props.reminder.notify_wechat : true,
-      notify_webhook: props.reminder.notify_webhook !== undefined ? props.reminder.notify_webhook : true
+      notify_webhook: props.reminder.notify_webhook !== undefined ? props.reminder.notify_webhook : true,
+      notify_resend: props.reminder.notify_resend !== undefined ? props.reminder.notify_resend : true
     }
   } else if (val && !props.reminder) {
     formData.value = {
@@ -122,7 +125,8 @@ watch(() => props.show, (val) => {
       target_time_value: new Date().setHours(9, 0, 0, 0),
       notify_email: true,
       notify_wechat: true,
-      notify_webhook: true
+      notify_webhook: true,
+      notify_resend: true
     }
   }
 })

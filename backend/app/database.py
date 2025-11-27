@@ -67,6 +67,12 @@ def run_migrations():
         except Exception:
             print("notify_webhook column already exists in subscriptions table")
         
+        try:
+            conn.execute(text('ALTER TABLE subscriptions ADD COLUMN notify_resend BOOLEAN DEFAULT TRUE'))
+            print("Added notify_resend column to subscriptions table")
+        except Exception:
+            print("notify_resend column already exists in subscriptions table")
+        
         # Force add notification columns to reminders table
         print("Adding notification columns to reminders table...")
         try:
@@ -86,6 +92,12 @@ def run_migrations():
             print("Added notify_webhook column to reminders table")
         except Exception:
             print("notify_webhook column already exists in reminders table")
+        
+        try:
+            conn.execute(text('ALTER TABLE reminders ADD COLUMN notify_resend BOOLEAN DEFAULT TRUE'))
+            print("Added notify_resend column to reminders table")
+        except Exception:
+            print("notify_resend column already exists in reminders table")
         
         conn.commit()
         print("Database migrations completed successfully!")

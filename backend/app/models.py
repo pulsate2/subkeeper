@@ -27,6 +27,7 @@ class Subscription(Base):
     notify_email = Column(Boolean, default=True)  # Enable email notification
     notify_wechat = Column(Boolean, default=True)  # Enable WeChat notification
     notify_webhook = Column(Boolean, default=True)  # Enable webhook notification
+    notify_resend = Column(Boolean, default=True)  # Enable Resend notification
 
 class Reminder(Base):
     __tablename__ = "reminders"
@@ -43,3 +44,4 @@ class Reminder(Base):
     notify_email = Column(Boolean, default=True)  # Enable email notification
     notify_wechat = Column(Boolean, default=True)  # Enable WeChat notification
     notify_webhook = Column(Boolean, default=True)  # Enable webhook notification
+    notify_resend = Column(Boolean, default=True)  # Enable Resend notification

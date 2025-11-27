@@ -6,6 +6,7 @@ import requests
 from typing import Optional
 from datetime import datetime, timedelta, timezone
 import os
+import resend
 
 class Notifier:
     def __init__(self, db_session):
@@ -18,10 +19,12 @@ class Notifier:
         smtp = self.db.query(Settings).filter(Settings.key == "smtp_conf").first()
         wechat = self.db.query(Settings).filter(Settings.key == "wechat_conf").first()
         webhook = self.db.query(Settings).filter(Settings.key == "webhook_conf").first()
+        resend_conf = self.db.query(Settings).filter(Settings.key == "resend_conf").first()
         
         self.smtp_config = json.loads(smtp.value) if smtp else None
         self.wechat_config = json.loads(wechat.value) if wechat else None
         self.webhook_config = json.loads(webhook.value) if webhook and webhook.value else {"webhook_key": ""}
+        self.resend_config = json.loads(resend_conf.value) if resend_conf else None
     
     def send_email(self, subject: str, body: str) -> bool:
         if not self.smtp_config:
@@ -73,8 +76,8 @@ class Notifier:
             print(f"WeChat send failed: {e}")
             return False
     
-    def send_notification(self, title: str, content: str, notify_email: bool = True, notify_wechat: bool = True, notify_webhook: bool = True):
-        """发送通知 - 支持邮件、企业微信和 Webhook，可根据偏好开关"""
+    def send_notification(self, title: str, content: str, notify_email: bool = True, notify_wechat: bool = True, notify_webhook: bool = True, notify_resend: bool = True):
+        """发送通知 - 支持邮件、企业微信、Webhook 和 Resend，可根据偏好开关"""
         # 发送邮件
         if notify_email:
             self.send_email(title, content)
@@ -84,6 +87,30 @@ class Notifier:
         # 发送 Webhook 通知
         if notify_webhook:
             self.send_webhook_notification(title, content)
+        # 发送 Resend 邮件
+        if notify_resend:
+            self.send_resend(title, content)
+
+    def send_resend(self, subject: str, body: str) -> bool:
+        """使用 Resend 发送邮件"""
+        if not self.resend_config:
+            return False
+        
+        try:
+            resend.api_key = self.resend_config.get('api_key')
+            
+            params = {
+                "from": self.resend_config.get('from'),
+                "to": [self.resend_config.get('to')],
+                "subject": subject,
+                "html": f"<p>{body.replace(chr(10), '<br>')}</p>"
+            }
+            
+            r = resend.Emails.send(params)
+            return r.get('id') is not None
+        except Exception as e:
+            print(f"Resend email send failed: {e}")
+            return False
 
     def send_webhook_notification(self, title: str, content: str):
         """发送通知到企业微信 Webhook"""

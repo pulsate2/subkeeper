@@ -29,6 +29,7 @@
               <n-checkbox v-model:checked="formData.notify_email">邮件通知</n-checkbox>
               <n-checkbox v-model:checked="formData.notify_wechat">企业微信通知</n-checkbox>
               <n-checkbox v-model:checked="formData.notify_webhook">Webhook通知</n-checkbox>
+              <n-checkbox v-model:checked="formData.notify_resend">Resend邮件通知</n-checkbox>
             </n-space>
           </n-form-item>
           <n-form-item label="通知时间设置">
@@ -118,7 +119,8 @@ const formData = ref({
   cust_days: '3,1,0',
   notify_email: true,
   notify_wechat: true,
-  notify_webhook: true
+  notify_webhook: true,
+  notify_resend: true
 })
 
 const cycleOptions = [
@@ -174,7 +176,8 @@ watch(() => props.show, (val) => {
       cust_days: custDaysValue,
       notify_email: props.subscription.notify_email !== undefined ? props.subscription.notify_email : true,
       notify_wechat: props.subscription.notify_wechat !== undefined ? props.subscription.notify_wechat : true,
-      notify_webhook: props.subscription.notify_webhook !== undefined ? props.subscription.notify_webhook : true
+      notify_webhook: props.subscription.notify_webhook !== undefined ? props.subscription.notify_webhook : true,
+      notify_resend: props.subscription.notify_resend !== undefined ? props.subscription.notify_resend : true
     }
     useGlobal.value = props.subscription.notify_mode === 'global'
   } else if (val && !props.subscription) {
@@ -190,7 +193,8 @@ watch(() => props.show, (val) => {
       cust_days: '3,1,0',
       notify_email: true,
       notify_wechat: true,
-      notify_webhook: true
+      notify_webhook: true,
+      notify_resend: true
     }
     useGlobal.value = true
   }
