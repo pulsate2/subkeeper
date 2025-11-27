@@ -72,7 +72,7 @@ const modalStyle = computed(() => {
 const formData = ref({
   title: '',
   content: '',
-  target_date: '',
+  target_date: new Date().toISOString().split('T')[0],
   target_time: '09:00',
   notify_email: true,
   notify_wechat: true,
@@ -101,7 +101,7 @@ watch(() => props.show, (val) => {
     formData.value = {
       title: '',
       content: '',
-      target_date: '',
+      target_date: new Date().toISOString().split('T')[0],
       target_time: '09:00',
       notify_email: true,
       notify_wechat: true,
