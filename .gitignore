@@ -58,3 +58,4 @@ data/
 # Environment
 .env
 .env.local
+frontend/frontend.zip

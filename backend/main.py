@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 from app.database import engine, Base, run_migrations
 # from scheduler import scheduler_service
@@ -34,6 +35,9 @@ app.include_router(settings.router, prefix="/api/settings", tags=["settings"])
 app.include_router(subscriptions.router, prefix="/api/subscriptions", tags=["subscriptions"])
 app.include_router(reminders.router, prefix="/api/reminders", tags=["reminders"])
 app.include_router(backup.router, prefix="/api", tags=["backup"])
+
+# Mount static files for frontend
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
 
 @app.get("/api/health")
 async def health_check():
