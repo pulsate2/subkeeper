@@ -1,40 +1,51 @@
+# =================================================================
+# STAGE 1: Build Frontend Assets
+#
+# We use a Node.js image to install dependencies and build the
+# frontend static files. We name this stage "builder".
+# =================================================================
+FROM node:22-slim AS builder
+
+WORKDIR /app/frontend
+
+# Copy package.json and install dependencies first to leverage Docker cache
+COPY frontend/package*.json ./
+RUN npm install
+
+# Copy the rest of the frontend source code
+COPY frontend/ ./
+
+# Build the production-ready static files
+RUN npm run build
+
+# =================================================================
+# STAGE 2: Final Production Image
+#
+# We start from a clean Python image. This will be our final image.
+# It will NOT contain Node.js, npm, or any frontend source code.
+# =================================================================
 FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install Node.js and Yarn for frontend
-RUN apt-get update && apt-get install -y \
-    curl \
-    && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g yarn \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
 # Install backend dependencies
+# Copy only the requirements file first to leverage cache
 COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy backend code
+# Copy the backend code
 COPY backend/ .
 
-# Copy frontend code
-COPY frontend/ ./frontend/
-
-# Build frontend
-WORKDIR /app/frontend
-RUN yarn install && yarn build
-
-WORKDIR /app
+# The magic step: Copy ONLY the built assets from the "builder" stage
+# This copies the content of /app/frontend/dist from the "builder" stage
+# into the /app/static directory in our final image.
+COPY --from=builder /app/frontend/dist ./static
 
 # Create data directory
 RUN mkdir -p /app/data
 
-# Copy built frontend to be served by FastAPI
-RUN cp -r frontend/dist ./static
-
-# Expose port
+# Expose port and set environment variables
 EXPOSE 8000
-
 ENV DB_PATH=/app/data/subkeeper.db
 ENV PYTHONUNBUFFERED=1
 
