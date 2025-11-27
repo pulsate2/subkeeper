@@ -16,7 +16,7 @@
     </div>
     
     <n-spin :show="loading">
-      <n-space vertical size="medium">
+      <n-space vertical size="medium" v-if="filteredSubscriptions.length > 0">
         <n-card
           v-for="sub in filteredSubscriptions"
           :key="sub.id"
@@ -46,6 +46,18 @@
           </div>
         </n-card>
       </n-space>
+      
+      <n-empty 
+        v-else
+        description="暂无订阅数据"
+        style="margin-top: 40px;"
+      >
+        <template #extra>
+          <n-button @click="handleAddClick" type="primary" size="small">
+            添加第一个订阅
+          </n-button>
+        </template>
+      </n-empty>
     </n-spin>
     
     <SubscriptionModal 
