@@ -98,7 +98,7 @@ def notification_job():
             if should_notify:
                 title = f"订阅提醒: {sub.name}"
                 content = f"服务: {sub.name}\n金额: ¥{sub.price}\n扣款日期: {sub.next_date}\n还有 {days_until} 天"
-                notifier.send_notification(title, content)
+                notifier.send_notification(title, content, sub.notify_email, sub.notify_wechat, sub.notify_webhook)
                 
                 sub.last_sent = now
                 db.commit()
@@ -118,7 +118,7 @@ def notification_job():
                 if reminder.content:
                     reminder_content += f"内容: {reminder.content}\n"
                 reminder_content += f"时间: {reminder.target_date} {reminder.target_time}"
-                notifier.send_notification(title, reminder_content)
+                notifier.send_notification(title, reminder_content, reminder.notify_email, reminder.notify_wechat, reminder.notify_webhook)
                 
                 reminder.is_sent = True
                 db.commit()

@@ -13,6 +13,10 @@ class SubscriptionBase(BaseModel):
     cust_time: Optional[str] = None
     group_name: str = 'default'
     is_disabled: bool = False
+    # Custom notification switches
+    notify_email: bool = True
+    notify_wechat: bool = True
+    notify_webhook: bool = True
 
 class SubscriptionCreate(SubscriptionBase):
     pass
@@ -34,6 +38,10 @@ class ReminderBase(BaseModel):
     target_time: str  # HH:MM format
     group_name: str = 'default'
     is_disabled: bool = False
+    # Custom notification switches
+    notify_email: bool = True
+    notify_wechat: bool = True
+    notify_webhook: bool = True
 
 class ReminderCreate(ReminderBase):
     pass

@@ -52,38 +52,11 @@
       </n-space>
     </n-spin>
     
-    <n-modal v-model:show="showAddModal" preset="card" :title="editingId ? '编辑提醒' : '添加提醒'" style="width: 500px;">
-      <n-form>
-        <n-form-item label="分组">
-          <n-select v-model:value="form.group_name" :options="allGroupOptions" placeholder="选择或输入分组名称" filterable tag />
-        </n-form-item>
-        <n-form-item label="标题">
-          <n-input v-model:value="form.title" placeholder="提醒事项" />
-        </n-form-item>
-        <n-form-item label="内容">
-          <n-input v-model:value="form.content" type="textarea" placeholder="提醒内容" />
-        </n-form-item>
-        <n-form-item label="日期">
-          <n-date-picker v-model:formatted-value="form.target_date" type="date" format="yyyy-MM-dd" style="width: 100%;" />
-        </n-form-item>
-        <n-form-item label="时间">
-          <n-time-picker v-model:formatted-value="form.target_time" format="HH:mm" />
-        </n-form-item>
-        <n-form-item label="状态">
-          <n-switch v-model:value="form.is_disabled">
-            <template #checked>禁用</template>
-            <template #unchecked>启用</template>
-          </n-switch>
-        </n-form-item>
-      </n-form>
-      <template #footer>
-        <n-space justify="end">
-          <n-button @click="showAddModal = false">取消</n-button>
-          <n-button v-if="editingId" @click="deleteReminder" type="error">删除</n-button>
-          <n-button @click="saveReminder" type="primary">保存</n-button>
-        </n-space>
-      </template>
-    </n-modal>
+    <ReminderModal 
+      v-model:show="showAddModal" 
+      :reminder="editingReminder" 
+      @saved="loadData" 
+    />
   </div>
 </template>
 
@@ -91,6 +64,7 @@
 import { ref, onMounted, computed } from 'vue'
 import { useMessage, useDialog } from 'naive-ui'
 import axios from 'axios'
+import ReminderModal from './ReminderModal.vue'
 
 const message = useMessage()
 const dialog = useDialog()
@@ -99,17 +73,8 @@ const reminders = ref([])
 const allGroups = ref(['default'])
 const loading = ref(false)
 const showAddModal = ref(false)
-const editingId = ref(null)
+const editingReminder = ref(null)
 const currentGroup = ref('all') // 'all' means show all groups
-
-const form = ref({
-  title: '',
-  content: '',
-  target_date: null,
-  target_time: '09:00',
-  group_name: 'default',
-  is_disabled: false
-})
 
 // Computed properties
 const groupOptions = computed(() => {
@@ -133,8 +98,7 @@ const filteredReminders = computed(() => {
 
 const handleAddClick = () => {
   console.log('Add reminder button clicked')
-  editingId.value = null
-  resetForm()
+  editingReminder.value = null
   showAddModal.value = true
 }
 
@@ -160,66 +124,8 @@ const loadData = async () => {
 }
 
 const editReminder = (reminder) => {
-  editingId.value = reminder.id
-  form.value = {
-    title: reminder.title,
-    content: reminder.content || '',
-    target_date: reminder.target_date,
-    target_time: reminder.target_time,
-    group_name: reminder.group_name || 'default',
-    is_disabled: reminder.is_disabled || false
-  }
+  editingReminder.value = reminder
   showAddModal.value = true
-}
-
-const resetForm = () => {
-  form.value = { 
-    title: '', 
-    content: '', 
-    target_date: null, 
-    target_time: '09:00', 
-    group_name: 'default', 
-    is_disabled: false 
-  }
-}
-
-const saveReminder = async () => {
-  try {
-    if (editingId.value) {
-      await axios.put(`/api/reminders/${editingId.value}`, form.value)
-      message.success('提醒已更新')
-    } else {
-      await axios.post('/api/reminders/', form.value)
-      message.success('提醒已添加')
-    }
-    
-    showAddModal.value = false
-    editingId.value = null
-    resetForm()
-    loadData()
-  } catch (error) {
-    message.error('保存失败')
-  }
-}
-
-const deleteReminder = () => {
-  dialog.warning({
-    title: '确认删除',
-    content: '确定要删除这个提醒吗?',
-    positiveText: '删除',
-    negativeText: '取消',
-    onPositiveClick: async () => {
-      try {
-        await axios.delete(`/api/reminders/${editingId.value}`)
-        message.success('提醒已删除')
-        showAddModal.value = false
-        editingId.value = null
-        loadData()
-      } catch (error) {
-        message.error('删除失败')
-      }
-    }
-  })
 }
 
 onMounted(() => {

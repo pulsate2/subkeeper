@@ -27,54 +27,65 @@ def get_db():
 def run_migrations():
     """Run database migrations to update schema"""
     with engine.connect() as conn:
-        # Check if group_name column exists in reminders table
-        result = conn.execute(text("""
-            SELECT name FROM pragma_table_info('reminders') WHERE name='group_name'
-        """))
+        # Force add notification columns to subscriptions table
+        print("Adding notification columns to subscriptions table...")
+        result = conn.execute(text("PRAGMA table_info(subscriptions)"))
+        columns = [row[1] for row in result]
         
-        if not result.fetchone():
-            # Add group_name column to reminders table
-            conn.execute(text("ALTER TABLE reminders ADD COLUMN group_name TEXT DEFAULT 'default'"))
-            conn.commit()
-            print("Added group_name column to reminders table")
-        else:
-            print("group_name column already exists in reminders table")
-        
-        # Check if group_name column exists in subscriptions table
-        result = conn.execute(text("""
-            SELECT name FROM pragma_table_info('subscriptions') WHERE name='group_name'
-        """))
-        
-        if not result.fetchone():
-            # Add group_name column to subscriptions table
-            conn.execute(text("ALTER TABLE subscriptions ADD COLUMN group_name TEXT DEFAULT 'default'"))
-            conn.commit()
-            print("Added group_name column to subscriptions table")
-        else:
-            print("group_name column already exists in subscriptions table")
-        
-        # Check if is_disabled column exists in subscriptions table
-        result = conn.execute(text("""
-            SELECT name FROM pragma_table_info('subscriptions') WHERE name='is_disabled'
-        """))
-        
-        if not result.fetchone():
-            # Add is_disabled column to subscriptions table
-            conn.execute(text("ALTER TABLE subscriptions ADD COLUMN is_disabled BOOLEAN DEFAULT FALSE"))
-            conn.commit()
-            print("Added is_disabled column to subscriptions table")
+        if 'is_disabled' not in columns:
+            print("Adding is_disabled column to subscriptions table...")
+            conn.execute(text('ALTER TABLE subscriptions ADD COLUMN is_disabled BOOLEAN DEFAULT FALSE'))
         else:
             print("is_disabled column already exists in subscriptions table")
         
-        # Check if is_disabled column exists in reminders table
-        result = conn.execute(text("""
-            SELECT name FROM pragma_table_info('reminders') WHERE name='is_disabled'
-        """))
+        # Migration for reminders table
+        print("Checking reminders table...")
+        result = conn.execute(text("PRAGMA table_info(reminders)"))
+        columns = [row[1] for row in result]
         
-        if not result.fetchone():
-            # Add is_disabled column to reminders table
-            conn.execute(text("ALTER TABLE reminders ADD COLUMN is_disabled BOOLEAN DEFAULT FALSE"))
-            conn.commit()
-            print("Added is_disabled column to reminders table")
+        if 'is_disabled' not in columns:
+            print("Adding is_disabled column to reminders table...")
+            conn.execute(text('ALTER TABLE reminders ADD COLUMN is_disabled BOOLEAN DEFAULT FALSE'))
         else:
             print("is_disabled column already exists in reminders table")
+        
+        try:
+            conn.execute(text('ALTER TABLE subscriptions ADD COLUMN notify_email BOOLEAN DEFAULT TRUE'))
+            print("Added notify_email column to subscriptions table")
+        except Exception:
+            print("notify_email column already exists in subscriptions table")
+        
+        try:
+            conn.execute(text('ALTER TABLE subscriptions ADD COLUMN notify_wechat BOOLEAN DEFAULT TRUE'))
+            print("Added notify_wechat column to subscriptions table")
+        except Exception:
+            print("notify_wechat column already exists in subscriptions table")
+        
+        try:
+            conn.execute(text('ALTER TABLE subscriptions ADD COLUMN notify_webhook BOOLEAN DEFAULT TRUE'))
+            print("Added notify_webhook column to subscriptions table")
+        except Exception:
+            print("notify_webhook column already exists in subscriptions table")
+        
+        # Force add notification columns to reminders table
+        print("Adding notification columns to reminders table...")
+        try:
+            conn.execute(text('ALTER TABLE reminders ADD COLUMN notify_email BOOLEAN DEFAULT TRUE'))
+            print("Added notify_email column to reminders table")
+        except Exception:
+            print("notify_email column already exists in reminders table")
+        
+        try:
+            conn.execute(text('ALTER TABLE reminders ADD COLUMN notify_wechat BOOLEAN DEFAULT TRUE'))
+            print("Added notify_wechat column to reminders table")
+        except Exception:
+            print("notify_wechat column already exists in reminders table")
+        
+        try:
+            conn.execute(text('ALTER TABLE reminders ADD COLUMN notify_webhook BOOLEAN DEFAULT TRUE'))
+            print("Added notify_webhook column to reminders table")
+        except Exception:
+            print("notify_webhook column already exists in reminders table")
+        
+        conn.commit()
+        print("Database migrations completed successfully!")

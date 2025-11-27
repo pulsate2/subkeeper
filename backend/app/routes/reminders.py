@@ -45,6 +45,7 @@ async def update_reminder(reminder_id: int, reminder: ReminderUpdate, db: Sessio
         raise HTTPException(status_code=404, detail="Reminder not found")
     
     update_data = reminder.dict(exclude_unset=True)
+    
     for field, value in update_data.items():
         setattr(db_reminder, field, value)
     

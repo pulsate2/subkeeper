@@ -17,22 +17,33 @@
         <n-date-picker v-model:formatted-value="formData.next_date" type="date" format="yyyy-MM-dd" style="width: 100%;" />
       </n-form-item>
       <n-form-item label="通知设置">
-        <n-switch v-model:value="useGlobal">
-          <template #checked>跟随默认</template>
-          <template #unchecked>自定义</template>
-        </n-switch>
+        <n-space vertical>
+          <n-form-item label="通知方式">
+            <n-space vertical>
+              <n-checkbox v-model:checked="formData.notify_email">邮件通知</n-checkbox>
+              <n-checkbox v-model:checked="formData.notify_wechat">企业微信通知</n-checkbox>
+              <n-checkbox v-model:checked="formData.notify_webhook">Webhook通知</n-checkbox>
+            </n-space>
+          </n-form-item>
+          <n-form-item label="通知时间设置">
+            <n-switch v-model:value="useGlobal">
+              <template #checked>跟随默认</template>
+              <template #unchecked>自定义</template>
+            </n-switch>
+            <div v-if="!useGlobal" style="margin-top: 10px;">
+              <n-form-item label="通知时间">
+                <n-time-picker v-model:formatted-value="formData.cust_time" format="HH:mm" style="width: 100%;" />
+              </n-form-item>
+              <n-form-item label="提醒天数">
+                <n-input v-model:value="formData.cust_days" placeholder="例如: 7,3,1,0" />
+              </n-form-item>
+            </div>
+            <div v-else style="margin-top: 10px;">
+              <n-alert type="info" title="将使用系统默认通知时间和天数" />
+            </div>
+          </n-form-item>
+        </n-space>
       </n-form-item>
-      <div v-if="!useGlobal">
-        <n-form-item label="通知时间">
-          <n-time-picker v-model:formatted-value="formData.cust_time" format="HH:mm" style="width: 100%;" />
-        </n-form-item>
-        <n-form-item label="提醒天数">
-          <n-input v-model:value="formData.cust_days" placeholder="例如: 7,3,1,0" />
-        </n-form-item>
-      </div>
-      <div v-else>
-        <n-alert type="info" title="将使用系统默认通知设置" />
-      </div>
     </n-form>
     <template #footer>
       <n-space justify="end">
@@ -91,7 +102,10 @@ const formData = ref({
   next_date: '',
   notify_mode: 'global',
   cust_time: '09:00',
-  cust_days: '3,1,0'
+  cust_days: '3,1,0',
+  notify_email: true,
+  notify_wechat: true,
+  notify_webhook: true
 })
 
 const cycleOptions = [
@@ -143,7 +157,10 @@ watch(() => props.show, (val) => {
       next_date: props.subscription.next_date,
       notify_mode: props.subscription.notify_mode,
       cust_time: props.subscription.cust_time || '09:00',
-      cust_days: custDaysValue
+      cust_days: custDaysValue,
+      notify_email: props.subscription.notify_email !== undefined ? props.subscription.notify_email : true,
+      notify_wechat: props.subscription.notify_wechat !== undefined ? props.subscription.notify_wechat : true,
+      notify_webhook: props.subscription.notify_webhook !== undefined ? props.subscription.notify_webhook : true
     }
     useGlobal.value = props.subscription.notify_mode === 'global'
   } else if (val && !props.subscription) {
@@ -155,7 +172,10 @@ watch(() => props.show, (val) => {
       next_date: '',
       notify_mode: 'global',
       cust_time: '09:00',
-      cust_days: '3,1,0'
+      cust_days: '3,1,0',
+      notify_email: true,
+      notify_wechat: true,
+      notify_webhook: true
     }
     useGlobal.value = true
   }

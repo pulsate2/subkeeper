@@ -23,6 +23,10 @@ class Subscription(Base):
     last_sent = Column(DateTime, nullable=True)
     group_name = Column(String, default='default')  # Group name for subscription
     is_disabled = Column(Boolean, default=False)  # Disable functionality
+    # Custom notification switches
+    notify_email = Column(Boolean, default=True)  # Enable email notification
+    notify_wechat = Column(Boolean, default=True)  # Enable WeChat notification
+    notify_webhook = Column(Boolean, default=True)  # Enable webhook notification
 
 class Reminder(Base):
     __tablename__ = "reminders"
@@ -35,3 +39,7 @@ class Reminder(Base):
     is_sent = Column(Boolean, default=False)
     group_name = Column(String, default='default')  # Group name for reminder
     is_disabled = Column(Boolean, default=False)  # Disable functionality
+    # Custom notification switches
+    notify_email = Column(Boolean, default=True)  # Enable email notification
+    notify_wechat = Column(Boolean, default=True)  # Enable WeChat notification
+    notify_webhook = Column(Boolean, default=True)  # Enable webhook notification

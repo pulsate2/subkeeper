@@ -73,14 +73,17 @@ class Notifier:
             print(f"WeChat send failed: {e}")
             return False
     
-    def send_notification(self, title: str, content: str):
-        """发送通知 - 支持邮件、企业微信和 Webhook"""
+    def send_notification(self, title: str, content: str, notify_email: bool = True, notify_wechat: bool = True, notify_webhook: bool = True):
+        """发送通知 - 支持邮件、企业微信和 Webhook，可根据偏好开关"""
         # 发送邮件
-        self.send_email(title, content)
+        if notify_email:
+            self.send_email(title, content)
         # 发送企业微信
-        self.send_wechat(title, content)
+        if notify_wechat:
+            self.send_wechat(title, content)
         # 发送 Webhook 通知
-        self.send_webhook_notification(title, content)
+        if notify_webhook:
+            self.send_webhook_notification(title, content)
 
     def send_webhook_notification(self, title: str, content: str):
         """发送通知到企业微信 Webhook"""

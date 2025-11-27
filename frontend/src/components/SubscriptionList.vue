@@ -48,58 +48,11 @@
       </n-space>
     </n-spin>
     
-    <n-modal v-model:show="showAddModal" preset="card" :title="editingId ? '编辑订阅' : '添加订阅'" style="width: 600px;">
-      <n-form>
-        <n-form-item label="分组">
-          <n-select v-model:value="form.group_name" :options="allGroupOptions" placeholder="选择或输入分组名称" filterable tag />
-        </n-form-item>
-        <n-form-item label="服务名称">
-          <n-input v-model:value="form.name" placeholder="例如: Netflix" />
-        </n-form-item>
-        <n-form-item label="价格">
-          <n-input-number v-model:value="form.price" :min="0" style="width: 100%;" />
-        </n-form-item>
-        <n-form-item label="周期">
-          <n-space>
-            <n-input-number v-model:value="form.cycle_val" :min="1" style="width: 100px;" />
-            <n-select v-model:value="form.cycle_unit" :options="cycleOptions" style="width: 100px;" />
-          </n-space>
-        </n-form-item>
-        <n-form-item label="下次扣款日期">
-          <n-date-picker v-model:formatted-value="form.next_date" type="date" format="yyyy-MM-dd" style="width: 100%;" />
-        </n-form-item>
-        <n-form-item label="通知设置">
-          <n-switch v-model:value="useGlobal" @update:value="toggleMode">
-            <template #checked>跟随默认</template>
-            <template #unchecked>自定义</template>
-          </n-switch>
-        </n-form-item>
-        <div v-if="!useGlobal">
-          <n-form-item label="通知时间">
-            <n-time-picker v-model:formatted-value="form.cust_time" format="HH:mm" />
-          </n-form-item>
-          <n-form-item label="提醒天数(逗号分隔)">
-            <n-input v-model:value="form.cust_days" placeholder="例如: 7,3,1,0" />
-          </n-form-item>
-        </div>
-        <div v-else>
-          <n-alert type="info" title="将使用系统默认通知设置" />
-        </div>
-        <n-form-item label="状态">
-          <n-switch v-model:value="form.is_disabled">
-            <template #checked>禁用</template>
-            <template #unchecked>启用</template>
-          </n-switch>
-        </n-form-item>
-      </n-form>
-      <template #footer>
-        <n-space justify="end">
-          <n-button @click="showAddModal = false">取消</n-button>
-          <n-button v-if="editingId" @click="deleteSub" type="error">删除</n-button>
-          <n-button @click="saveSub" type="primary">保存</n-button>
-        </n-space>
-      </template>
-    </n-modal>
+    <SubscriptionModal 
+      v-model:show="showAddModal" 
+      :subscription="editingSubscription" 
+      @saved="loadData" 
+    />
   </div>
 </template>
 
@@ -107,6 +60,7 @@
 import { ref, onMounted, watch, computed } from 'vue'
 import { useMessage, useDialog } from 'naive-ui'
 import axios from 'axios'
+import SubscriptionModal from './SubscriptionModal.vue'
 
 const message = useMessage()
 const dialog = useDialog()
@@ -115,22 +69,8 @@ const subscriptions = ref([])
 const allGroups = ref(['default'])
 const loading = ref(false)
 const showAddModal = ref(false)
-const editingId = ref(null)
-const useGlobal = ref(true)
+const editingSubscription = ref(null)
 const currentGroup = ref('all') // 'all' means show all groups
-
-const form = ref({
-  name: '',
-  price: 0,
-  cycle_val: 1,
-  cycle_unit: 'month',
-  next_date: null,
-  notify_mode: 'global',
-  cust_time: '09:00',
-  cust_days: '3,1,0',
-  group_name: 'default',
-  is_disabled: false
-})
 
 const cycleOptions = [
   { label: '天', value: 'day' },
@@ -148,10 +88,6 @@ const groupOptions = computed(() => {
   return options
 })
 
-const allGroupOptions = computed(() => {
-  return allGroups.value.map(group => ({ label: group, value: group }))
-})
-
 const filteredSubscriptions = computed(() => {
   if (currentGroup.value === 'all' || !currentGroup.value) {
     return subscriptions.value
@@ -159,38 +95,9 @@ const filteredSubscriptions = computed(() => {
   return subscriptions.value.filter(sub => sub.group_name === currentGroup.value)
 })
 
-// Watch for changes to showAddModal to reset form when opening/closing
-watch(showAddModal, (val) => {
-  if (val && editingId.value) {
-    // If we're showing modal for editing, the form should already be populated
-  } else if (val && !editingId.value) {
-    // If we're showing modal for creating, reset the form
-    resetForm()
-    useGlobal.value = true
-  }
-})
-
-const resetForm = () => {
-  form.value = {
-    name: '',
-    price: 0,
-    cycle_val: 1,
-    cycle_unit: 'month',
-    next_date: null,
-    notify_mode: 'global',
-    cust_time: '09:00',
-    cust_days: '3,1,0',
-    group_name: 'default',
-    is_disabled: false
-  }
-}
-
 const handleAddClick = () => {
   console.log('Add button clicked')
-  // Clear editing state for creating new subscription
-  editingId.value = null
-  resetForm()
-  useGlobal.value = true
+  editingSubscription.value = null
   showAddModal.value = true
 }
 
@@ -222,73 +129,9 @@ const getDaysUntil = (dateStr) => {
   return diff
 }
 
-const toggleMode = (value) => {
-  form.value.notify_mode = value ? 'global' : 'custom'
-}
-
 const editSub = (sub) => {
-  editingId.value = sub.id
-  form.value = {
-    name: sub.name,
-    price: sub.price,
-    cycle_val: sub.cycle_val,
-    cycle_unit: sub.cycle_unit,
-    next_date: sub.next_date,
-    notify_mode: sub.notify_mode,
-    cust_time: sub.cust_time || '09:00',
-    cust_days: sub.cust_days || '3,1,0',
-    group_name: sub.group_name || 'default',
-    is_disabled: sub.is_disabled || false
-  }
-  useGlobal.value = sub.notify_mode === 'global'
+  editingSubscription.value = sub
   showAddModal.value = true
-}
-
-const saveSub = async () => {
-  try {
-    const data = {
-      ...form.value,
-      cust_days: useGlobal.value ? null : form.value.cust_days,
-      cust_time: useGlobal.value ? null : form.value.cust_time,
-      notify_mode: useGlobal.value ? 'global' : 'custom'
-    }
-    
-    if (editingId.value) {
-      await axios.put(`/api/subscriptions/${editingId.value}`, data)
-      message.success('订阅已更新')
-    } else {
-      await axios.post('/api/subscriptions/', data)
-      message.success('订阅已添加')
-    }
-    
-    showAddModal.value = false
-    editingId.value = null
-    resetForm()
-    useGlobal.value = true
-    loadData()
-  } catch (error) {
-    message.error('保存失败')
-  }
-}
-
-const deleteSub = () => {
-  dialog.warning({
-    title: '确认删除',
-    content: '确定要删除这个订阅吗?',
-    positiveText: '删除',
-    negativeText: '取消',
-    onPositiveClick: async () => {
-      try {
-        await axios.delete(`/api/subscriptions/${editingId.value}`)
-        message.success('订阅已删除')
-        showAddModal.value = false
-        editingId.value = null
-        loadData()
-      } catch (error) {
-        message.error('删除失败')
-      }
-    }
-  })
 }
 
 onMounted(() => {
