@@ -8,9 +8,36 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* 防止水平滚动 */
 }
 
 #app {
   width: 100%;
   min-height: 100vh;
+}
+
+/* 移动端基础样式 */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  /* 防止移动端点击延迟 */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  /* 移动端滚动优化 */
+  html, body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
 }
