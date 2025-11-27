@@ -105,7 +105,12 @@
       <n-tab-pane name="defaults" tab="默认策略">
         <n-form>
           <n-form-item label="默认通知时间">
-            <n-time-picker v-model:formatted-value="formData.global_time" format="HH:mm" style="width: 100%;" />
+            <n-time-picker 
+              v-model:value="formData.global_time_value" 
+              format="HH:mm" 
+              style="width: 100%;" 
+              :clearable="false"
+            />
           </n-form-item>
           <n-form-item label="默认提醒天数">
             <n-input v-model:value="formData.global_days" placeholder="例如: 3,1,0" />
@@ -172,6 +177,7 @@ const webhookConfig = ref({
 
 const formData = ref({
   global_time: '09:00',
+  global_time_value: new Date().setHours(9, 0, 0, 0),
   global_days: '3,1,0'
 })
 
@@ -237,8 +243,10 @@ const loadSettings = async () => {
     }
     
     // Load global settings
+    const globalTime = settings.global_time || '09:00';
     formData.value = {
-      global_time: settings.global_time || '09:00',
+      global_time: globalTime,
+      global_time_value: new Date(`2000-01-01 ${globalTime}`),
       global_days: settings.global_days ? settings.global_days.join(',') : '3,1,0'
     }
   } catch (error) {
@@ -248,6 +256,14 @@ const loadSettings = async () => {
 
 const saveSettings = async () => {
   try {
+    // Convert time value to string format
+    if (formData.value.global_time_value) {
+      const timeDate = new Date(formData.value.global_time_value);
+      const hours = timeDate.getHours().toString().padStart(2, '0');
+      const minutes = timeDate.getMinutes().toString().padStart(2, '0');
+      formData.value.global_time = `${hours}:${minutes}`;
+    }
+
     const data = {
       smtp_conf: smtpConfig.value.host ? smtpConfig.value : null,
       wechat_conf: wechatConfig.value.corpid ? wechatConfig.value : null,

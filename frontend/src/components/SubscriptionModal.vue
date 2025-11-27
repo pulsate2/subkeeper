@@ -14,7 +14,13 @@
         </n-space>
       </n-form-item>
       <n-form-item label="下次扣款日期" path="next_date">
-        <n-date-picker v-model:formatted-value="formData.next_date" type="date" format="yyyy-MM-dd" style="width: 100%;" />
+        <n-date-picker 
+          v-model:value="formData.next_date_value" 
+          type="date" 
+          format="yyyy-MM-dd" 
+          style="width: 100%;" 
+          :clearable="false"
+        />
       </n-form-item>
       <n-form-item label="通知设置">
         <n-space vertical>
@@ -32,7 +38,13 @@
             </n-switch>
             <div v-if="!useGlobal" style="margin-top: 10px;">
               <n-form-item label="通知时间">
-                <n-time-picker v-model:formatted-value="formData.cust_time" format="HH:mm" style="width: 100%;" />
+                <n-time-picker 
+                  v-model:formatted-value="formData.cust_time" 
+                  format="HH:mm" 
+                  value-format="HH:mm"
+                  style="width: 100%;" 
+                  :clearable="false"
+                />
               </n-form-item>
               <n-form-item label="提醒天数">
                 <n-input v-model:value="formData.cust_days" placeholder="例如: 7,3,1,0" />
@@ -99,7 +111,8 @@ const formData = ref({
   price: 0,
   cycle_val: 1,
   cycle_unit: 'month',
-  next_date: '',
+  next_date: new Date().toISOString().split('T')[0], // 设置默认日期为今天
+  next_date_value: new Date().getTime(), // 使用时间戳作为日期选择器的值
   notify_mode: 'global',
   cust_time: '09:00',
   cust_days: '3,1,0',
@@ -155,6 +168,7 @@ watch(() => props.show, (val) => {
       cycle_val: props.subscription.cycle_val,
       cycle_unit: props.subscription.cycle_unit,
       next_date: props.subscription.next_date,
+      next_date_value: props.subscription.next_date ? new Date(props.subscription.next_date).getTime() : new Date().getTime(),
       notify_mode: props.subscription.notify_mode,
       cust_time: props.subscription.cust_time || '09:00',
       cust_days: custDaysValue,
@@ -169,7 +183,8 @@ watch(() => props.show, (val) => {
       price: 0,
       cycle_val: 1,
       cycle_unit: 'month',
-      next_date: '',
+      next_date: new Date().toISOString().split('T')[0],
+      next_date_value: new Date().getTime(),
       notify_mode: 'global',
       cust_time: '09:00',
       cust_days: '3,1,0',
@@ -187,6 +202,11 @@ watch(show, (val) => {
 
 const saveSub = async () => {
   try {
+    // Convert date value to string format
+    if (formData.value.next_date_value) {
+      formData.value.next_date = new Date(formData.value.next_date_value).toISOString().split('T')[0];
+    }
+
     // Prepare cust_days as JSON array
     let custDaysValue = null;
     if (!useGlobal.value && formData.value.cust_days) {

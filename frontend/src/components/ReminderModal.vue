@@ -8,10 +8,21 @@
         <n-input type="textarea" v-model:value="formData.content" placeholder="详细描述提醒内容" :rows="3" />
       </n-form-item>
       <n-form-item label="提醒日期" path="target_date">
-        <n-date-picker v-model:formatted-value="formData.target_date" type="date" format="yyyy-MM-dd" style="width: 100%;" />
+        <n-date-picker 
+          v-model:value="formData.target_date_value" 
+          type="date" 
+          format="yyyy-MM-dd" 
+          style="width: 100%;" 
+          :clearable="false"
+        />
       </n-form-item>
       <n-form-item label="提醒时间" path="target_time">
-        <n-time-picker v-model:formatted-value="formData.target_time" format="HH:mm" style="width: 100%;" />
+        <n-time-picker 
+          v-model:value="formData.target_time_value" 
+          format="HH:mm" 
+          style="width: 100%;" 
+          :clearable="false"
+        />
       </n-form-item>
       <n-form-item label="通知方式">
         <n-space vertical>
@@ -73,7 +84,9 @@ const formData = ref({
   title: '',
   content: '',
   target_date: new Date().toISOString().split('T')[0],
+  target_date_value: new Date().getTime(),
   target_time: '09:00',
+  target_time_value: new Date().setHours(9, 0, 0, 0),
   notify_email: true,
   notify_wechat: true,
   notify_webhook: true
@@ -92,7 +105,9 @@ watch(() => props.show, (val) => {
       title: props.reminder.title,
       content: props.reminder.content || '',
       target_date: props.reminder.target_date,
+      target_date_value: props.reminder.target_date ? new Date(props.reminder.target_date).getTime() : new Date().getTime(),
       target_time: props.reminder.target_time,
+      target_time_value: props.reminder.target_time ? new Date(`2000-01-01 ${props.reminder.target_time}`) : new Date().setHours(9, 0, 0, 0),
       notify_email: props.reminder.notify_email !== undefined ? props.reminder.notify_email : true,
       notify_wechat: props.reminder.notify_wechat !== undefined ? props.reminder.notify_wechat : true,
       notify_webhook: props.reminder.notify_webhook !== undefined ? props.reminder.notify_webhook : true
@@ -102,7 +117,9 @@ watch(() => props.show, (val) => {
       title: '',
       content: '',
       target_date: new Date().toISOString().split('T')[0],
+      target_date_value: new Date().getTime(),
       target_time: '09:00',
+      target_time_value: new Date().setHours(9, 0, 0, 0),
       notify_email: true,
       notify_wechat: true,
       notify_webhook: true
@@ -116,6 +133,17 @@ watch(show, (val) => {
 
 const saveReminder = async () => {
   try {
+    // Convert date and time values to string format
+    if (formData.value.target_date_value) {
+      formData.value.target_date = new Date(formData.value.target_date_value).toISOString().split('T')[0];
+    }
+    if (formData.value.target_time_value) {
+      const timeDate = new Date(formData.value.target_time_value);
+      const hours = timeDate.getHours().toString().padStart(2, '0');
+      const minutes = timeDate.getMinutes().toString().padStart(2, '0');
+      formData.value.target_time = `${hours}:${minutes}`;
+    }
+
     const data = { ...formData.value }
 
     if (props.reminder) {
