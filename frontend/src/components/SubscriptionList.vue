@@ -43,6 +43,17 @@
               <div class="next-date">{{ sub.next_date }}</div>
               <div class="days-left">{{ getDaysUntil(sub.next_date) }}天后</div>
             </div>
+            <div class="sub-actions" @click.stop>
+              <n-button 
+                v-if="!sub.is_disabled"
+                size="small" 
+                type="primary" 
+                @click="handleRenew(sub)"
+                :loading="renewingId === sub.id"
+              >
+                进入下一周期
+              </n-button>
+            </div>
           </div>
         </n-card>
       </n-space>
@@ -83,6 +94,7 @@ const loading = ref(false)
 const showAddModal = ref(false)
 const editingSubscription = ref(null)
 const currentGroup = ref('all') // 'all' means show all groups
+const renewingId = ref(null) // Track which subscription is being renewed
 
 const cycleOptions = [
   { label: '天', value: 'day' },
@@ -146,6 +158,31 @@ const editSub = (sub) => {
   showAddModal.value = true
 }
 
+const handleRenew = (sub) => {
+  dialog.warning({
+    title: '确认进入下一扣费周期',
+    content: `确定要将「${sub.name}」的扣费日期更新到下一个周期吗？\n当前扣费日期：${sub.next_date}\n新扣费日期将根据订阅周期自动计算。`,
+    positiveText: '确认',
+    negativeText: '取消',
+    onPositiveClick: () => {
+      renewSubscription(sub.id)
+    }
+  })
+}
+
+const renewSubscription = async (subscriptionId) => {
+  renewingId.value = subscriptionId
+  try {
+    const response = await axios.post(`/api/subscriptions/${subscriptionId}/renew`)
+    message.success('已成功进入下一扣费周期')
+    await loadData() // Refresh the subscription list
+  } catch (error) {
+    message.error('操作失败：' + (error.response?.data?.detail || '未知错误'))
+  } finally {
+    renewingId.value = null
+  }
+}
+
 onMounted(() => {
   loadData()
 })
@@ -181,6 +218,7 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .sub-info {
@@ -213,6 +251,11 @@ onMounted(() => {
   color: #18a058;
 }
 
+.sub-actions {
+  display: flex;
+  align-items: center;
+}
+
 .disabled-card {
   opacity: 0.6;
   background-color: #f5f5f5;
@@ -241,6 +284,11 @@ onMounted(() => {
   
   .sub-date {
     text-align: left;
+  }
+  
+  .sub-actions {
+    width: 100%;
+    justify-content: flex-end;
   }
 }
 </style>

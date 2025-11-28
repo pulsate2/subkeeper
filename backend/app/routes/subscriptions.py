@@ -107,3 +107,30 @@ async def delete_subscription(subscription_id: int, db: Session = Depends(get_db
     db.delete(db_sub)
     db.commit()
     return {"message": "Subscription deleted successfully"}
+
+@router.post("/{subscription_id}/renew")
+async def renew_subscription(subscription_id: int, db: Session = Depends(get_db), current_user: str = Depends(verify_token)):
+    """Manually trigger next billing cycle for a subscription"""
+    db_sub = db.query(Subscription).filter(Subscription.id == subscription_id).first()
+    if not db_sub:
+        raise HTTPException(status_code=404, detail="Subscription not found")
+    
+    # Calculate next date based on cycle
+    from datetime import timedelta
+    from dateutil.relativedelta import relativedelta
+    
+    if db_sub.cycle_unit == 'day':
+        db_sub.next_date = db_sub.next_date + timedelta(days=db_sub.cycle_val)
+    elif db_sub.cycle_unit == 'week':
+        db_sub.next_date = db_sub.next_date + timedelta(weeks=db_sub.cycle_val)
+    elif db_sub.cycle_unit == 'month':
+        db_sub.next_date = db_sub.next_date + relativedelta(months=db_sub.cycle_val)
+    elif db_sub.cycle_unit == 'year':
+        db_sub.next_date = db_sub.next_date + relativedelta(years=db_sub.cycle_val)
+    
+    # Reset last_sent to allow notifications for the new cycle
+    db_sub.last_sent = None
+    
+    db.commit()
+    db.refresh(db_sub)
+    return db_sub
