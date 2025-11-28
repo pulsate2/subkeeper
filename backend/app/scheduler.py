@@ -136,7 +136,32 @@ def renewal_job():
         today = date.today()
         subscriptions = db.query(Subscription).filter(Subscription.next_date < today, Subscription.is_disabled == False).all()
         
+        # Get global settings for notification
+        global_days_setting = db.query(Settings).filter(Settings.key == "global_days").first()
+        global_days = json.loads(global_days_setting.value) if global_days_setting else [3, 1, 0]
+        
         for sub in subscriptions:
+            # Check if subscription was due yesterday (would be 0-day notification today)
+            yesterday = today - timedelta(days=1)
+            if sub.next_date == yesterday:
+                # Determine if this subscription has 0-day notification enabled
+                if sub.notify_mode == 'global':
+                    notify_days = global_days
+                else:
+                    notify_days = []
+                    if sub.cust_days:
+                        try:
+                            notify_days = json.loads(sub.cust_days)
+                            if not isinstance(notify_days, list):
+                                notify_days = []
+                        except json.JSONDecodeError:
+                            notify_days = []
+                
+                # If 0-day notification is enabled, skip renewal for today
+                if 0 in notify_days:
+                    print(f"Skipping renewal for {sub.name} - 0-day notification pending")
+                    continue
+            
             # Calculate next date based on cycle
             if sub.cycle_unit == 'day':
                 sub.next_date = sub.next_date + timedelta(days=sub.cycle_val)
