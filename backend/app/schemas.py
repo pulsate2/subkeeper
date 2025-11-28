@@ -13,6 +13,7 @@ class SubscriptionBase(BaseModel):
     cust_time: Optional[str] = None
     group_name: str = 'default'
     is_disabled: bool = False
+    remarks: Optional[str] = None  # 备注字段
     # Custom notification switches
     notify_email: bool = True
     notify_wechat: bool = True

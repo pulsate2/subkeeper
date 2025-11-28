@@ -38,6 +38,7 @@
                 </n-tag>
               </div>
               <div class="sub-price">¥{{ sub.price }} / {{ sub.cycle_val }}{{ sub.cycle_unit === 'day' ? '天' : sub.cycle_unit === 'week' ? '周' : sub.cycle_unit === 'month' ? '月' : '年' }}</div>
+              <div v-if="sub.remarks" class="sub-remarks">{{ sub.remarks }}</div>
             </div>
             <div class="sub-date">
               <div class="next-date">{{ sub.next_date }}</div>
@@ -235,6 +236,16 @@ onMounted(() => {
 .sub-price {
   font-size: 12px;
   color: #999;
+}
+
+.sub-remarks {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+  padding: 2px 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  word-break: break-word;
 }
 
 .sub-date {

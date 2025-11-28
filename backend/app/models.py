@@ -23,6 +23,7 @@ class Subscription(Base):
     last_sent = Column(DateTime, nullable=True)
     group_name = Column(String, default='default')  # Group name for subscription
     is_disabled = Column(Boolean, default=False)  # Disable functionality
+    remarks = Column(Text, nullable=True)  # 备注字段
     # Custom notification switches
     notify_email = Column(Boolean, default=True)  # Enable email notification
     notify_wechat = Column(Boolean, default=True)  # Enable WeChat notification

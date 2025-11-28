@@ -33,6 +33,16 @@
           style="width: 100%;"
         />
       </n-form-item>
+      <n-form-item label="备注" path="remarks">
+        <n-input 
+          v-model:value="formData.remarks" 
+          type="textarea" 
+          placeholder="添加备注信息..." 
+          :autosize="{ minRows: 2, maxRows: 4 }"
+          :maxlength="500"
+          show-count
+        />
+      </n-form-item>
       <n-form-item label="通知设置">
         <n-space vertical>
           <n-form-item label="通知方式">
@@ -130,6 +140,7 @@ const formData = ref({
   cust_time: '09:00',
   cust_days: '3,1,0',
   group_name: 'default',
+  remarks: '',
   notify_email: true,
   notify_wechat: true,
   notify_webhook: true,
@@ -208,6 +219,7 @@ watch(() => props.show, (val) => {
         cust_time: props.subscription.cust_time || '09:00',
         cust_days: custDaysValue,
         group_name: props.subscription.group_name || 'default',
+        remarks: props.subscription.remarks || '',
         notify_email: props.subscription.notify_email !== undefined ? props.subscription.notify_email : true,
         notify_wechat: props.subscription.notify_wechat !== undefined ? props.subscription.notify_wechat : true,
         notify_webhook: props.subscription.notify_webhook !== undefined ? props.subscription.notify_webhook : true,
@@ -226,6 +238,7 @@ watch(() => props.show, (val) => {
         cust_time: '09:00',
         cust_days: '3,1,0',
         group_name: 'default',
+        remarks: '',
         notify_email: true,
         notify_wechat: true,
         notify_webhook: true,

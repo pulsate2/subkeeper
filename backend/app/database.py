@@ -99,5 +99,13 @@ def run_migrations():
         except Exception:
             print("notify_resend column already exists in reminders table")
         
+        # Add remarks column to subscriptions table
+        print("Adding remarks column to subscriptions table...")
+        try:
+            conn.execute(text('ALTER TABLE subscriptions ADD COLUMN remarks TEXT'))
+            print("Added remarks column to subscriptions table")
+        except Exception:
+            print("remarks column already exists in subscriptions table")
+        
         conn.commit()
         print("Database migrations completed successfully!")

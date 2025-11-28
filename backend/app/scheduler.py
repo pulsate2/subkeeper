@@ -98,6 +98,8 @@ def notification_job():
             if should_notify:
                 title = f"订阅提醒: {sub.name}"
                 content = f"服务: {sub.name}\n金额: ¥{sub.price}\n扣款日期: {sub.next_date}\n还有 {days_until} 天"
+                if sub.remarks:
+                    content += f"\n备注: {sub.remarks}"
                 notifier.send_notification(title, content, sub.notify_email, sub.notify_wechat, sub.notify_webhook, sub.notify_resend)
                 
                 sub.last_sent = now
