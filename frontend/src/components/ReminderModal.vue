@@ -24,6 +24,17 @@
           :clearable="false"
         />
       </n-form-item>
+      <n-form-item label="分组" path="group_name">
+        <n-select
+          v-model:value="formData.group_name"
+          :options="groupSelectOptions"
+          placeholder="选择或输入分组"
+          filterable
+          tag
+          :clearable="false"
+          style="width: 100%;"
+        />
+      </n-form-item>
       <n-form-item label="通知方式">
         <n-space vertical>
           <n-checkbox v-model:checked="formData.notify_email">邮件通知</n-checkbox>
@@ -59,6 +70,7 @@ const message = useMessage()
 const dialog = useDialog()
 
 const show = ref(props.show)
+const availableGroups = ref(['default'])
 
 // Reactive screen size detection
 const isMobile = ref(window.innerWidth < 768)
@@ -88,10 +100,18 @@ const formData = ref({
   target_date_value: new Date().getTime(),
   target_time: '09:00',
   target_time_value: new Date().setHours(9, 0, 0, 0),
+  group_name: 'default',
   notify_email: true,
   notify_wechat: true,
   notify_webhook: true,
   notify_resend: true
+})
+
+const groupSelectOptions = computed(() => {
+  return availableGroups.value.map(group => ({
+    label: group,
+    value: group
+  }))
 })
 
 const rules = {
@@ -100,33 +120,49 @@ const rules = {
   target_time: { required: true, message: '请选择时间', trigger: 'blur' }
 }
 
+const loadGroups = async () => {
+  try {
+    const response = await axios.get('/api/reminders/groups')
+    availableGroups.value = response.data.length > 0 ? ['default', ...response.data.filter(g => g !== 'default')] : ['default']
+  } catch (error) {
+    console.error('Failed to load groups:', error)
+    availableGroups.value = ['default']
+  }
+}
+
 watch(() => props.show, (val) => {
   show.value = val
-  if (val && props.reminder) {
-    formData.value = {
-      title: props.reminder.title,
-      content: props.reminder.content || '',
-      target_date: props.reminder.target_date,
-      target_date_value: props.reminder.target_date ? new Date(props.reminder.target_date).getTime() : new Date().getTime(),
-      target_time: props.reminder.target_time,
-      target_time_value: props.reminder.target_time ? new Date(`2000-01-01 ${props.reminder.target_time}`) : new Date().setHours(9, 0, 0, 0),
-      notify_email: props.reminder.notify_email !== undefined ? props.reminder.notify_email : true,
-      notify_wechat: props.reminder.notify_wechat !== undefined ? props.reminder.notify_wechat : true,
-      notify_webhook: props.reminder.notify_webhook !== undefined ? props.reminder.notify_webhook : true,
-      notify_resend: props.reminder.notify_resend !== undefined ? props.reminder.notify_resend : true
-    }
-  } else if (val && !props.reminder) {
-    formData.value = {
-      title: '',
-      content: '',
-      target_date: new Date().toISOString().split('T')[0],
-      target_date_value: new Date().getTime(),
-      target_time: '09:00',
-      target_time_value: new Date().setHours(9, 0, 0, 0),
-      notify_email: true,
-      notify_wechat: true,
-      notify_webhook: true,
-      notify_resend: true
+  if (val) {
+    loadGroups()
+    
+    if (props.reminder) {
+      formData.value = {
+        title: props.reminder.title,
+        content: props.reminder.content || '',
+        target_date: props.reminder.target_date,
+        target_date_value: props.reminder.target_date ? new Date(props.reminder.target_date).getTime() : new Date().getTime(),
+        target_time: props.reminder.target_time,
+        target_time_value: props.reminder.target_time ? new Date(`2000-01-01 ${props.reminder.target_time}`) : new Date().setHours(9, 0, 0, 0),
+        group_name: props.reminder.group_name || 'default',
+        notify_email: props.reminder.notify_email !== undefined ? props.reminder.notify_email : true,
+        notify_wechat: props.reminder.notify_wechat !== undefined ? props.reminder.notify_wechat : true,
+        notify_webhook: props.reminder.notify_webhook !== undefined ? props.reminder.notify_webhook : true,
+        notify_resend: props.reminder.notify_resend !== undefined ? props.reminder.notify_resend : true
+      }
+    } else {
+      formData.value = {
+        title: '',
+        content: '',
+        target_date: new Date().toISOString().split('T')[0],
+        target_date_value: new Date().getTime(),
+        target_time: '09:00',
+        target_time_value: new Date().setHours(9, 0, 0, 0),
+        group_name: 'default',
+        notify_email: true,
+        notify_wechat: true,
+        notify_webhook: true,
+        notify_resend: true
+      }
     }
   }
 })

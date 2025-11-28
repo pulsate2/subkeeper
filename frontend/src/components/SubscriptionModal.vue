@@ -22,6 +22,17 @@
           :clearable="false"
         />
       </n-form-item>
+      <n-form-item label="分组" path="group_name">
+        <n-select
+          v-model:value="formData.group_name"
+          :options="groupSelectOptions"
+          placeholder="选择或输入分组"
+          filterable
+          tag
+          :clearable="false"
+          style="width: 100%;"
+        />
+      </n-form-item>
       <n-form-item label="通知设置">
         <n-space vertical>
           <n-form-item label="通知方式">
@@ -85,6 +96,7 @@ const dialog = useDialog()
 
 const show = ref(props.show)
 const useGlobal = ref(true)
+const availableGroups = ref(['default'])
 
 // Reactive screen size detection
 const isMobile = ref(window.innerWidth < 768)
@@ -117,6 +129,7 @@ const formData = ref({
   notify_mode: 'global',
   cust_time: '09:00',
   cust_days: '3,1,0',
+  group_name: 'default',
   notify_email: true,
   notify_wechat: true,
   notify_webhook: true,
@@ -130,73 +143,96 @@ const cycleOptions = [
   { label: '年', value: 'year' }
 ]
 
+const groupSelectOptions = computed(() => {
+  return availableGroups.value.map(group => ({
+    label: group,
+    value: group
+  }))
+})
+
 const rules = {
   name: { required: true, message: '请输入服务名称', trigger: 'blur' },
   price: { required: true, type: 'number', message: '请输入价格', trigger: 'blur' },
   next_date: { required: true, message: '请选择日期', trigger: 'blur' }
 }
 
+const loadGroups = async () => {
+  try {
+    const response = await axios.get('/api/subscriptions/groups')
+    availableGroups.value = response.data.length > 0 ? ['default', ...response.data.filter(g => g !== 'default')] : ['default']
+  } catch (error) {
+    console.error('Failed to load groups:', error)
+    availableGroups.value = ['default']
+  }
+}
+
 watch(() => props.show, (val) => {
   show.value = val
-  if (val && props.subscription) {
-    // Handle cust_days - it might come as an array from the backend, so convert to comma-separated string for the input
-    let custDaysValue = '3,1,0';
-    if (props.subscription.cust_days) {
-      if (Array.isArray(props.subscription.cust_days)) {
-        // If it's an array, join with commas
-        custDaysValue = props.subscription.cust_days.join(',');
-      } else if (typeof props.subscription.cust_days === 'string') {
-        // If it's already a string (comma-separated or JSON string), handle appropriately
-        try {
-          // Try to parse as JSON to see if it's a JSON array string
-          const parsed = JSON.parse(props.subscription.cust_days);
-          if (Array.isArray(parsed)) {
-            custDaysValue = parsed.join(',');
-          } else {
+  if (val) {
+    loadGroups()
+    
+    if (props.subscription) {
+      // Handle cust_days - it might come as an array from the backend, so convert to comma-separated string for the input
+      let custDaysValue = '3,1,0';
+      if (props.subscription.cust_days) {
+        if (Array.isArray(props.subscription.cust_days)) {
+          // If it's an array, join with commas
+          custDaysValue = props.subscription.cust_days.join(',');
+        } else if (typeof props.subscription.cust_days === 'string') {
+          // If it's already a string (comma-separated or JSON string), handle appropriately
+          try {
+            // Try to parse as JSON to see if it's a JSON array string
+            const parsed = JSON.parse(props.subscription.cust_days);
+            if (Array.isArray(parsed)) {
+              custDaysValue = parsed.join(',');
+            } else {
+              custDaysValue = props.subscription.cust_days;
+            }
+          } catch {
+            // If not valid JSON, treat as comma-separated string
             custDaysValue = props.subscription.cust_days;
           }
-        } catch {
-          // If not valid JSON, treat as comma-separated string
+        } else {
           custDaysValue = props.subscription.cust_days;
         }
-      } else {
-        custDaysValue = props.subscription.cust_days;
       }
-    }
 
-    formData.value = {
-      name: props.subscription.name,
-      price: props.subscription.price,
-      cycle_val: props.subscription.cycle_val,
-      cycle_unit: props.subscription.cycle_unit,
-      next_date: props.subscription.next_date,
-      next_date_value: props.subscription.next_date ? new Date(props.subscription.next_date).getTime() : new Date().getTime(),
-      notify_mode: props.subscription.notify_mode,
-      cust_time: props.subscription.cust_time || '09:00',
-      cust_days: custDaysValue,
-      notify_email: props.subscription.notify_email !== undefined ? props.subscription.notify_email : true,
-      notify_wechat: props.subscription.notify_wechat !== undefined ? props.subscription.notify_wechat : true,
-      notify_webhook: props.subscription.notify_webhook !== undefined ? props.subscription.notify_webhook : true,
-      notify_resend: props.subscription.notify_resend !== undefined ? props.subscription.notify_resend : true
+      formData.value = {
+        name: props.subscription.name,
+        price: props.subscription.price,
+        cycle_val: props.subscription.cycle_val,
+        cycle_unit: props.subscription.cycle_unit,
+        next_date: props.subscription.next_date,
+        next_date_value: props.subscription.next_date ? new Date(props.subscription.next_date).getTime() : new Date().getTime(),
+        notify_mode: props.subscription.notify_mode,
+        cust_time: props.subscription.cust_time || '09:00',
+        cust_days: custDaysValue,
+        group_name: props.subscription.group_name || 'default',
+        notify_email: props.subscription.notify_email !== undefined ? props.subscription.notify_email : true,
+        notify_wechat: props.subscription.notify_wechat !== undefined ? props.subscription.notify_wechat : true,
+        notify_webhook: props.subscription.notify_webhook !== undefined ? props.subscription.notify_webhook : true,
+        notify_resend: props.subscription.notify_resend !== undefined ? props.subscription.notify_resend : true
+      }
+      useGlobal.value = props.subscription.notify_mode === 'global'
+    } else {
+      formData.value = {
+        name: '',
+        price: 0,
+        cycle_val: 1,
+        cycle_unit: 'month',
+        next_date: new Date().toISOString().split('T')[0],
+        next_date_value: new Date().getTime(),
+        notify_mode: 'global',
+        cust_time: '09:00',
+        cust_days: '3,1,0',
+        group_name: 'default',
+        notify_email: true,
+        notify_wechat: true,
+        notify_webhook: true,
+        notify_resend: true
+      }
+      useGlobal.value = true
     }
-    useGlobal.value = props.subscription.notify_mode === 'global'
-  } else if (val && !props.subscription) {
-    formData.value = {
-      name: '',
-      price: 0,
-      cycle_val: 1,
-      cycle_unit: 'month',
-      next_date: new Date().toISOString().split('T')[0],
-      next_date_value: new Date().getTime(),
-      notify_mode: 'global',
-      cust_time: '09:00',
-      cust_days: '3,1,0',
-      notify_email: true,
-      notify_wechat: true,
-      notify_webhook: true,
-      notify_resend: true
-    }
-    useGlobal.value = true
   }
 })
 
