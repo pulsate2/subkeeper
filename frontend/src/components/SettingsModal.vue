@@ -50,6 +50,16 @@
                 <n-form-item label="启用 TLS">
                   <n-switch v-model:value="smtpConfig.use_tls" />
                 </n-form-item>
+                <n-form-item>
+                  <n-button 
+                    @click="testNotification('smtp')" 
+                    type="info" 
+                    :loading="testing.smtp"
+                    :disabled="!smtpConfig.host"
+                  >
+                    测试邮件发送
+                  </n-button>
+                </n-form-item>
               </n-collapse-item>
             </n-collapse>
           </n-form-item>
@@ -83,6 +93,16 @@
                     placeholder="@all 或指定用户" 
                   />
                 </n-form-item>
+                <n-form-item>
+                  <n-button 
+                    @click="testNotification('wechat')" 
+                    type="info" 
+                    :loading="testing.wechat"
+                    :disabled="!wechatConfig.corpid"
+                  >
+                    测试企业微信
+                  </n-button>
+                </n-form-item>
               </n-collapse-item>
             </n-collapse>
           </n-form-item>
@@ -96,6 +116,16 @@
                     v-model:value="webhookConfig.webhook_key" 
                     placeholder="Webhook Key" 
                   />
+                </n-form-item>
+                <n-form-item>
+                  <n-button 
+                    @click="testNotification('webhook')" 
+                    type="info" 
+                    :loading="testing.webhook"
+                    :disabled="!webhookConfig.webhook_key"
+                  >
+                    测试 Webhook
+                  </n-button>
                 </n-form-item>
               </n-collapse-item>
             </n-collapse>
@@ -122,6 +152,16 @@
                     v-model:value="resendConfig.to" 
                     placeholder="user@example.com" 
                   />
+                </n-form-item>
+                <n-form-item>
+                  <n-button 
+                    @click="testNotification('resend')" 
+                    type="info" 
+                    :loading="testing.resend"
+                    :disabled="!resendConfig.api_key"
+                  >
+                    测试 Resend 邮件
+                  </n-button>
                 </n-form-item>
               </n-collapse-item>
             </n-collapse>
@@ -211,6 +251,13 @@ const formData = ref({
   global_time: '09:00',
   global_time_value: new Date().setHours(9, 0, 0, 0),
   global_days: '3,1,0'
+})
+
+const testing = ref({
+  smtp: false,
+  wechat: false,
+  webhook: false,
+  resend: false
 })
 
 watch(() => props.show, async (val) => {
@@ -350,6 +397,35 @@ const importData = async ({ file }) => {
     show.value = false
   } catch (error) {
     message.error('导入失败')
+  }
+}
+
+const testNotification = async (type) => {
+  testing.value[type] = true
+  try {
+    let config = null
+    
+    // 根据类型获取当前输入框的配置
+    if (type === 'smtp') {
+      config = smtpConfig.value
+    } else if (type === 'wechat') {
+      config = wechatConfig.value
+    } else if (type === 'webhook') {
+      config = webhookConfig.value
+    } else if (type === 'resend') {
+      config = resendConfig.value
+    }
+    
+    const response = await axios.post(`/api/settings/test/${type}`, config)
+    if (response.data.success) {
+      message.success(response.data.message)
+    } else {
+      message.error(response.data.message)
+    }
+  } catch (error) {
+    message.error('测试失败：' + (error.response?.data?.detail || error.message))
+  } finally {
+    testing.value[type] = false
   }
 }
 </script>

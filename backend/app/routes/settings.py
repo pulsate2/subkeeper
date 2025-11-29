@@ -5,6 +5,7 @@ from typing import Dict
 from ..database import get_db
 from ..models import Settings
 from ..auth import verify_token
+from ..notifier import Notifier
 
 router = APIRouter()
 
@@ -95,4 +96,70 @@ async def update_settings(settings: Dict, db: Session = Depends(get_db), current
         return {"message": "Settings updated successfully"}
     except Exception as e:
         db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.post("/test/{notification_type}")
+async def test_notification(
+    notification_type: str, 
+    config: Dict = None,
+    db: Session = Depends(get_db), 
+    current_user: str = Depends(verify_token)
+):
+    """Test notification configuration with provided config"""
+    try:
+        test_title = "测试通知"
+        test_content = "这是一条测试通知，用于验证您的通知配置是否正确。"
+        
+        result = {"success": False, "message": ""}
+        
+        if notification_type == "smtp":
+            if config and config.get('host'):
+                # Create temporary notifier with provided config
+                temp_notifier = Notifier(db)
+                temp_notifier.smtp_config = config
+                success = temp_notifier.send_email(test_title, test_content)
+                if success:
+                    result = {"success": True, "message": "SMTP 邮件测试成功"}
+                else:
+                    result = {"success": False, "message": "SMTP 邮件测试失败，请检查配置"}
+            else:
+                result = {"success": False, "message": "SMTP 配置不完整"}
+                
+        elif notification_type == "wechat":
+            if config and config.get('corpid'):
+                temp_notifier = Notifier(db)
+                temp_notifier.wechat_config = config
+                success = temp_notifier.send_wechat(test_title, test_content)
+                if success:
+                    result = {"success": True, "message": "企业微信测试成功"}
+                else:
+                    result = {"success": False, "message": "企业微信测试失败，请检查配置"}
+            else:
+                result = {"success": False, "message": "企业微信配置不完整"}
+                
+        elif notification_type == "webhook":
+            if config and config.get('webhook_key'):
+                temp_notifier = Notifier(db)
+                temp_notifier.webhook_config = config
+                temp_notifier.send_webhook_notification(test_title, test_content)
+                result = {"success": True, "message": "企业微信 Webhook 测试成功"}
+            else:
+                result = {"success": False, "message": "Webhook 配置不完整"}
+                
+        elif notification_type == "resend":
+            if config and config.get('api_key'):
+                temp_notifier = Notifier(db)
+                temp_notifier.resend_config = config
+                success = temp_notifier.send_resend(test_title, test_content)
+                if success:
+                    result = {"success": True, "message": "Resend 邮件测试成功"}
+                else:
+                    result = {"success": False, "message": "Resend 邮件测试失败，请检查配置"}
+            else:
+                result = {"success": False, "message": "Resend 配置不完整"}
+        else:
+            raise HTTPException(status_code=400, detail="Invalid notification type")
+            
+        return result
+    except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
