@@ -21,6 +21,17 @@
           style="width: 100%;" 
           :clearable="false"
         />
+        <n-button 
+          @click="setNextCycleDate" 
+          type="info" 
+          size="small" 
+          style="width: auto; margin-top: 4px; margin-left: 4px;"
+        >
+          <template #icon>
+            <n-icon><CalendarIcon /></n-icon>
+          </template>
+          设为下个周期
+        </n-button>
       </n-form-item>
       <n-form-item label="分组" path="group_name">
         <n-select
@@ -92,6 +103,7 @@
 <script setup>
 import { ref, watch, computed } from 'vue'
 import { useMessage, useDialog } from 'naive-ui'
+import { Calendar as CalendarIcon } from '@vicons/tabler'
 import axios from 'axios'
 
 const props = defineProps({
@@ -134,7 +146,7 @@ const formData = ref({
   price: 0,
   cycle_val: 1,
   cycle_unit: 'month',
-  next_date: new Date().toISOString().split('T')[0], // 设置默认日期为今天
+  next_date: new Date().toLocaleDateString('en-CA'), // 设置默认日期为今天 (en-CA format: YYYY-MM-DD)
   next_date_value: new Date().getTime(), // 使用时间戳作为日期选择器的值
   notify_mode: 'global',
   cust_time: '09:00',
@@ -232,7 +244,7 @@ watch(() => props.show, (val) => {
         price: 0,
         cycle_val: 1,
         cycle_unit: 'month',
-        next_date: new Date().toISOString().split('T')[0],
+        next_date: new Date().toLocaleDateString('en-CA'),
         next_date_value: new Date().getTime(),
         notify_mode: 'global',
         cust_time: '09:00',
@@ -255,9 +267,14 @@ watch(show, (val) => {
 
 const saveSub = async () => {
   try {
-    // Convert date value to string format
+    // Convert date value to string format (fix timezone issue)
     if (formData.value.next_date_value) {
-      formData.value.next_date = new Date(formData.value.next_date_value).toISOString().split('T')[0];
+      const date = new Date(formData.value.next_date_value);
+      // Get local date components to avoid timezone conversion issues
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      formData.value.next_date = `${year}-${month}-${day}`;
     }
 
     // Prepare cust_days as JSON array
@@ -300,6 +317,36 @@ const saveSub = async () => {
   } catch (error) {
     message.error('保存失败')
   }
+}
+
+const setNextCycleDate = () => {
+  const today = new Date()
+  let nextDate = new Date(today)
+  
+  // Calculate next date based on cycle
+  switch (formData.value.cycle_unit) {
+    case 'day':
+      nextDate.setDate(today.getDate() + formData.value.cycle_val)
+      break
+    case 'week':
+      nextDate.setDate(today.getDate() + (formData.value.cycle_val * 7))
+      break
+    case 'month':
+      nextDate.setMonth(today.getMonth() + formData.value.cycle_val)
+      break
+    case 'year':
+      nextDate.setFullYear(today.getFullYear() + formData.value.cycle_val)
+      break
+  }
+  
+  // Update both the timestamp value and the string value
+  formData.value.next_date_value = nextDate.getTime()
+  const year = nextDate.getFullYear()
+  const month = (nextDate.getMonth() + 1).toString().padStart(2, '0')
+  const day = nextDate.getDate().toString().padStart(2, '0')
+  formData.value.next_date = `${year}-${month}-${day}`
+  
+  message.success(`已将下次扣款日期设为${formData.value.next_date}`)
 }
 
 const deleteSub = () => {

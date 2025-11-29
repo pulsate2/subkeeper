@@ -96,7 +96,7 @@ const modalStyle = computed(() => {
 const formData = ref({
   title: '',
   content: '',
-  target_date: new Date().toISOString().split('T')[0],
+  target_date: new Date().toLocaleDateString('en-CA'),
   target_date_value: new Date().getTime(),
   target_time: '09:00',
   target_time_value: new Date().setHours(9, 0, 0, 0),
@@ -153,7 +153,7 @@ watch(() => props.show, (val) => {
       formData.value = {
         title: '',
         content: '',
-        target_date: new Date().toISOString().split('T')[0],
+        target_date: new Date().toLocaleDateString('en-CA'),
         target_date_value: new Date().getTime(),
         target_time: '09:00',
         target_time_value: new Date().setHours(9, 0, 0, 0),
@@ -173,9 +173,14 @@ watch(show, (val) => {
 
 const saveReminder = async () => {
   try {
-    // Convert date and time values to string format
+    // Convert date and time values to string format (fix timezone issue)
     if (formData.value.target_date_value) {
-      formData.value.target_date = new Date(formData.value.target_date_value).toISOString().split('T')[0];
+      const date = new Date(formData.value.target_date_value);
+      // Get local date components to avoid timezone conversion issues
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      formData.value.target_date = `${year}-${month}-${day}`;
     }
     if (formData.value.target_time_value) {
       const timeDate = new Date(formData.value.target_time_value);
