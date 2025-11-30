@@ -1,5 +1,5 @@
 <template>
-  <n-modal v-model:show="show" preset="card" :title="subscription ? '编辑订阅' : '添加订阅'" :style="modalStyle">
+  <n-modal v-model:show="show" preset="card" :title="subscription && subscription.id ? '编辑订阅' : '添加订阅'" :style="modalStyle">
     <n-form ref="formRef" :model="formData" :rules="rules">
       <n-form-item label="服务名称" path="name">
         <n-input v-model:value="formData.name" placeholder="例如: Netflix" />
@@ -93,7 +93,7 @@
     <template #footer>
       <n-space justify="end">
         <n-button @click="show = false">取消</n-button>
-        <n-button v-if="subscription" @click="deleteSub" type="error">删除</n-button>
+        <n-button v-if="subscription && subscription.id" @click="deleteSub" type="error">删除</n-button>
         <n-button @click="saveSub" type="primary">保存</n-button>
       </n-space>
     </template>
@@ -225,7 +225,7 @@ watch(() => props.show, (val) => {
         price: props.subscription.price,
         cycle_val: props.subscription.cycle_val,
         cycle_unit: props.subscription.cycle_unit,
-        next_date: props.subscription.next_date,
+        next_date: props.subscription.next_date || new Date().toLocaleDateString('en-CA'),
         next_date_value: props.subscription.next_date ? new Date(props.subscription.next_date).getTime() : new Date().getTime(),
         notify_mode: props.subscription.notify_mode,
         cust_time: props.subscription.cust_time || '09:00',
@@ -304,7 +304,7 @@ const saveSub = async () => {
       cust_days: useGlobal.value ? null : custDaysValue
     }
 
-    if (props.subscription) {
+    if (props.subscription && props.subscription.id) {
       await axios.put(`/api/subscriptions/${props.subscription.id}`, data)
       message.success('订阅已更新')
     } else {

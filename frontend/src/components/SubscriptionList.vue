@@ -45,15 +45,23 @@
               <div class="days-left">{{ getDaysUntil(sub.next_date) }}天后</div>
             </div>
             <div class="sub-actions" @click.stop>
-              <n-button 
-                v-if="!sub.is_disabled"
-                size="small" 
-                type="primary" 
-                @click="handleRenew(sub)"
-                :loading="renewingId === sub.id"
-              >
-                进入下一周期
-              </n-button>
+              <n-space>
+                <n-button 
+                  size="small" 
+                  @click="handleClone(sub)"
+                >
+                  克隆
+                </n-button>
+                <n-button 
+                  v-if="!sub.is_disabled"
+                  size="small" 
+                  type="primary" 
+                  @click="handleRenew(sub)"
+                  :loading="renewingId === sub.id"
+                >
+                  进入下一周期
+                </n-button>
+              </n-space>
             </div>
           </div>
         </n-card>
@@ -123,6 +131,19 @@ const filteredSubscriptions = computed(() => {
 const handleAddClick = () => {
   console.log('Add button clicked')
   editingSubscription.value = null
+  showAddModal.value = true
+}
+
+const handleClone = (sub) => {
+  // Create a copy of the subscription without the id for cloning
+  const clonedSub = { ...sub }
+  delete clonedSub.id
+  delete clonedSub.next_date // Reset next date to current date for new subscription
+  
+  // Add suffix to name to indicate it's a clone
+  clonedSub.name = `${sub.name} (副本)`
+  
+  editingSubscription.value = clonedSub
   showAddModal.value = true
 }
 
