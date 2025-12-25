@@ -36,7 +36,14 @@ async def export_data(db: Session = Depends(get_db), current_user: str = Depends
                 "notify_mode": sub.notify_mode,
                 "cust_days": sub.cust_days,
                 "cust_time": sub.cust_time,
-                "last_sent": sub.last_sent.isoformat() if sub.last_sent else None
+                "last_sent": sub.last_sent.isoformat() if sub.last_sent else None,
+                "group_name": sub.group_name,
+                "is_disabled": sub.is_disabled,
+                "remarks": sub.remarks,
+                "notify_email": sub.notify_email,
+                "notify_wechat": sub.notify_wechat,
+                "notify_webhook": sub.notify_webhook,
+                "notify_resend": sub.notify_resend
             }
             subscriptions.append(sub_dict)
         
@@ -49,7 +56,13 @@ async def export_data(db: Session = Depends(get_db), current_user: str = Depends
                 "content": reminder.content,
                 "target_date": reminder.target_date.isoformat(),
                 "target_time": reminder.target_time,
-                "is_sent": reminder.is_sent
+                "is_sent": reminder.is_sent,
+                "group_name": reminder.group_name,
+                "is_disabled": reminder.is_disabled,
+                "notify_email": reminder.notify_email,
+                "notify_wechat": reminder.notify_wechat,
+                "notify_webhook": reminder.notify_webhook,
+                "notify_resend": reminder.notify_resend
             }
             reminders.append(reminder_dict)
         
